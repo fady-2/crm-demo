@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { OwnerPageComponent } from "./features/owner-page/owner-page.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, OwnerPageComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
