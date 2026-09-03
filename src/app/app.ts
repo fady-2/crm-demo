@@ -5,7 +5,7 @@ import { Brokers } from './features/brokers/brokers';
 
 @Component({
   selector: 'app-root',
-  imports: [ Brokers],
+  imports: [ Brokers , OwnerPageComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

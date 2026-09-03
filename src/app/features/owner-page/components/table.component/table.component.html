@@ -1,0 +1,71 @@
+@if (data.length > 0) {
+  <div class="table-responsive bg-white rounded-3 shadow-sm p-3 d-block">
+    <table class="table table-borderless align-middle mb-0 text-nowrap">
+      <thead>
+        <tr class="border-bottom text-secondary">
+          <th scope="col"><input type="checkbox" class="form-check-input" /></th>
+          <th scope="col">Name</th>
+          <th scope="col">Mobile</th>
+          <th scope="col">Assigned To</th>
+          <th scope="col">Requests</th>
+          <th scope="col">Stage</th>
+          <th scope="col">Project</th>
+          <th scope="col">Property Type</th>
+          <th scope="col">Action</th>
+          <th scope="col">Last Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (owner of data; track owner.id) {
+          <tr class="border-bottom">
+            <td><input type="checkbox" class="form-check-input" /></td>
+            <td class="fw-bold text-dark">{{ owner.name }}</td>
+            <td class="text-muted small">{{ owner.mobile }}</td>
+            <td>
+              <div class="d-flex align-items-center gap-2">
+                <img src="https://ui-avatars.com/api/?name=Moaz+Elramsisy" class="rounded-circle" width="30" height="30" alt="avatar" />
+                <span class="small fw-semibold">{{ owner.assigendTo }}</span>
+              </div>
+            </td>
+            <td class="text-muted small">{{ owner.requests }}</td>
+            <td>
+              <span class="badge bg-light text-dark rounded-pill border px-2 py-1 fw-normal">
+                {{ owner.stage }}
+              </span>
+            </td>
+            <td>
+              <span class="badge bg-light text-dark rounded-pill border px-2 py-1 fw-normal">
+                {{ owner.project }}
+              </span>
+            </td>
+            <td>
+              <span class="badge bg-light text-dark rounded-pill border px-2 py-1 fw-normal">
+                {{ owner.probertyType }}
+              </span>
+            </td>
+            <td>
+              <span class="badge bg-primary-subtle text-primary rounded-pill px-2 py-1 fw-normal">
+                {{ owner.currentActoin }}
+              </span>
+            </td>
+            <td class="text-muted small">{{ owner.lastComment }}</td>
+            @if (owner.action) {
+              <td>
+                <span class="badge bg-success-subtle text-success rounded-pill px-2 py-1 fw-normal">
+                  {{ owner.action }}
+                </span>
+              </td>
+            }@else {
+              <td></td>
+            }
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+} @else {
+  <div class="bg-white d-flex flex-column justify-content-center align-items-center vh-100">
+    <i class="bi bi-inbox fs-1 text-muted"></i>
+    <p class="text-muted small mt-2">No Owners Found</p>
+  </div>
+}

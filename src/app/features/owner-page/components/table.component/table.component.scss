@@ -1,0 +1,9 @@
+div.d-block{
+    overflow-x: scroll !important;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc #f0f0f0;
+}
+tbody tr:hover td {
+  background-color: #edf2ff !important;
+  cursor: pointer;
+}
