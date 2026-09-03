@@ -1,0 +1,41 @@
+<div class="container d-flex gap-3 align-items-center">
+  <div class="input-group border rounded-3 bg-white align-items-center">
+    <select
+      class="form-select border-0 shadow-none border-end rounded-0 bg-transparent fw-medium text-dark pe-4"
+    >
+      <option value="all" selected>All</option>
+      <option value="category1">Category 1</option>
+      <option value="category2">Category 2</option>
+    </select>
+    <input type="text" class="form-control border-0 bg-white" placeholder="Search" />
+    <span class="input-group-text border-0 bg-white" id="basic-addon1">
+      <i class="bi bi-search text-primary bg-info p-1 rounded-1"></i>
+    </span>
+  </div>
+  <div class="d-flex align-items-center border rounded-3 bg-white p-1">
+    <button
+      class="btn border-0 shadow-none d-flex align-items-center gap-2 fw-medium text-dark px-3 py-1"
+    >
+      <i class="bi bi-funnel"></i>
+      <span>Filters</span>
+    </button>
+    <div class="dropdown border-start ps-2 pe-1">
+      <button
+        class="btn border-0 shadow-none dropdown-toggle px-1 py-1"
+        type="button"
+        data-bs-toggle="dropdown"
+      ></button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Filter Option 1</a></li>
+        <li><a class="dropdown-item" href="#">Filter Option 2</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="vr my-2 text-secondary"></div>
+  <button
+    class="btn border rounded-3 bg-white text-dark p-2 d-flex align-items-center justify-content-center"
+    style="width: 40px; height: 40px"
+  >
+    <i class="bi bi-kanban fs-5"></i>
+  </button>
+</div>
