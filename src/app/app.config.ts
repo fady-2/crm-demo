@@ -36,16 +36,18 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
 
     provideRouter(routes),
-
-    provideClientHydration(
-      withEventReplay()
-    ),
-
-    providePrimeNG({
+   providePrimeNG({
       theme: {
-        preset: Aura
-      }
-    })
+        preset: Aura,
+        options: {
+          cssLayer: {
+              name: 'primeng',
+              order: 'primeng, custom-styles' // primeng first, then custom styles override
+          },
+          darkModeSelector: '.dark-mode' , // to enable dark mode in primeng
+        }
+      },       
+    }),
   ]
 
 };
