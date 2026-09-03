@@ -1,1 +1,67 @@
-/* You can add global styles to this file, and also import other style files */
+/* src/styles.scss */
+
+/* 1. ضبط متغيرات الألوان الخاصة بثيم PrimeNG الحديث (Aura / Lara) */
+:root {
+  --p-primary-color: #4f46e5;
+  --p-primary-hover-color: #4338ca;
+  --p-primary-active-color: #3730a3;
+  --p-primary-contrast-color: #ffffff;
+}
+
+/* 2. التنسيقات العامة للأزرار وتخصيص كلاسات PrimeNG */
+.p-button {
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  padding: 0.55rem 1.1rem !important;
+
+  .p-button-icon {
+    font-size: 14px !important;
+  }
+}
+
+/* 3. زرار Create Owner (Primary Button) */
+.p-button.p-button-primary,
+.p-button-primary {
+  background-color: #4f46e5 !important;
+  border-color: #4f46e5 !important;
+  color: #ffffff !important;
+
+  &:hover {
+    background-color: #4338ca !important;
+    border-color: #4338ca !important;
+    color: #ffffff !important;
+  }
+
+  &:focus, &:active {
+    background-color: #3730a3 !important;
+    border-color: #3730a3 !important;
+    box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.25) !important;
+  }
+}
+
+/* 4. زرار Import Owners (Outlined / Secondary Button) */
+.p-button.p-button-outlined.p-button-secondary,
+.p-button-outlined.p-button-secondary {
+  background-color: #ffffff !important;
+  border-color: #e5e7eb !important;
+  color: #374151 !important;
+
+  &:hover {
+    background-color: #f9fafb !important;
+    border-color: #d1d5db !important;
+    color: #111827 !important;
+  }
+
+  &:focus, &:active {
+    background-color: #f3f4f6 !important;
+    border-color: #9ca3af !important;
+    box-shadow: 0 0 0 0.2rem rgba(156, 163, 175, 0.15) !important;
+  }
+}
+
+/* 5. إخفاء Badge الترخيص الخاص بـ PrimeUI أثناء التطوير (اختياري) */
+.p-license-badge,
+[class*="PrimeUI-License"] {
+  display: none !important;
+}
