@@ -1,9 +1,8 @@
-<div class="card d-flex flex-row">
-    <button class="btn btn-outline-secondary fw-bold text-black">All Owners</button>
-    <button class="btn btn-outline-secondary fw-bold text-black">Ferch</button>
-    <button class="btn btn-outline-secondary fw-bold text-black"> </button>
-    <button class="btn btn-outline-secondary fw-bold text-black">Deal</button>
-    <button class="btn btn-outline-secondary fw-bold text-black">Sale</button>
-    <button class="btn btn-outline-secondary fw-bold text-black">Rent</button>
-    <button class="btn btn-outline-secondary fw-bold text-black">Trach</button>
+<div class="card flex justify-content-center">
+    <p-selectButton 
+        [options]="options" 
+        [(ngModel)]="selectedOption"
+        optionLabel="label" 
+        optionValue="value" 
+        (ngModelChange)="valueChanged()" />
 </div>

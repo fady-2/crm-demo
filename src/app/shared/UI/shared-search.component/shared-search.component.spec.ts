@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ButtonComponent } from './button.component';
+import { SharedSearchComponent } from './shared-search.component';
 
-describe('ButtonComponent', () => {
-  let component: ButtonComponent;
-  let fixture: ComponentFixture<ButtonComponent>;
+describe('SharedSearchComponent', () => {
+  let component: SharedSearchComponent;
+  let fixture: ComponentFixture<SharedSearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ButtonComponent]
+      imports: [SharedSearchComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ButtonComponent);
+    fixture = TestBed.createComponent(SharedSearchComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

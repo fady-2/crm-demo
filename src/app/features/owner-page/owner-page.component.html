@@ -1,13 +1,19 @@
 <div class="container-fluid p-4 bg-light">
   <app-header
-    headerName="Owners"
-    headerDescription="Manage your team members and permissions here."
+    [headerName]="title"
+    [headerDescription]="description"
+    [headerActions]="actions"
+    (actionClicked)="handleActionClicked($event)"
   />
   <div class="d-flex justify-content-between align-items-center p-3 bg-white">
     <app-taps />
     <app-filteration />
   </div>
-  <app-table />
+  <!-- <app-table /> -->
+  <app-shared-table
+    [columns]="columns"
+    [data]="data"
+  />
   <app-paginator class="rounded-bottom-2" />
   <!-- <app-footer /> -->
    <!-- <nav class="bg-light">
