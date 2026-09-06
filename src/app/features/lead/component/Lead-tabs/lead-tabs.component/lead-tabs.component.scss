@@ -1,29 +1,37 @@
 section {
   margin-top: 4.5px;
   width: 100%; 
+  color: #344054;
+  font-size: 16px;
+
+  
 }
 
 .tab-lead {
   width: 100%;
   color: #344054;
-  padding: 0; 
+  // padding: 9px;
+  // margin: 8px;
   border: 1px solid #D0D5DD;
   border-radius: 8px;
   height: 50px;
-  display: flex; 
-  align-items: stretch; 
+  display: flex;
+  align-items: stretch;
   background-color: white;
+
+ 
 }
 
 h6 {
   margin: 0;
+  padding: 5px;
   color: #344054;
   display: flex;
   align-items: center;
-  justify-content: center; 
-  flex: 1; 
+  justify-content: space-between; 
   border-right: 1px solid #D0D5DD; 
-  font-size: 14px;
+  // font-weight: 70px;
+
 }
 
 h6:last-child {
@@ -31,5 +39,8 @@ h6:last-child {
 }
 
 .img-tab{
-  margin-top: 10px;
+  // margin-top: 14px;
+  // justify-items: center;
+  // text-align: center;
+  margin: auto;
 }

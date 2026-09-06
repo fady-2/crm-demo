@@ -46,10 +46,11 @@ interface Lead {
     name: string;
     image: string;
   };
-  date: Date;
   balance: number;
   status: string;
-  activity: number;
+  // activity: number;
+  text:string;
+  date:Date;
 }
 
 @Component({
@@ -91,6 +92,67 @@ export class LeadTableComponent implements OnInit {
     value: string;
   }[] = [];
 
+
+
+columns = [
+  {
+    field: 'name',
+    header: 'Lead Name',
+    sortable: true,
+    filter: true,
+    filterType: 'text'
+  },
+  {
+    field: 'country.name',
+    header: 'Mobile',
+    sortable: true,
+    filter: false,
+    filterType: 'text'
+  },
+  {
+    field: 'representative.name',
+    header: 'Email Address',
+    sortable: true,
+    // filter: true,
+    filterType: 'multiSelect'
+  },
+  {
+    field: 'date',
+    header: 'Project',
+    sortable: true,
+    // filter: true,
+    filterType: 'date'
+  },
+  {
+    field: 'balance',
+    header: 'Assigned To',
+   
+    filterType: 'numeric'
+  },
+  {
+    field: 'status',
+    header: 'Status',
+    sortable: true,
+    // filter: true,
+    filterType: 'select'
+  },
+  {
+    field: 'text',
+    header: 'Last Comment',
+    
+  },
+  {
+    field: 'text',
+    header: 'Creation Date',
+    
+  },
+];
+
+
+
+
+
+
   loading = true;
 
   activityValues: number[] = [0, 100];
@@ -115,7 +177,7 @@ export class LeadTableComponent implements OnInit {
         date: new Date('2026-08-20'),
         balance: 25000,
         status: 'qualified',
-        activity: 80
+         text: 'he is not interested'
       },
 
       {
@@ -133,7 +195,8 @@ export class LeadTableComponent implements OnInit {
         date: new Date('2026-08-22'),
         balance: 12000,
         status: 'new',
-        activity: 40
+                text: 'he is not interested'
+
       },
 
       {
@@ -151,7 +214,8 @@ export class LeadTableComponent implements OnInit {
         date: new Date('2026-08-25'),
         balance: 18000,
         status: 'negotiation',
-        activity: 65
+         text: 'he is not interested'
+
       },
 
       {
@@ -169,7 +233,8 @@ export class LeadTableComponent implements OnInit {
         date: new Date('2026-08-28'),
         balance: 32000,
         status: 'proposal',
-        activity: 90
+        text: 'he is not interested'
+
       }
     ];
 
@@ -254,5 +319,41 @@ export class LeadTableComponent implements OnInit {
 
     this.searchValue = '';
   }
+
+
+
+
+ getStatusDotClass(status: string): string {
+  switch (status) {
+    case 'unqualified':
+      return 'dot-danger';
+
+    case 'qualified':
+      return 'dot-success';
+
+    case 'new':
+      return 'dot-info';
+
+    case 'negotiation':
+      return 'dot-warning';
+
+    case 'renewal':
+      return 'dot-secondary';
+
+    case 'proposal':
+      return 'dot-contrast';
+
+    default:
+      return '';
+  }
 }
+
+
+
+
+
+
+
+}
+
 

@@ -1,23 +1,33 @@
 .tnzeem {
   display: flex;
-  align-items: stretch; 
-  gap: 15px;            
   width: 100%;
+  gap: 10px;
   padding: 10px 0;
+
+  
+  
 }
 
-app-lead-search {
-  width: fit-content;
-  flex-shrink: 0;
+.export{
+  margin-top: 10px;
 }
+
+.search{
+  flex: 8;
+
+}
+
 
 app-lead-tabs {
-  flex: 1;
-  min-width: 0;
-  display: block; 
+  flex: 11;
+  justify-content: space-around;
+  width: 100%;
+  text-align: center;
+ 
+ 
 }
 
-app-lead-filter {
-  width: fit-content;
-  flex-shrink: 0;
+.filter{
+  flex: 1;
 }
+
