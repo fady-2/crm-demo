@@ -1,29 +1,42 @@
-*{
-      font-family: 'Montserrat', sans-serif;
-      padding: 0px;
-      margin: 0px;
 
-}
 
 header{
                  color: #101828;
                 background-color: #EAECF0;
 
                 // height: 100vh;
-                margin: 20px;
-                width: 100%;
+                // margin: 20px;
+                // width: 80%;
 
+                position: relative;
+                // margin-left: 150px;
                  margin: 0;
                 padding: 0;
                 gap: 0;
 }
 
+
+
+
+
+
+
+
+
+
+
+
 .lead{
     font-weight: 600;
     font-size: 25px;
+    position: absolute;
+    // bottom: 10px;
+    top: 52px;
+    left: 24px;
 }
 
 .header{
+    
     display: grid;
     h4{
             font-weight: 400px ;
@@ -34,13 +47,24 @@ header{
 
 .manag-lead{
 
+    position: absolute;
+    // bottom: 25px;
+    top: 90px;
+    left: 25px;
     grid-column: 1;
     font-size: 16px;
-    margin-top: 15px;
+    // margin-t op: 15px;
+    // margin-top: 100px;
+    // padding: 10px;
 }
 .action-button{
     grid-column: 10;
+    position: absolute;
+    // bottom: 20px ;
 
+    top: 85px;
+    // left: 5px;
+    right: 85px;
 
 
     button{

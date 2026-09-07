@@ -1,22 +1,3 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-lead-table.component',
-//   imports: [],
-//   templateUrl: './lead-table.component.html',
-//   styleUrl: './lead-table.component.scss',
-// })
-// export class LeadTableComponent {
-
-// }
-
-
-
-
-
-
-
-
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -176,7 +157,7 @@ columns = [
         },
         date: new Date('2026-08-20'),
         balance: 25000,
-        status: 'qualified',
+        status: 'Waiting',
          text: 'he is not interested'
       },
 
@@ -194,7 +175,7 @@ columns = [
         },
         date: new Date('2026-08-22'),
         balance: 12000,
-        status: 'new',
+        status: 'status-follow-up',
                 text: 'he is not interested'
 
       },
@@ -213,7 +194,7 @@ columns = [
         },
         date: new Date('2026-08-25'),
         balance: 18000,
-        status: 'negotiation',
+        status: 'canacel',
          text: 'he is not interested'
 
       },
@@ -232,7 +213,7 @@ columns = [
         },
         date: new Date('2026-08-28'),
         balance: 32000,
-        status: 'proposal',
+        status: 'meeting',
         text: 'he is not interested'
 
       }
@@ -259,28 +240,28 @@ columns = [
 
     this.statuses = [
       {
-        label: 'Unqualified',
-        value: 'unqualified'
+        label: 'Follow',
+        value: 'Follow'
       },
       {
-        label: 'Qualified',
-        value: 'qualified'
+        label: 'canceled',
+        value: 'canceled'
       },
       {
-        label: 'New',
+        label: 'new',
         value: 'new'
       },
       {
-        label: 'Negotiation',
-        value: 'negotiation'
+        label: 'Done',
+        value: 'Done'
       },
       {
-        label: 'Renewal',
-        value: 'renewal'
+        label: 'new',
+        value: 'new'
       },
       {
-        label: 'Proposal',
-        value: 'proposal'
+        label: 'meet',
+        value: 'meet'
       }
     ];
 
@@ -291,28 +272,29 @@ columns = [
 
     switch (status) {
 
-      case 'unqualified':
-        return 'danger';
+      case 'Waiting':
+        return 'status-Waiting';
 
-      case 'qualified':
-        return 'success';
+     
+      case 'status-follow-up':
+        return 'follow-up';
 
-      case 'new':
-        return 'info';
+      case 'Done':
+        return 'status-Done';
 
-      case 'negotiation':
-        return 'warn';
+      case 'canacel':
+        return 'status-canaceled';
 
-      case 'renewal':
-        return 'secondary';
+        case 'meeting':
+        return 'status-meeting';
 
-      case 'proposal':
-        return 'contrast';
+   
 
       default:
-        return 'info';
+        return 'status-defualt';
     }
   }
+ 
 
   clear(table: any): void {
     table.clear();
@@ -325,7 +307,7 @@ columns = [
 
  getStatusDotClass(status: string): string {
   switch (status) {
-    case 'unqualified':
+    case 'Follow Up':
       return 'dot-danger';
 
     case 'qualified':

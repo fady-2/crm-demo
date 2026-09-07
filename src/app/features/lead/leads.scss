@@ -1,25 +1,45 @@
+
 .tnzeem {
   display: flex;
-  width: 100%;
-  gap: 10px;
+    margin: 0px 20px 0px 20px;
+
+  // gap: 100px;
   padding: 10px 0;
+  background-color: #FFFFFF;
+  margin-top: 147px;
+  // margin-left: 20px;
+  // background-color: #AECF0;
 
   
   
 }
+
+
+
+
+
+
+
+
+
+
+
 
 .export{
   margin-top: 10px;
 }
 
 .search{
-  flex: 8;
+  margin-left: 28px;
+  flex: 6 !important ;
+  // margin-right: -20px;
 
 }
 
 
 app-lead-tabs {
-  flex: 11;
+  flex: 11; 
+  // margin-left: 20px;
   justify-content: space-around;
   width: 100%;
   text-align: center;
@@ -31,3 +51,11 @@ app-lead-tabs {
   flex: 1;
 }
 
+
+
+
+
+// .container {
+//   width: 100%;
+//   display: block;
+// }

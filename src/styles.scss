@@ -3,6 +3,7 @@
 /* 1. ضبط متغيرات الألوان الخاصة بثيم PrimeNG الحديث (Aura / Lara) */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
+
 :root {
   --p-primary-color: #4f46e5;
   --p-primary-hover-color: #4338ca;
@@ -10,6 +11,7 @@
   --p-primary-contrast-color: #EAECF0;
   
 }
+
 
 
 
@@ -79,4 +81,14 @@ html,
 body {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
+  padding: 0;
+  background-color: #EAECF0;
 }
+
+
+app-leads {
+  display: block;
+  width: 100%;
+}
+
+

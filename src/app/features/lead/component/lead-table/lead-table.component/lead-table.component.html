@@ -7,6 +7,7 @@
     dataKey="id"
     [rowHover]="true"
     [rows]="10"
+
     [showCurrentPageReport]="true"
     [rowsPerPageOptions]="[10, 25, 50]"
     [loading]="loading"
@@ -323,10 +324,10 @@
 
           <div class="status-div">
 
-            <p-tag
-              class="status-color"
-              [value]="lead.status"
-              [severity]="getSeverity(lead.status)"
+          <p-tag
+            [value]="lead.status"
+            [ngClass]="getSeverity(lead.status)"
+
             />
 
             <span class="span-status">
