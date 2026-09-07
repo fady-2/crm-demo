@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../../shared/components/shared-header.component/header.component';
 // import { TableComponent } from "./components/table.component/table.component";
-import { PaginatorComponent } from './components/paginator.component/paginator.component';
+// import { PaginatorComponent } from './components/paginator.component/paginator.component';
 import { FilterationComponent } from "./components/filteration.component/filteration.component";
 import { TapsComponent } from "../../shared/UI/taps.component/taps.component";
 import { HeaderAction } from '../../shared/components/shared-header.component/header-action.model';
@@ -12,7 +12,7 @@ import { SharedTableComponent } from "../../shared/components/shared-table.compo
 @Component({
   selector: 'app-owner-page',
   standalone: true,
-  imports: [HeaderComponent, /*TableComponent,*/ PaginatorComponent, FilterationComponent, TapsComponent, SharedTableComponent],
+  imports: [HeaderComponent, /*TableComponent, PaginatorComponent, */FilterationComponent, TapsComponent, SharedTableComponent],
   templateUrl: './owner-page.component.html',
   styleUrl: './owner-page.component.scss',
 })
@@ -46,9 +46,10 @@ export class OwnerPageComponent {
     { key: 'stage', label: 'Stage', },
     { key: 'project', label: 'Project' },
     { key: 'probertyType', label: 'Property Type' },
+    { key: 'currentActoin', label: 'Action' },
     { key: 'lastComment', label: 'Last Comment' },
   ]
-
+  // data:Owner [] = []
   data: Owner[] = [
     {
       id: 1,
