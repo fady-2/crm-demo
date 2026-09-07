@@ -46,6 +46,7 @@ export class OwnerPageComponent {
     { key: 'stage', label: 'Stage', },
     { key: 'project', label: 'Project' },
     { key: 'probertyType', label: 'Property Type' },
+    { key: 'currentActoin', label: 'Action' },
     { key: 'lastComment', label: 'Last Comment' },
   ]
   // data:Owner [] = []

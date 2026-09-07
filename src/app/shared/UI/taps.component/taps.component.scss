@@ -1,0 +1,13 @@
+:host ::ng-deep{
+    .p-togglebutton{
+        background-color: white !important;
+    }
+    .p-togglebutton-checked{
+        background-color: rgba(122, 183, 253, 0.1) !important;
+        color: rgb(30, 30, 248) !important;
+    }
+    .p-togglebutton-checked .p-togglebutton-content{
+        background-color: rgba(122, 183, 253, 0.1) !important;
+        font-weight: bolder !important;
+    }
+}

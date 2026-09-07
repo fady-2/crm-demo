@@ -31,7 +31,7 @@
       <ng-template #body let-rowData let-columns="columns">
         <tr>
           @for (col of columns; track col.key) {
-            @if (col.key === 'probertyType' || col.key === 'project' || col.key === 'stage') {
+            @if (col.key === 'probertyType' || col.key === 'project' || col.key === 'stage' || col.key === 'currentActoin') {
               <td>
                 <span class="badge bg-light text-dark rounded-pill border px-2 py-1 fw-normal">{{
                   rowData[col.key]
