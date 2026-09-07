@@ -1,0 +1,8 @@
+<div class="card flex justify-content-center">
+    <p-selectButton 
+        [options]="options" 
+        [(ngModel)]="selectedOption"
+        optionLabel="label" 
+        optionValue="value" 
+        (ngModelChange)="valueChanged()" />
+</div>

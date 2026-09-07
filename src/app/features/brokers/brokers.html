@@ -1,10 +1,22 @@
-<app-broker-header />
+<!-- <app-broker-header /> -->
+<app-header
+  [headerName]="title"
+  [headerDescription]="description"
+  [headerActions]="actions"
+  (actionClicked)="handleActionClicked($event)"
+/>
 <div class="card">
   <div class="d-flex align-items-center gap-3">
-    <app-broker-tabs />
-    <app-broker-search />
+    <!-- <app-broker-tabs /> -->
+    <!-- <app-broker-search /> -->
+    <app-taps />
+    <app-search />
     <app-broker-filter />
   </div>
 
-  <app-broker-table />
+  <!-- <app-broker-table /> -->
+  <app-shared-table
+    [columns]="columns"
+    [data]="data"
+  />
 </div>
