@@ -1,10 +1,12 @@
-// :root {
-//   --primary-color: #198754;
-//   --secondary-color: #6c757d;
-//   --link-color: transparent;
-//   --danger-color: #dc3545;
-//   --neutral-color: #f8f9fa;
-// } لية مسمعتش لما استخدمتها variable
+:root {
+    --primary-color: #4c64ff;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --link-color: #eaecf0;
+    --danger-color: #dc3545;
+    --neutral-color: #101828;
+    --basic-color: #fff;
+}
 .btn {
   border-radius: 8px;
   padding: 10px 18px;
@@ -13,36 +15,36 @@
   font-weight: 600;
 }
 .success {
-  background-color: #198754;
-  border: 1px solid #198754;
+  background-color: var(--success-color);
+  border: 1px solid var(--success-color);
   color: #fff;
 }
 .primary {
-  background-color: #4c64ff;
-  border: 1px solid #4c64ff;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
   color: #fff;
 }
 .secondary {
-  background-color: #6c757d;
-  border: 1px solid #6c757d;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
   color: #fff;
 }
 .link {
-  background-color: #eaecf0;
-  border: 1px solid #ddd;
+  background-color: var(--link-color);
+  border: 1px solid var(--link-color);
 }
 .danger {
-  background-color: #dc3545;
-  border: 1px solid #dc3545;
+  background-color: var(--danger-color);
+  border: 1px solid var(--danger-color);
   color: #fff;
 }
 .neutral {
-  background-color: #101828;
-  border: 1px solid #f8f9fa;
+  background-color: var(--neutral-color);
+  border: 1px solid var(--neutral-color);
   color: #fff;
 }
 .basic{
-    background-color: white;
+    background-color: var(--basic-color);
     border: 1px solid #ccc;
     color: #333;
 }
