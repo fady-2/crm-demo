@@ -1,0 +1,58 @@
+<div class="card bg-white vh-100">
+  <div class="card-body">
+    <h3>Buttons</h3>
+    <h4 class="text-muted m-3">
+      Buttons different statuses (primary, secondary, link, danger, neutral)
+    </h4>
+    <div class="d-flex gap-2">
+      <app-shared-button
+        [buttonText]="'Add Owners'"
+        [buttonStatus]="'primary'"
+        [buttonIcon]="'bi bi-cloud-plus'"
+      />
+      <app-shared-button
+        [buttonText]="'Add Owners'"
+        [buttonStatus]="'link'"
+        [buttonOutline]="true"
+      />
+      <app-shared-button [buttonText]="'Add Owners'" [buttonStatus]="'neutral'" />
+      <app-shared-button
+        [buttonText]="'Add Owners'"
+        [buttonStatus]="'danger'"
+        [buttonOutline]="true"
+      />
+      <app-shared-button
+        [buttonText]="'Add Owners'"
+        [buttonStatus]="'secondary'"
+        [buttonBorder]="false"
+      />
+    </div>
+    <hr />
+    <h4 class="text-muted m-3">Tags different statuses</h4>
+    <div class="d-flex gap-2">
+      <app-shared-tag [tagText]="'follow up'" [tagStatus]="'info'" />
+      <app-shared-tag [tagText]="'follow up'" [tagStatus]="'success'" />
+      <app-shared-tag [tagText]="'follow up'" [tagStatus]="'danger'" />
+      <app-shared-tag [tagText]="'follow up'" [tagStatus]="'warning'" />
+      <app-shared-tag [tagText]="'follow up'" [tagStatus]="'neutral'" />
+    </div>
+    <hr />
+    <h4 class="text-muted m-3">Buttons From the Task</h4>
+    <div class="d-flex gap-2 bg-light p-5">
+      <app-shared-button
+        [buttonText]="'import leads'"
+        [buttonStatus]="'basic'"
+        [buttonIcon]="'bi bi-cloud-upload'"
+      />
+      <app-shared-button
+        [buttonText]="'create leads'"
+        [buttonStatus]="'primary'"
+        [buttonIcon]="'bi bi-plus'"
+      />
+      <app-shared-button [buttonText]="'export'" [buttonStatus]="'neutral'" />
+      <app-shared-button [buttonIcon]="'bi bi-menu-button-wide'" [buttonStatus]="'basic'" [buttonOutline]="true"/>
+      <app-shared-button [buttonText]="'add action'" [buttonStatus]="'primary'" />
+      <app-shared-button [buttonIcon]="'bi bi-trash text-danger'" [buttonText]="'delete'" [buttonStatus]="'neutral'" [buttonOutline]="true" [buttonBorder]="false"/>
+    </div>
+  </div>
+</div>
