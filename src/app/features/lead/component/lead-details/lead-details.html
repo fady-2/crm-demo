@@ -1,165 +1,195 @@
+
+
 <div class="lead-page">
 
-  <!-- رابط الرجوع -->
-  <a href="#" class="back-link">
-    <img src="icons/arrow-left.png" alt="back" width="16" height="16" />
-    Back to leads
-  </a>
+ <div class="lead-header">
 
-  <!-- الهيدر -->
-  <div class="lead-header">
+  <button class="back-leads" type="button">
+    ← <span>Back to leads</span>
+  </button>
 
-    <div class="lead-header-left">
-      <div class="name-row">
-        <h2 class="lead-name">Abdulrahman Mahmoud</h2>
-        <img src="icons/phone.png" alt="edit" width="16" height="16" />
-      </div>
+  <div class="header-top">
 
+    <div class="header-left">
+      <div class="lead-header-img">
+  <h1 class="lead-title">{{ lead.name }}</h1>
+
+  <img src="icons/phone.png" alt="arrow" />
+</div>
       <div class="contact-row">
-        <span>+(20) 10 163 24799</span>
-        <img src="icons/call.png" alt="phone" width="16" height="16" />
-        <img src="icons/whatsapp.png" alt="whatsapp" width="16" height="16" />
-        <img src="icons/truecaller.png" alt="call" width="16" height="16" />
-        <span class="channel-tag">Anakaji ⌄</span>
+        <span class="phone">{{ lead.mobile1 }}</span>
+
+        <img src="icons/phone.png"  alt="call">
+        <img src="icons/whatsapp.png" alt="whatsapp">
+        <img src="icons/truecaller.png" alt="call">
+
+        <div class="project-select">
+          <span>{{ lead.projectName }}</span>
+          <span class="chevron">⌄</span>
+        </div>
       </div>
 
       <div class="rating-row">
-        @for (star of stars; track star) {
-          <span class="star" [class.filled]="star <= rating">★</span>
-        }
+        <span
+          *ngFor="let s of stars"
+          class="star"
+          [class.filled]="s <= rating">
+          ★
+        </span>
       </div>
 
-      <button class="full-view-btn">
-        <img src="icons/expand.png" alt="full view" width="14" height="14" />
-        Full View
+      <button class="full-view-btn" type="button">
+         <img src="icons/arrow-sm.png"/>
+                  <span>Full View</span>
+
       </button>
     </div>
 
-    <div class="lead-header-right">
+ 
+    <div class="header-actions">
       <app-shared-buttons
-        [text]="addActionButton.text"
-        [icon]="addActionButton.icon"
-        [backgroundColor]="addActionButton.backgroundColor"
-        [textColor]="addActionButton.textColor"
-        [className]="addActionButton.className"
-      />
+        *ngFor="let button of actionButtons"
+        [text]="button.text"
+        [icon]="button.icon"
+        [width]="button.width"
+        [height]="button.height"
+        [className]="button.className"
+        [backgroundColor]="button.backgroundColor"
+        [textColor]="button.textColor"
+        [borderColor]="button.borderColor"
+          [borderRadius]="button.borderRadius">
 
-      <button class="icon-btn">
-        <img src="icons/edit.png" alt="edit" width="18" height="18" />
-      </button>
-      <button class="icon-btn">
-        <img src="icons/swap.png" alt="swap" width="18" height="18" />
-      </button>
-      <button class="icon-btn">
-        <img src="icons/more.png" alt="more" width="18" height="18" />
-      </button>
-
-      <img src="images/avatar.png" alt="avatar" class="avatar" />
+      </app-shared-buttons>
     </div>
   </div>
 
-  <!-- التابات -->
-  <div class="tabs">
-    <img src="icons/arrow-right.png" alt="" width="16" height="16" />
 
-    @for (tab of tabs; track tab) {
-      <button
-        class="tab-btn"
-        [class.active]="activeTab === tab"
-        (click)="setActiveTab(tab)"
-      >
-        {{ tab }}
-      </button>
-    }
+  <div class="tabs-row">
+    <button class="tab-arrow" type="button">→</button>
+
+    <button
+      *ngFor="let tab of tabs"
+      class="tab"
+      [class.active]="tab === activeTab"
+      (click)="setActiveTab(tab)">
+      {{ tab }}
+    </button>
+  </div>
+</div>
+
+  <div class="card lead-card">
+    <div class="card-header">
+      <span>Lead</span>
+      <span class="chevron">⌃</span>
+    </div>
+
+    <div class="info-grid">
+
+      <div class="info-item">
+        <span class="label">Lead Name</span>
+        <span class="value">{{ lead.name }}</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Email Address</span>
+        <span class="value">{{ lead.email }}</span>
+      </div>
+
+   <div class="info-item mobile-item">
+  <span class="label">Mobile</span>
+
+  <div class="mobile-list">
+    <div class="mobile-row" *ngFor="let mobile of lead.mobiles">
+      <span class="value">{{ mobile }}</span>
+
+      <img src="icons/phone.png" alt="call" width="26" height="26" />
+      <img src="icons/whatsapp.png" alt="whatsapp" width="26" height="26" />
+      <img src="icons/truecaller.png" alt="call" width="26" height="26" />
+    </div>
+  </div>
+</div>
+
+      <div class="info-item">
+        <span class="label">Communicate way</span>
+        <span class="value">{{ lead.communicateWay }}</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Channel</span>
+        <span class="value">{{ lead.channel }}</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Status</span>
+        <span class="status-badge">{{ lead.status }} ⌄</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Creation Date</span>
+        <span class="value">{{ lead.creationDate }}</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Last Update</span>
+        <span class="value">{{ lead.lastUpdate }}</span>
+      </div>
+
+      <div class="info-item">
+  <span class="label">Sales Rep</span>
+
+  <div class="sales-rep-info">
+    <span class="value">{{ lead.salesRep }}</span>
+    <span class="sub-value">{{ lead.salesRepEmail }}</span>
+  </div>
+</div>
+
+    </div>
   </div>
 
-  <!-- كارت بيانات الـ Lead -->
-  @if (activeTab === 'Lead Info') {
-    <div class="card">
-      <div class="card-header">
-        <h3>Lead</h3>
-        <img src="icons/chevron-up.png" alt="" width="16" height="16" />
-      </div>
 
-      <div class="info-grid">
-        <div class="info-item">
-          <span class="label">Lead Name</span>
-          <span class="value">{{ lead.name }}</span>
-        </div>
-        <div class="info-item">
-          <span class="label">Email Address</span>
-          <span class="value">{{ lead.email }}</span>
-        </div>
 
-        <div class="info-item">
-          <span class="label">Mobile</span>
-          <span class="value">{{ lead.mobile1 }}</span>
-          <span class="value">{{ lead.mobile2 }}</span>
-        </div>
-        <div class="info-item">
-          <span class="label">Communicate way</span>
-          <span class="value">{{ lead.communicateWay }}</span>
-        </div>
-
-        <div class="info-item">
-          <span class="label">Channel</span>
-          <span class="value">{{ lead.channel }}</span>
-        </div>
-        <div class="info-item">
-          <span class="label">Status</span>
-          <span class="status-badge">{{ lead.status }}</span>
-        </div>
-
-        <div class="info-item">
-          <span class="label">Creation Date</span>
-          <span class="value">{{ lead.creationDate }}</span>
-        </div>
-        <div class="info-item">
-          <span class="label">Last Update</span>
-          <span class="value">{{ lead.lastUpdate }}</span>
-        </div>
-
-        <div class="info-item">
-          <span class="label">Sales Rep</span>
-          <span class="value">{{ lead.salesRep }}</span>
-          <span class="sub-value">{{ lead.salesRepEmail }}</span>
-        </div>
-      </div>
+  <div class="card projects-card">
+    <div class="card-header">
+      <span>Projects</span>
+      <span class="chevron">⌃</span>
     </div>
 
-    <!-- كارت المشاريع -->
-    <div class="card">
-      <div class="card-header">
-        <h3>Projects</h3>
-        <img src="icons/chevron-up.png" alt="" width="16" height="16" />
-      </div>
+    <table class="projects-table">
+      <thead class="head-table">
+        <tr>
+          <th>#</th>
+          <th>Project</th>
+          <th>Channel</th>
+          <th>Salesman</th>
+          <th>Created by</th>
+          <th>Creation date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of lead.projects; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ project.name }}</td>
+          <td>{{ project.channel }}</td>
+          <td>
+            <div class="person-cell">
+              <img src="icons/arrow.png" alt="" class="avatar-sm" />
+              <span>{{ project.salesman }}</span>
+            </div>
+          </td>
+          <td>
+            <div class="person-cell">
+              <img src="icons/arrow.png" alt="" class="avatar-sm" />
+              <span>{{ project.createdBy }}</span>
+            </div>
+          </td>
+          <td>{{ project.creationDate }}</td>
+          <td>
+            <span class="status-badge">{{ project.status }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-      <table class="projects-table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Project</th>
-            <th>Channel</th>
-            <th>Salesman</th>
-            <th>Created by</th>
-            <th>Creation date</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (project of projects; track project.number) {
-            <tr>
-              <td>{{ project.number }}</td>
-              <td>{{ project.project }}</td>
-              <td>{{ project.channel }}</td>
-              <td>{{ project.salesman }}</td>
-              <td>{{ project.createdBy }}</td>
-              <td>{{ project.creationDate }}</td>
-              <td><span class="status-badge">{{ project.status }}</span></td>
-            </tr>
-          }
-        </tbody>
-      </table>
-    </div>
-  }
 </div>

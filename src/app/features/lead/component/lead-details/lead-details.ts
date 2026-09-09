@@ -1,61 +1,86 @@
-import { Component } from '@angular/core';
+
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 import { SharedButtons } from '../../../../shared/components/shared-button/shared-buttons/shared-buttons';
+import { Lead } from './lead.model';
 
 @Component({
   selector: 'app-lead-details',
   standalone: true,
-  imports: [SharedButtons],
+  imports: [CommonModule, SharedButtons],
   templateUrl: './lead-details.html',
   styleUrl: './lead-details.scss',
 })
 export class LeadDetails {
-  // بيانات النجوم (التقييم)
+  @Input() lead!: Lead;
+
   stars = [1, 2, 3, 4, 5];
   rating = 3;
 
-  // التابات اللي فوق
-  tabs = ['Lead Info', 'Comments', 'Timeline Log', 'Attachments', 'Deals', 'Opportunities'];
-  activeTab = 'Lead Info';
-
-  // بيانات الـ Lead
-  lead = {
-    name: 'Moaz Elramsisy',
-    email: 'moaz@engazcrm.com',
-    mobile1: '+(20) 10 163 24799',
-    mobile2: '+(20) 10 163 24799',
-    communicateWay: 'Phone',
-    channel: 'Aqaar Map',
-    status: 'Follow Up',
-    creationDate: '7/5/23, 3:37 PM',
-    lastUpdate: '40 day(s) ago',
-    salesRep: 'Abdo Mahmoud',
-    salesRepEmail: 'abdo@mahmoud.com',
-  };
-
-  // بيانات جدول المشاريع
-  projects = [
-    {
-      number: 1,
-      project: 'Anakaji',
-      channel: 'Facebook',
-      salesman: 'Moaz Elr...',
-      createdBy: 'Moaz Elr...',
-      creationDate: '2022-10-19 12:57:40',
-      status: 'Done Deal',
-    },
+  tabs = [
+    'Lead Info',
+    'Comments',
+    'Timeline Log',
+    'Attachments',
+    'Deals',
+    'Opportunities',
   ];
 
-  // زرار Add Action هيستخدم الشيرد باتن
-  addActionButton = {
-    text: 'Add Action',
-    backgroundColor: '#4C64FF',
-    textColor: '#FFFFFF',
-    className: 'add-action',
-    icon: 'icons/plus-white.png',
-  };
+  activeTab = 'Lead Info';
 
-  // تغيير التاب النشط
-  setActiveTab(tab: string) {
+  actionButtons = [
+    {
+      text: '+ Add Action',
+      icon: '',
+      width: '130px',
+      height: '40px',
+      className: 'add-action-btn',
+      backgroundColor: '#4C64FF',
+      textColor: '#FFFFFF',
+      borderColor: '#4C64FF',
+    borderRadius: '8px',
+
+    },
+    {
+      text: '',
+      icon: 'icons/ediit.png',
+      width: '40px',
+      height: '40px',
+      className: 'icon-action-btn',
+      backgroundColor: '#FFFFFF',
+      textColor: '#344054',
+      borderColor: '#FFFFFF',
+    borderRadius: '8px',
+
+    },
+    {
+      text: '',
+      icon: 'icons/arrow.png',
+      width: '40px',
+      height: '40px',
+      className: 'icon-action-btn',
+  backgroundColor: '#FFFFFF',
+      textColor: '#FFFFFF',
+      borderColor: '#D0D5DD',
+    borderRadius: '8px',
+
+    },
+   {
+  text: '',
+  width: '1px',
+  height: '',
+  icon: 'icons/dot.png',
+
+  borderRadius: null,
+
+  className: 'icon-action-btn',
+  backgroundColor: 'none',
+  textColor: '',
+  borderColor: '#FFFFFF'
+},
+  ];
+
+  setActiveTab(tab: string): void {
     this.activeTab = tab;
   }
 }
