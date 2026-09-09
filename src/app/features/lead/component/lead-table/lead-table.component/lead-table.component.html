@@ -1,0 +1,411 @@
+<div class="card">
+
+  <p-table
+    #dt
+    [value]="leads"
+    [(selection)]="selectedLeads"
+    dataKey="id"
+    [rowHover]="true"
+    [rows]="10"
+
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [loading]="loading"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [filterDelay]="0"
+    [globalFilterFields]="[
+      'name',
+      'country.name',
+      'representative.name',
+      'status'
+    ]"
+  >
+
+    <!-- Header -->
+    <ng-template pTemplate="header">
+
+      <tr>
+
+        <!-- Checkbox -->
+        <th style="width: 4rem">
+          <p-tableHeaderCheckbox />
+        </th>
+
+        <!-- Dynamic Columns -->
+        <th
+          *ngFor="let column of columns"
+          [pSortableColumn]="column.sortable ? column.field : undefined"
+        >
+
+          <div class="header-content">
+
+            <span class="header-title">
+              {{ column.header }}
+            </span>
+
+            <!-- Sort -->
+            <p-sortIcon
+              *ngIf="column.sortable"
+              [field]="column.field"
+            />
+
+            <!-- Text Filter -->
+            <p-columnFilter
+              *ngIf="column.filter && column.filterType === 'text'"
+              [field]="column.field"
+              display="menu"
+            />
+
+            <!-- Multi Select Filter -->
+            <p-columnFilter
+              *ngIf="column.filter && column.filterType === 'multiSelect'"
+              [field]="column.field"
+              matchMode="in"
+              display="menu"
+              [showMatchModes]="false"
+              [showOperator]="false"
+              [showAddButton]="false"
+            >
+
+              <ng-template pTemplate="header">
+
+                <div class="px-3 pt-3 pb-0">
+                  <span class="font-bold">
+                    Agent Picker
+                  </span>
+                </div>
+
+              </ng-template>
+
+              <ng-template
+                pTemplate="filter"
+                let-value
+                let-filter="filterCallback"
+              >
+
+                <p-multiSelect
+                  [ngModel]="value"
+                  [options]="representatives"
+                  placeholder="Any"
+                  (onChange)="filter($event.value)"
+                  optionLabel="name"
+                >
+
+                  <ng-template
+                    let-option
+                    pTemplate="item"
+                  >
+
+                    <div class="inline-block vertical-align-middle">
+
+                      <span class="ml-1 mt-1">
+                        {{ option.name }}
+                      </span>
+
+                    </div>
+
+                  </ng-template>
+
+                </p-multiSelect>
+
+              </ng-template>
+
+            </p-columnFilter>
+
+            <!-- Date Filter -->
+            <p-columnFilter
+              *ngIf="column.filter && column.filterType === 'date'"
+              type="date"
+              [field]="column.field"
+              display="menu"
+            />
+
+            <!-- Numeric Filter -->
+            <p-columnFilter
+              *ngIf="column.filter && column.filterType === 'numeric'"
+              type="numeric"
+              [field]="column.field"
+              display="menu"
+              currency="USD"
+            />
+
+            <!-- Select Filter -->
+            <p-columnFilter
+              *ngIf="column.filter && column.filterType === 'select'"
+              [field]="column.field"
+              matchMode="equals"
+              display="menu"
+            >
+
+              <ng-template
+                pTemplate="filter"
+                let-value
+                let-filter="filterCallback"
+              >
+
+                <p-select
+                  [ngModel]="value"
+                  [options]="statuses"
+                  (onChange)="filter($event.value)"
+                  placeholder="Any"
+                  optionLabel="label"
+                  optionValue="value"
+                >
+
+                  <ng-template
+                    let-option
+                    pTemplate="item"
+                  >
+
+                    <div class="status">
+
+                      <span
+                        class="status-dot"
+                        [ngClass]="getStatusDotClass(option.value)"
+                      ></span>
+
+                      <span>
+                        {{ option.label }}
+                      </span>
+
+                    </div>
+
+                  </ng-template>
+
+                </p-select>
+
+              </ng-template>
+
+            </p-columnFilter>
+
+            <!-- Slider Filter -->
+            <p-columnFilter
+              *ngIf="column.filter && column.filterType === 'slider'"
+              [field]="column.field"
+              matchMode="between"
+              display="menu"
+              [showMatchModes]="false"
+              [showOperator]="false"
+              [showAddButton]="false"
+            >
+
+              <ng-template
+                pTemplate="filter"
+                let-filter="filterCallback"
+              >
+
+                <p-slider
+                  [(ngModel)]="activityValues"
+                  [range]="true"
+                  (onSlideEnd)="filter($event.values)"
+                  styleClass="m-3"
+                />
+
+                <div
+                  class="flex align-items-center justify-content-between px-2"
+                >
+
+                  <span>
+                    {{ activityValues[0] }}
+                  </span>
+
+                  <span>
+                    {{ activityValues[1] }}
+                  </span>
+
+                </div>
+
+              </ng-template>
+
+            </p-columnFilter>
+
+          </div>
+
+        </th>
+
+        <!-- Action -->
+        <th style="width: 5rem"></th>
+
+      </tr>
+
+    </ng-template>
+
+
+    <!-- Body -->
+    <ng-template
+      pTemplate="body"
+      let-lead
+    >
+
+      <tr class="p-selectable-row">
+
+        <!-- Checkbox -->
+        <td>
+
+          <p-tableCheckbox [value]="lead" />
+
+        </td>
+
+
+        <!-- Name -->
+        <td>
+
+          <div class="img-text">
+
+            <span>
+              {{ lead.LeadName }}
+            </span>
+
+            <button>
+
+              <img
+                src="assets/icons/copy.png"
+                alt="dsds"
+              >
+
+            </button>
+
+          </div>
+
+        </td>
+
+
+        <!-- Country -->
+        <td>
+
+          01007012871
+
+        </td>
+
+
+        <!-- Email -->
+        <td>
+
+          <span class="p-column-title">
+            hos@gmail.com
+          </span>
+
+        </td>
+
+
+        <!-- Date -->
+        <td>
+
+          Aljoman
+
+        </td>
+
+
+        <!-- Balance -->
+        <td>
+
+          <div class="img-table">
+
+            <img
+              [alt]="lead.representative.name"
+              src="https://primefaces.org/cdn/primeng/images/demo/avatar/{{ lead.representative.image }}"
+              width="32"
+              height="32"
+              style="vertical-align: middle"
+            />
+
+            <span class="p-column-title">
+              Balance
+            </span>
+
+          </div>
+
+        </td>
+
+
+        <!-- Status -->
+        <td>
+
+          <div class="status-div">
+
+          <p-tag
+            [value]="lead.status"
+            [ngClass]="getSeverity(lead.status)"
+
+            />
+
+            <span class="span-status">
+
+              {{ lead.date | date:'dd/MM/yyyy hh:mm a' }}
+
+            </span>
+
+          </div>
+
+        </td>
+
+
+        <!-- Activity -->
+        <td>
+
+          <span class="p-column-title">
+
+            {{ lead.text }}
+
+          </span>
+
+        </td>
+
+
+        <td>
+
+          <span class="p-column-title">
+
+            {{ lead.date | date:'dd MMMM yyyy' }}
+
+          </span>
+
+        </td>
+
+
+        <td>
+
+          <button
+            *ngIf="lead.id===1"
+            class="btn-compare"
+            type="button"
+          >
+            Compare
+          </button>
+
+        </td>
+
+
+        <!-- Action -->
+        <td style="text-align: center">
+
+          <p-button
+            icon="pi pi-ellipsis-v"
+            [text]="true"
+            severity="secondary"
+          />
+
+        </td>
+
+      </tr>
+
+    </ng-template>
+
+
+    <!-- Empty -->
+    <ng-template pTemplate="emptymessage">
+
+      <tr>
+
+        <td colspan="9">
+          No leads found.
+        </td>
+
+      </tr>
+
+    </ng-template>
+
+  </p-table>
+
+</div>
