@@ -1,0 +1,40 @@
+.buttons-section{
+  
+    background-color: #D0D5DD;
+    // display: block;
+    // direction: r;
+    display: flex;
+    height: 10vh;
+    padding: 100px;
+    justify-content: space-around;
+}
+
+.follow-up-section{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+
+.followup-list {
+  display: block;
+  padding: 20px;
+}
+
+.followup-item {
+  margin-bottom: 15px;
+}
+
+.date{
+  color: #1D2939;
+  font-size: 12px;
+}
+
+app-status-tag-shared{
+    font-size: 17px;
+  
+}
+

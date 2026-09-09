@@ -1,0 +1,16 @@
+
+
+<main>
+<section class="buttons-section">
+     @for (button of buttons; track button.text) 
+     { <app-shared-buttons [backgroundColor]="button.backgroundColor"
+      [textColor]="button.textColor" 
+     [borderColor]="button.borderColor || ''"
+      [className]="button.className || ''" [text]="button.text" 
+      [icon]="button.icon || ''" /> } </section>
+
+  <section class="follow-up-section">
+    <app-follow-up-component />
+  </section>
+
+</main>

@@ -1,0 +1,15 @@
+<div class="followup-list">
+  <div
+    class="followup-item"
+    *ngFor="let item of items"
+  >
+    <app-status-tag-shared
+    [label]="item.label"
+    [color]="item.color"
+    [background]="item.background"
+      />
+    <div class="date">
+      {{ item.date }}
+    </div>
+  </div>
+</div>
