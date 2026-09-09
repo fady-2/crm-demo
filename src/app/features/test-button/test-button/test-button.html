@@ -1,0 +1,14 @@
+<main>
+    
+@for(button of buttons ;track button.text){
+    <app-shared-buttons
+    [backgroundColor]="button.backgroundColor"
+    [textColor]="button.textColor"
+    [className]="button.className || ''"
+
+    [text]="button.text"
+    [icon]="button.icon || '' "
+    />
+}
+
+</main>

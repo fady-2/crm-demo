@@ -1,12 +1,15 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-// import { OwnerPageComponent } from "./features/owner-page/owner-page.component";
-// import { Brokers } from './features/brokers/brokers';
+import { TestButton } from "./features/test-button/test-button/test-button";
+import { SharedButtons } from "./shared/components/shared-button/shared-buttons/shared-buttons";
+import { MainComponent } from "./features/main-component/main-component";
+import { FollowUpComponent } from './features/follow-up-componen/follow-up-component/follow-up-component';
+// import { StatusTagShared } from '../../../shared/status-tag-shared/status-tag-shared';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [/*Brokers, OwnerPageComponent,*/ RouterOutlet],
+  imports: [RouterOutlet, TestButton, FollowUpComponent, SharedButtons, MainComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

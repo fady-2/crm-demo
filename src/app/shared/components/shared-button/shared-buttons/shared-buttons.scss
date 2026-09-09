@@ -1,0 +1,75 @@
+
+button{
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-action {
+   width: 129px ;
+   height: 44;
+   font-weight: 600px;
+   line-height: 24px;
+   text-align: center;
+   border-color: transparent;
+   border-radius:8px ;
+   padding: 10px 18px;
+ 
+   font-size: 18px;
+}
+
+
+.import-action{
+   padding: 10px 18px;
+   border-radius: 0px;
+   width: 174px;
+   text-align: center;
+   font-size: 16px;
+   height: 44px;
+   padding: 10px 18px;
+   border-radius: 8px;
+   //background-color: #4C64FF;
+   border-color: #D0D5DD;
+ 
+}
+
+
+.Create-Lead{
+   width: 163px;
+   height: 44px;
+   padding: 7px 18px;
+   border-radius: 8px;
+  border-color: transparent;
+  color: #FFFFFF;
+  font-size: 18px;
+}
+
+.Export-action{
+     width: 91;
+   height: 44px;
+   border-color: transparent;
+   padding: 10px 18px;
+   border-radius: 8px;
+   background-color: #101828;
+   justify-content: center;
+}
+
+.save-action{
+   width: 38;
+   height: 40px;
+   border-color: transparent;
+   padding: 6px 10px;
+   border-radius: 8px;
+}
+
+
+
+
+.Delete-action{
+     width: 108px;
+     
+   height: 40px;
+    border-color: transparent;
+   padding: 6px 16px;
+   display: flexbox;
+   border-radius: 8px;
+}
