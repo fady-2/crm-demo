@@ -13,5 +13,9 @@ export const routes: Routes = [
     {
         path: 'broker',
         loadComponent: () => import('./features/brokers/brokers').then(m => m.Brokers)
+    },
+    {
+        path: 'main',
+        loadComponent: () => import('./features/main/main').then(m => m.Main)
     }
 ];

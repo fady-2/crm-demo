@@ -1,0 +1,27 @@
+.tag {
+  padding: 2px 10px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.success {
+  background-color: #ECFDF3;
+  color: #027A48;
+}
+.info {
+  background-color: #EFF8FF;
+  color: #175CD3;
+}
+.warning {
+    background-color: #FFFAEB;
+    color: #B54708;
+}
+.danger {
+  background-color: #FEF3F2;
+  color: #B42318;
+}
+.neutral {
+  background-color: #F2F4F7;
+  color: #344054;
+}
