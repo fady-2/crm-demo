@@ -8,11 +8,12 @@ import { HeaderAction } from '../../shared/components/shared-header.component/he
 import { Owner } from './models/owner.model';
 import { TableColumn } from '../../shared/components/shared-table.component/column.model';
 import { SharedTableComponent } from "../../shared/components/shared-table.component/shared-table.component";
+import { OwnerDetails } from "../owner-details/owner-details";
 
 @Component({
   selector: 'app-owner-page',
   standalone: true,
-  imports: [HeaderComponent, /*TableComponent, PaginatorComponent, */FilterationComponent, TapsComponent, SharedTableComponent],
+  imports: [HeaderComponent, /*TableComponent, PaginatorComponent, */ FilterationComponent, TapsComponent, SharedTableComponent, OwnerDetails],
   templateUrl: './owner-page.component.html',
   styleUrl: './owner-page.component.scss',
 })
@@ -246,4 +247,28 @@ export class OwnerPageComponent {
       lastComment: 'he is not interested',
     },
   ];
+
+  owner: Owner = {
+    id: 1,
+    name: 'Moaz Elramsisy',
+    mobile: '+(20) 10 1623 4799',
+    assigendTo: 'Moaz Elramsisy',
+    requests: 1,
+    stage: 'Fresh',
+    project: 'Aljoman',
+    probertyType: 'Villa',
+    currentActoin: 'Follow Up',
+    lastComment: 'he is not interested',
+    email: 'moaz@engazcrm.com',
+    creationDate: '7/5/23, 3:37 PM',
+    lastUpdate: '40 day(s) ago',
+    salesRep: {
+      name: 'Abdo Mahmoud',
+      email: 'abdo@engazcrm.com',
+    },
+    bua: 400000,
+    phase: 'Following',
+    code: '565216322',
+    category: 'Category',
+  }
 }

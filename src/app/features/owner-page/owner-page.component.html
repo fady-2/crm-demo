@@ -1,22 +1,27 @@
+<app-header
+  [headerName]="title"
+  [headerDescription]="description"
+  [headerActions]="actions"
+  (actionClicked)="handleActionClicked($event)"
+/>
+<div class="d-flex justify-content-between align-items-center p-3 bg-white">
+  <app-taps />
+  <app-filteration />
+</div>
 
-  <app-header
-    [headerName]="title"
-    [headerDescription]="description"
-    [headerActions]="actions"
-    (actionClicked)="handleActionClicked($event)"
-  />
-  <div class="d-flex justify-content-between align-items-center p-3 bg-white">
-    <app-taps />
-    <app-filteration />
-  </div>
-  <!-- <app-table /> -->
-  <app-shared-table
-    [columns]="columns"
-    [data]="data"
-  />
-  <!-- <app-paginator class="rounded-bottom-2" /> -->
-  <!-- <app-footer /> -->
-   <!-- <nav class="bg-light">
+ <button
+  type="button"
+  class="btn btn-primary m-3"
+  data-bs-toggle="offcanvas"
+  data-bs-target="#ownerSidebar"
+>
+  Show Details
+</button>
+<!-- <app-table /> -->
+<app-shared-table [columns]="columns" [data]="data" />
+<!-- <app-paginator class="rounded-bottom-2" /> -->
+<!-- <app-footer /> -->
+<!-- <nav class="bg-light">
     <ul class="nav">
       <li class="nav-item border-bottom border-primary">
         <a class="nav-link active" href="#">Data</a>
@@ -25,5 +30,13 @@
         <a class="nav-link" href="#">Report</a>
       </li>
     </ul>
-  </nav> في حالة لو حبينا نرجعهم تاني او ننقلهم في component جديد--> 
+  </nav> في حالة لو حبينا نرجعهم تاني او ننقلهم في component جديد-->
 
+<div class="offcanvas offcanvas-end" tabindex="-1" id="ownerSidebar" style="width: 60%">
+  <div class="offcanvas-header">
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body p-2 bg-light">
+    <app-owner-details [owner]="owner" />
+  </div>
+</div>

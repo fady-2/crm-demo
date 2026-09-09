@@ -1,0 +1,15 @@
+.button-container > button:first-child {
+  background-color: #EFF8FF;
+  color: #175CD3;
+}
+.tag-btn {
+  padding: 2px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+  background-color: transparent;
+}
+.tag-btn:active {
+  background-color: #EFF8FF;
+  color: #175CD3;
+}
