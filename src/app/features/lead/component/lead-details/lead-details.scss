@@ -1,0 +1,209 @@
+.lead-page {
+  background-color: #F5F6FA;
+  padding: 20px 32px;
+  font-family: Arial, sans-serif;
+}
+
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #667085;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+// ===== الهيدر =====
+.lead-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lead-name {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #101828;
+}
+
+.channel-tag {
+  background-color: #EFF1FF;
+  color: #4C64FF;
+  padding: 2px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-left: 6px;
+}
+
+.rating-row {
+  margin-top: 8px;
+}
+
+.star {
+  color: #E4E7EC;
+  font-size: 18px;
+}
+
+.star.filled {
+  color: #FFC107;
+}
+
+.full-view-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  background: #FFFFFF;
+  border: 1px solid #D0D5DD;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.lead-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-btn {
+  background: #FFFFFF;
+  border: 1px solid #D0D5DD;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+// ===== التابات =====
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #FFFFFF;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #667085;
+  cursor: pointer;
+  padding: 6px 4px;
+}
+
+.tab-btn.active {
+  color: #4C64FF;
+  font-weight: 600;
+  border-bottom: 2px solid #4C64FF;
+}
+
+// ===== الكارت =====
+.card {
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+// ===== شبكة البيانات =====
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 20px;
+  column-gap: 40px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 13px;
+  color: #667085;
+}
+
+.value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #101828;
+}
+
+.sub-value {
+  font-size: 13px;
+  color: #4C64FF;
+}
+
+.status-badge {
+  background-color: #ECFDF3;
+  color: #12B76A;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 16px;
+  width: fit-content;
+}
+
+// ===== جدول المشاريع =====
+.projects-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.projects-table th {
+  text-align: left;
+  font-size: 12px;
+  color: #667085;
+  padding: 10px;
+  border-bottom: 1px solid #EAECF0;
+}
+
+.projects-table td {
+  font-size: 13px;
+  padding: 10px;
+  border-bottom: 1px solid #EAECF0;
+}
