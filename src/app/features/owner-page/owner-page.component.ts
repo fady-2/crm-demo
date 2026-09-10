@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../../shared/components/shared-header.component/header.component';
-// import { TableComponent } from "./components/table.component/table.component";
-// import { PaginatorComponent } from './components/paginator.component/paginator.component';
 import { FilterationComponent } from "./components/filteration.component/filteration.component";
 import { TapsComponent } from "../../shared/UI/taps.component/taps.component";
 import { HeaderAction } from '../../shared/components/shared-header.component/header-action.model';
@@ -13,7 +11,7 @@ import { OwnerDetails } from "../owner-details/owner-details";
 @Component({
   selector: 'app-owner-page',
   standalone: true,
-  imports: [HeaderComponent, /*TableComponent, PaginatorComponent, */ FilterationComponent, TapsComponent, SharedTableComponent, OwnerDetails],
+  imports: [HeaderComponent, FilterationComponent, TapsComponent, SharedTableComponent, OwnerDetails],
   templateUrl: './owner-page.component.html',
   styleUrl: './owner-page.component.scss',
 })
@@ -75,7 +73,6 @@ export class OwnerPageComponent {
       probertyType: 'Shop',
       currentActoin: 'Follow Up',
       lastComment: 'he is not interested',
-      action: 'Phone Call'
     },
     {
       id: 3,
@@ -262,13 +259,15 @@ export class OwnerPageComponent {
     email: 'moaz@engazcrm.com',
     creationDate: '7/5/23, 3:37 PM',
     lastUpdate: '40 day(s) ago',
+    sellerRequest: '60 requests',
     salesRep: {
       name: 'Abdo Mahmoud',
       email: 'abdo@engazcrm.com',
     },
     bua: 400000,
-    phase: 'Following',
+    // phase: 'Following',
     code: '565216322',
     category: 'Category',
+    property : 'Property'
   }
 }

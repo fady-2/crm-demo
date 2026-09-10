@@ -1,25 +1,6 @@
-@if (buttonIcon()) {
-  <button
-    type="button"
-    [class]="
-      'btn ' +
-      buttonStatus() +
-      (buttonOutline() ? ' btn-outline' : '') +
-      (buttonBorder() ? '' : ' btn-no-border')
-    "
-  >
-    <i class="{{ buttonIcon() }}"></i> {{ buttonText() }}
-  </button>
-} @else {
-  <button
-    type="button"
-    [class]="
-      'btn ' +
-      buttonStatus() +
-      (buttonOutline() ? ' btn-outline' : '') +
-      (buttonBorder() ? '' : ' btn-no-border')
-    "
-  >
-    {{ buttonText() }}
-  </button>
-}
+<button type="button" [class]="'btn ' + buttonClass()">
+  @if (buttonIcon()) {
+    <i class="{{ buttonIcon() }}"></i>
+  }
+  {{ buttonText() }}
+</button>

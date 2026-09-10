@@ -6,25 +6,22 @@
     </h4>
     <div class="d-flex gap-2">
       <app-shared-button
+        [buttonClass]="'primary'"
         [buttonText]="'Add Owners'"
-        [buttonStatus]="'primary'"
         [buttonIcon]="'bi bi-cloud-plus'"
       />
       <app-shared-button
         [buttonText]="'Add Owners'"
-        [buttonStatus]="'link'"
-        [buttonOutline]="true"
+        [buttonClass]="'link'"
       />
-      <app-shared-button [buttonText]="'Add Owners'" [buttonStatus]="'neutral'" />
+      <app-shared-button [buttonText]="'Add Owners'" [buttonClass]="'neutral'" />
       <app-shared-button
         [buttonText]="'Add Owners'"
-        [buttonStatus]="'danger'"
-        [buttonOutline]="true"
+        [buttonClass]="'danger'"
       />
       <app-shared-button
         [buttonText]="'Add Owners'"
-        [buttonStatus]="'secondary'"
-        [buttonBorder]="false"
+        [buttonClass]="'secondary'"
       />
     </div>
     <hr />
@@ -41,18 +38,18 @@
     <div class="d-flex gap-2 bg-light p-5">
       <app-shared-button
         [buttonText]="'import leads'"
-        [buttonStatus]="'basic'"
+        [buttonClass]="'basic'"
         [buttonIcon]="'bi bi-cloud-upload'"
       />
       <app-shared-button
         [buttonText]="'create leads'"
-        [buttonStatus]="'primary'"
+        [buttonClass]="'primary'"
         [buttonIcon]="'bi bi-plus'"
       />
-      <app-shared-button [buttonText]="'export'" [buttonStatus]="'neutral'" />
-      <app-shared-button [buttonIcon]="'bi bi-menu-button-wide'" [buttonStatus]="'basic'" [buttonOutline]="true"/>
-      <app-shared-button [buttonText]="'add action'" [buttonStatus]="'primary'" />
-      <app-shared-button [buttonIcon]="'bi bi-trash text-danger'" [buttonText]="'delete'" [buttonStatus]="'neutral'" [buttonOutline]="true" [buttonBorder]="false"/>
+      <app-shared-button [buttonText]="'export'" [buttonClass]="'neutral'" />
+      <app-shared-button [buttonIcon]="'bi bi-menu-button-wide'" [buttonClass]="'basic'" />
+      <app-shared-button [buttonText]="'add action'" [buttonClass]="'primary'" />
+      <app-shared-button [buttonIcon]="'bi bi-trash text-danger'" [buttonText]="'delete'" [buttonClass]="'neutral outline'"/>
     </div>
   </div>
 </div>

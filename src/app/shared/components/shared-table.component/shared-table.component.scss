@@ -1,3 +1,9 @@
+tbody, td, tfoot, th, thead, tr{
+  text-align: center;
+}
 tr:hover td{
   background-color: #f8f9fa;
+}
+tr:hover button{
+  opacity: 1 !important;
 }

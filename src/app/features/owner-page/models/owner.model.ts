@@ -13,6 +13,7 @@ export interface Owner {
     email?: string;
     creationDate?: string;
     lastUpdate?: string;
+    sellerRequest?: string;
     salesRep?: {
         name: string;
         email: string;
@@ -21,4 +22,5 @@ export interface Owner {
     phase?: string;
     code?: string;
     category?: string;
+    property?:string
 }

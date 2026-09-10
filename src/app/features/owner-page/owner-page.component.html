@@ -4,39 +4,21 @@
   [headerActions]="actions"
   (actionClicked)="handleActionClicked($event)"
 />
+<!-- Filteration Tabs -->
 <div class="d-flex justify-content-between align-items-center p-3 bg-white">
   <app-taps />
   <app-filteration />
 </div>
-
- <button
-  type="button"
-  class="btn btn-primary m-3"
-  data-bs-toggle="offcanvas"
-  data-bs-target="#ownerSidebar"
->
-  Show Details
-</button>
-<!-- <app-table /> -->
+<!-- End of Filteration Tabs -->
 <app-shared-table [columns]="columns" [data]="data" />
-<!-- <app-paginator class="rounded-bottom-2" /> -->
-<!-- <app-footer /> -->
-<!-- <nav class="bg-light">
-    <ul class="nav">
-      <li class="nav-item border-bottom border-primary">
-        <a class="nav-link active" href="#">Data</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Report</a>
-      </li>
-    </ul>
-  </nav> في حالة لو حبينا نرجعهم تاني او ننقلهم في component جديد-->
 
-<div class="offcanvas offcanvas-end" tabindex="-1" id="ownerSidebar" style="width: 60%">
+<!-- Sidebar for details -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="ownerSidebar">
   <div class="offcanvas-header">
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
   </div>
-  <div class="offcanvas-body p-2 bg-light">
+  <div class="offcanvas-body p-4 bg-light">
     <app-owner-details [owner]="owner" />
   </div>
 </div>
+<!-- End of It -->
