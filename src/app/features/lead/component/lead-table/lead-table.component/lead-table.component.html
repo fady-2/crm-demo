@@ -238,7 +238,11 @@
       let-lead
     >
 
-      <tr class="p-selectable-row">
+      <tr class="p-selectable-row"
+      
+        (click)="selectLead(lead)"
+
+      >
 
         <!-- Checkbox -->
         <td>
@@ -366,13 +370,111 @@
 
         <td>
 
-          <button
-            *ngIf="lead.id===1"
+          <!-- <button
             class="btn-compare"
             type="button"
           >
             Compare
-          </button>
+          </button> -->
+
+
+
+
+
+
+          <!-- <button
+  class="btn-compare"
+  type="button"
+  data-bs-toggle="offcanvas"
+  data-bs-target="#offcanvasRight"
+  aria-controls="offcanvasRight"
+>
+  Compare
+</button> -->
+
+
+
+<button
+  class="btn-compare"
+  type="button"
+  data-bs-toggle="offcanvas"
+  data-bs-target="#leadDetailsSidebar"
+  aria-controls="leadDetailsSidebar"
+  (click)="openLeadDetails(lead); $event.stopPropagation()"
+>
+  Compare
+</button>
+
+
+
+<div
+  class="offcanvas offcanvas-end lead-details-sidebar"
+  tabindex="-1"
+  id="leadDetailsSidebar"
+  aria-labelledby="leadDetailsLabel"
+>
+  <div class="offcanvas-header">
+    <h5  class="lead-title" id="leadDetailsLabel"></h5>
+
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+ 
+  <div class="offcanvas-body">
+         @if (selectedLead) {
+       <app-lead-details
+  [lead]="selectedLead"
+  >
+</app-lead-details>
+    }
+  </div>
+</div>
+
+
+
+
+<div
+  class="offcanvas offcanvas-end"
+  tabindex="-1"
+  id="offcanvasRight"
+  aria-labelledby="offcanvasRightLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">
+      Compare Leads
+    </h5>
+
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+
+  <div class="offcanvas-body">
+    <!-- محتوى المقارنة هنا -->
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </td>
 

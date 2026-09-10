@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 // PrimeNG
@@ -14,6 +13,8 @@ import { InputTextModule } from 'primeng/inputtext';
 // import { DropdownModule } from 'primeng/dropdown';
 import { SliderModule } from 'primeng/slider';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { LeadDetails } from "../../lead-details/lead-details";
+import { Lead as LeadDetailsModel } from "../../lead-details/lead.model";
 
 interface Lead {
   id: number;
@@ -32,7 +33,8 @@ interface Lead {
   // activity: number;
   text:string;
   date:Date;
-}
+};
+
 
 @Component({
   selector: 'app-lead-table',
@@ -41,7 +43,7 @@ interface Lead {
   imports: [
     CommonModule,
     FormsModule,
-SelectModule,
+    SelectModule,
     TableModule,
     TagModule,
     ButtonModule,
@@ -51,17 +53,40 @@ SelectModule,
     InputTextModule,
     // DropdownModule,
     SliderModule,
-    ProgressBarModule
-  ],
+    ProgressBarModule,
+    LeadDetails
+],
 
   templateUrl: './lead-table.component.html',
   styleUrl: './lead-table.component.scss'
 })
 export class LeadTableComponent implements OnInit {
 
+@Input() detailsLead!: LeadDetailsModel;
   leads: Lead[] = [];
 
   selectedLeads: Lead[] = [];
+selectedLead!: LeadDetailsModel;
+
+
+
+
+
+
+  @Output() leadSelected = new EventEmitter<Lead>();
+
+  selectLead(lead: Lead) {
+    this.leadSelected.emit(lead); // هنا فعليًا بتاخد الـ object وتبعته لبره
+  }
+
+
+
+
+
+
+
+
+
 
   representatives: {
     name: string;
@@ -332,10 +357,56 @@ columns = [
 
 
 
+showLeadDetails = false;
+
+// openLeadDetails(): void {
+//   this.showLeadDetails = true;
+// }
 
 
 
 
+
+
+
+
+
+
+
+openLeadDetails(lead: Lead): void {
+  this.selectedLead = {
+    id: lead.id,
+    name: lead.LeadName,
+    email: 'hos@gmail.com',
+    mobile1: '01007012871',
+    mobiles: ['01007012871'],
+    communicateWay: 'Phone',
+    channel: lead.company,
+    status: lead.status,
+    creationDate: lead.date.toLocaleDateString(),
+    lastUpdate: '40 day(s) ago',
+    salesRep: lead.representative.name,
+    salesRepEmail: 'sales@engazcrm.com',
+    avatarUrl: lead.representative.image,
+    projectName: lead.company,
+    fillCount: lead.balance,
+    hugCount: 390,
+ projects: [
+  {
+    name: lead.company,
+    channel: lead.company,
+    salesman: lead.representative.name,
+    salesmanAvatar: lead.representative.image,
+    createdBy: 'Admin',
+    createdByAvatar: 'icons/arrow.png',
+    creationDate: lead.date.toLocaleDateString(),
+    status: lead.status
+  }
+]
 }
+
+
+
+}}
 
 
