@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 
 // PrimeNG
 import { TableModule } from 'primeng/table';
-
 import { TagModule } from 'primeng/tag';
 import { ButtonModule } from 'primeng/button';
 import { InputIconModule } from 'primeng/inputicon';
