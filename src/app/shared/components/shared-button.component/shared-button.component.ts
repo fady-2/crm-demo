@@ -10,7 +10,5 @@ import { Component, input } from '@angular/core';
 export class SharedButtonComponent {
   buttonText = input<string>('');
   buttonIcon = input<string>('');
-  buttonStatus = input<'primary' | 'secondary' | 'link' | 'danger' | 'neutral' | 'success' | 'basic'>('primary');
-  buttonOutline = input<boolean>(false);
-  buttonBorder = input<boolean>(true);
+  buttonClass = input<string>('');
 }

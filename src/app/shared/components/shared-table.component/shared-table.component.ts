@@ -14,7 +14,7 @@ export class SharedTableComponent <T> {
   columns = input.required<TableColumn<T>[]>();
   data = input.required<T[]>();
   loading = input<boolean>(false);
-  actionsTemplate = input<TemplateRef<any>>();
+  // actionsTemplate = input<TemplateRef<any>>();
 
   imgSrc = "https://ui-avatars.com/api/?name=Moaz+Elramsisy"
 }

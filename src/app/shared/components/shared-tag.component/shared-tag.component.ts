@@ -7,6 +7,6 @@ import { Component, input } from '@angular/core';
   styleUrl: './shared-tag.component.scss',
 })
 export class SharedTagComponent {
-  tagText = input.required<string>();
+  tagText = input.required<string | undefined>();
   tagStatus = input<'info' | 'warning' | 'danger' | 'neutral' | 'success'>('info');
 }
