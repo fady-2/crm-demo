@@ -3,10 +3,12 @@
   import { LeadDetails } from "./features/lead/component/lead-details/lead-details";
   import { Lead } from './features/lead/component/lead-details/lead.model';
   import { LeadTableComponent } from "./features/lead/component/lead-table/lead-table.component/lead-table.component";
+import { Leads } from './features/lead/leads';
+// import { Leads } from "./features/lead/leads";
   @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterOutlet, LeadDetails, LeadTableComponent],
+    imports: [RouterOutlet, LeadDetails, LeadTableComponent, Leads],
     templateUrl: './app.html',
     styleUrl: './app.scss'
   })
@@ -40,6 +42,7 @@ selectedLead: Lead = {  id: 1,
     creationDate: '2022-10-19 12:57:40', status: 'Done Deal'
   }]
 };
+// lead: Lead;
    
 }
 

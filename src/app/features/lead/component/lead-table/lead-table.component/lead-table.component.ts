@@ -1,9 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 // PrimeNG
 import { TableModule } from 'primeng/table';
+
 import { TagModule } from 'primeng/tag';
 import { ButtonModule } from 'primeng/button';
 import { InputIconModule } from 'primeng/inputicon';
@@ -14,6 +14,8 @@ import { InputTextModule } from 'primeng/inputtext';
 // import { DropdownModule } from 'primeng/dropdown';
 import { SliderModule } from 'primeng/slider';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { LeadDetails } from "../../lead-details/lead-details";
+import { Lead as LeadDetailsModel } from "../../lead-details/lead.model";
 
 interface Lead {
   id: number;
@@ -41,7 +43,7 @@ interface Lead {
   imports: [
     CommonModule,
     FormsModule,
-SelectModule,
+    SelectModule,
     TableModule,
     TagModule,
     ButtonModule,
@@ -51,14 +53,16 @@ SelectModule,
     InputTextModule,
     // DropdownModule,
     SliderModule,
-    ProgressBarModule
-  ],
+    ProgressBarModule,
+    LeadDetails
+],
 
   templateUrl: './lead-table.component.html',
   styleUrl: './lead-table.component.scss'
 })
 export class LeadTableComponent implements OnInit {
 
+@Input() detailsLead!: LeadDetailsModel;
   leads: Lead[] = [];
 
   selectedLeads: Lead[] = [];
@@ -348,6 +352,11 @@ columns = [
 
 
 
+showLeadDetails = false;
+
+openLeadDetails(): void {
+  this.showLeadDetails = true;
+}
 
 
 

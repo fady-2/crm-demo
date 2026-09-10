@@ -1,20 +1,3 @@
-// export interface Lead {
-//   id: number;
-//   name: string;
-//   email: string;
-//   mobile1: string;
-//   communicateWay: string;
-//   channel: string;
-//   status: string;
-//   creationDate: string;
-//   lastUpdate: string;
-//   salesRep: string;
-// }
-
-
-
-
-
 
 export interface Project {
   name: string;
