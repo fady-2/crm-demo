@@ -12,20 +12,25 @@
 
     <div class="header-left">
       <div class="lead-header-img">
-  <h1 class="lead-title">  {{ lead.name }}</h1>
+  <!-- <h1 class="lead-title">  {{ lead.name }}</h1> -->
+
+  @if (showTitle) {
+  <h1 class="lead-title">{{ lead.name }}</h1>
+}
 
   <img src="icons/phone.png" alt="arrow" />
 </div>
       <div class="contact-row">
         <span class="phone">{{ lead.mobile1 }}</span>
 
-        <img src="icons/phone.png"  alt="call">
-        <img src="icons/whatsapp.png" alt="whatsapp">
-        <img src="icons/truecaller.png" alt="call">
+        <img src="icons/call.png"  width="25" height="25"  alt="call">
+        <img src="icons/whatsapp.png"  width="26" height="26" alt="whatsapp">
+        <img src="icons/truecaller.png"  width="26" height="26" alt="call">
 
         <div class="project-select">
-          <span>{{ lead.projectName }}</span>
-          <span class="chevron">⌄</span>
+          <span>{{ lead.projectName }}  </span>
+          <!-- <span class="chevron">⌄</span> -->
+           <img src="icons/arrowdown.png" alt="">
         </div>
       </div>
 
@@ -77,11 +82,14 @@
   </div>
 </div>
 
-  <div class="card lead-card">
-    <div class="card-header">
+ <div class="card-header">
       <span>Lead</span>
-      <span class="chevron">⌃</span>
+      <!-- <span class="chevron">⌃</span> -->
+       <img src="icons/uparrow.png" alt="">
     </div>
+
+  <div class="card lead-card">
+   
 
     <div class="info-grid">
 
@@ -102,7 +110,7 @@
     <div class="mobile-row" *ngFor="let mobile of lead.mobiles">
       <span class="value">{{ mobile }}</span>
 
-      <img src="icons/phone.png" alt="call" width="26" height="26" />
+      <img src="icons/call.png" alt="call" width="26" height="26" />
       <img src="icons/whatsapp.png" alt="whatsapp" width="26" height="26" />
       <img src="icons/truecaller.png" alt="call" width="26" height="26" />
     </div>

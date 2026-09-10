@@ -34,7 +34,8 @@ interface Lead {
   // activity: number;
   text:string;
   date:Date;
-}
+};
+
 
 @Component({
   selector: 'app-lead-table',
@@ -66,6 +67,11 @@ export class LeadTableComponent implements OnInit {
   leads: Lead[] = [];
 
   selectedLeads: Lead[] = [];
+selectedLead!: LeadDetailsModel;
+
+
+
+
 
 
   @Output() leadSelected = new EventEmitter<Lead>();
@@ -354,13 +360,54 @@ columns = [
 
 showLeadDetails = false;
 
-openLeadDetails(): void {
-  this.showLeadDetails = true;
+// openLeadDetails(): void {
+//   this.showLeadDetails = true;
+// }
+
+
+
+
+
+
+
+
+
+
+
+openLeadDetails(lead: Lead): void {
+  this.selectedLead = {
+    id: lead.id,
+    name: lead.LeadName,
+    email: 'hos@gmail.com',
+    mobile1: '01007012871',
+    mobiles: ['01007012871'],
+    communicateWay: 'Phone',
+    channel: lead.company,
+    status: lead.status,
+    creationDate: lead.date.toLocaleDateString(),
+    lastUpdate: '40 day(s) ago',
+    salesRep: lead.representative.name,
+    salesRepEmail: 'sales@engazcrm.com',
+    avatarUrl: lead.representative.image,
+    projectName: lead.company,
+    fillCount: lead.balance,
+    hugCount: 390,
+ projects: [
+  {
+    name: lead.company,
+    channel: lead.company,
+    salesman: lead.representative.name,
+    salesmanAvatar: lead.representative.image,
+    createdBy: 'Admin',
+    createdByAvatar: 'icons/arrow.png',
+    creationDate: lead.date.toLocaleDateString(),
+    status: lead.status
+  }
+]
 }
 
 
 
-
-}
+}}
 
 

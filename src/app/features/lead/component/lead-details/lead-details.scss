@@ -3,10 +3,12 @@
 
 
 .lead-page {
+    // background-color: black;
+background-color: #F2F4F7;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-width: 900px;
+ width: 95%;
   margin: 0 auto;
 }
 
@@ -30,7 +32,7 @@
   font-size: 20px;
   font-weight: 700;
   color: #101828;
-  margin: 0;
+  margin-left: 50px;
 }
 
 .contact-row {
@@ -43,6 +45,7 @@
   img {
    
     cursor: pointer;
+    
   }
 }
 
@@ -110,7 +113,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  text-align: center;
   gap: 8px;
+  margin-top: -15px;
   flex-wrap: nowrap;
 }
 .icon-btn {
@@ -127,10 +132,11 @@
 
 .tabs-row {
   display: flex;
-  align-items: center;
-  gap: 4px;
+ 
+  justify-content: space-around;
+  background-color: #FFFFFF;
+  // gap: 4px;
   border-top: 1px solid #EAECF0;
-  padding: 0 0 0 0;
   overflow-x: auto;
 }
 
@@ -176,16 +182,16 @@
 
 .card-header {
   display: flex;
+  // margin-top: 20px;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
   font-size: 15px;
   font-weight: 700;
-//   color: $color-text-primary;
-  border-bottom: 1px solid #F9FAFB;
-  background-color: #EAECF0;
+  border: 0px solid #F2F4F7;
+margin-left: -10px;
+      background-color: #F2F4F7;
 
-  
+
 }
 
 
@@ -210,8 +216,14 @@
   position: relative;
   padding: 24px 32px;
 
+  // margin-top: -35px;
 }
 
+.lead-card{
+    margin-top: -15px;
+
+
+}
 .info-grid::before {
   content: '';
   position: absolute;
@@ -222,9 +234,13 @@
 }
 
 .info-item {
-  display: flex;
-  // flex-direction: column;
-align-items: center;
+//   display: flex;
+// align-items: center;
+//   gap: 12px;
+
+display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
   gap: 12px;
 }
 
@@ -232,11 +248,15 @@ align-items: center;
   font-size: 14px;
   color: #667085;
   white-space: nowrap;
+    justify-self: start;
+
 }
 
 .value {
   font-size: 15px;
   font-weight: 600;
+   justify-self: end;
+  text-align: right;
 }
 
 .sub-value {
@@ -319,9 +339,9 @@ align-items: center;
 
 
 .lead-header {
-  position: relative;
-  padding: 20px 24px 0;
-  background: #f5f7fb;
+  // position: relative;
+  // padding: 20px 24px 0;
+  background-color: #F2F4F7;
   border-bottom: 1px solid #e5e8ef;
 
 
@@ -329,10 +349,13 @@ align-items: center;
 }
 
 .lead-header-img{
+  margin-left: 10px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 48px;
 }
+
+
 
 
 .lead-title {
@@ -341,6 +364,8 @@ align-items: center;
 
 .back-leads {
   border: 0;
+  padding: 20px 24px 0;
+
   background: transparent;
   color: #64748b;
   cursor: pointer;
@@ -348,6 +373,9 @@ align-items: center;
 }
 
 .header-top {
+    // padding: 8px 4px 0;
+
+    padding: 5px;
   display: flex;
   align-items: flex-start;
   gap: 24px;
@@ -371,18 +399,17 @@ align-items: center;
   color: #64748b;
 }
 
-.contact-row img {
-  width: 17px;
-  height: 17px;
-}
+
 .project-select {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 6px 12px;
+  // gap: 8px;
+  // padding: 0px 3px;
+  height: 40px;
   border-radius: 18px;
   background: #e9edf4;
+  
 }
 
 
@@ -443,12 +470,14 @@ align-items: center;
 
 
 .mobile-item {
-  display: flex;
-  align-items: flex-start;
+ display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
   gap: 12px;
 }
 
 .mobile-list {
+  justify-self: end;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -457,8 +486,8 @@ align-items: center;
 .mobile-row {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 8px;
-  white-space: nowrap;
 
   .value {
     margin: 0;
@@ -489,6 +518,7 @@ app-shared-buttons{
   text-align: center;
   align-items: center;
   padding: 7px;
+  margin: auto;
   // margin: 5px;
 }
 

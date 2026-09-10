@@ -13,7 +13,7 @@ import { Lead } from './lead.model';
 })
 export class LeadDetails {
   @Input() lead!: Lead;
-
+@Input() showTitle = true;
   stars = [1, 2, 3, 4, 5];
   rating = 3;
 
@@ -67,14 +67,14 @@ export class LeadDetails {
     },
    {
   text: '',
-  width: '1px',
-  height: '',
-  icon: 'icons/dot.png',
+  width: '40px',
+  height: '40px',
+  icon: 'icons/dotto.png',
 
-  borderRadius: null,
+    borderRadius: '8px',
 
   className: 'icon-action-btn',
-  backgroundColor: 'none',
+  backgroundColor: '#FFFFFF',
   textColor: '',
   borderColor: '#FFFFFF'
 },

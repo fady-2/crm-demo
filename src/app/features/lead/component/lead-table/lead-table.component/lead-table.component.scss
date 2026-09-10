@@ -156,8 +156,13 @@ background-color: #EFF8FF;
 }
 
 
+.offcanvas-body{
+  background-color: #F2F4F7;
+}
+.offcanvas-header{
+    background-color: #F2F4F7;
 
-
+}
 
 
 .status {
@@ -166,30 +171,9 @@ background-color: #EFF8FF;
   gap: 8px;
 }
 
-.status-dot {
-  display: inline-block !important;
-  width: 8px !important;
-  height: 8px !important;
-  min-width: 8px !important;
-  min-height: 8px !important;
-  border-radius: 50% !important;
-}
 
-.dot-success {
-  background-color: #12b76a !important;
-}
 
-.dot-info {
-  background-color: #2e90fa !important;
-}
 
-.dot-warning {
-  background-color: #f79009 !important;
-}
-
-.dot-contrast {
-  background-color: #000000 !important;
-}
 
 
 

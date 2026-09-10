@@ -42,7 +42,6 @@ selectedLead: Lead = {  id: 1,
     creationDate: '2022-10-19 12:57:40', status: 'Done Deal'
   }]
 };
-// lead: Lead;
    
 }
 

@@ -400,6 +400,7 @@
   data-bs-toggle="offcanvas"
   data-bs-target="#leadDetailsSidebar"
   aria-controls="leadDetailsSidebar"
+  (click)="openLeadDetails(lead); $event.stopPropagation()"
 >
   Compare
 </button>
@@ -413,7 +414,7 @@
   aria-labelledby="leadDetailsLabel"
 >
   <div class="offcanvas-header">
-    <h5 id="leadDetailsLabel">Lead Details</h5>
+    <h5  class="lead-title" id="leadDetailsLabel"></h5>
 
     <button
       type="button"
@@ -423,8 +424,13 @@
     ></button>
   </div>
 
-  <div class="offcanvas-body">
-     <app-lead-details [lead]="detailsLead"></app-lead-details>
+  <div   class="offcanvas-body">
+         @if (selectedLead) {
+       <app-lead-details
+  [lead]="selectedLead"
+  [showTitle]="false">
+</app-lead-details>
+    }
   </div>
 </div>
 
