@@ -369,30 +369,7 @@
 
 
         <td>
-
-          <!-- <button
-            class="btn-compare"
-            type="button"
-          >
-            Compare
-          </button> -->
-
-
-
-
-
-
-          <!-- <button
-  class="btn-compare"
-  type="button"
-  data-bs-toggle="offcanvas"
-  data-bs-target="#offcanvasRight"
-  aria-controls="offcanvasRight"
->
-  Compare
-</button> -->
-
-
+ 
 
 <button
   class="btn-compare"
@@ -404,8 +381,6 @@
 >
   Compare
 </button>
-
-
 
 <div
   class="offcanvas offcanvas-end lead-details-sidebar"
@@ -428,6 +403,8 @@
          @if (selectedLead) {
        <app-lead-details
   [lead]="selectedLead"
+   [showTitle]="false"
+    [isSidebar]="true"
   >
 </app-lead-details>
     }

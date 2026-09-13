@@ -1,6 +1,9 @@
 
 
-<div class="lead-page">
+<div class="lead-page"
+  [class.sidebar-mode]="isSidebar"
+
+>
 
  <div class="lead-header">
 
@@ -12,7 +15,7 @@
 
     <div class="header-left">
       <div class="lead-header-img">
-  <!-- <h1 class="lead-title">  {{ lead.name }}</h1> -->
+    <!-- <h1 class="lead-title">  {{ lead.name }}</h1> -->
 
   @if (showTitle) {
   <h1 class="lead-title">{{ lead.name }}</h1>

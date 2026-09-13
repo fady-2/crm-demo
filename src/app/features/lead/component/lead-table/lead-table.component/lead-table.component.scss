@@ -1,3 +1,6 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+}
 .card {
   // border: #000000;
   border-color: white;
@@ -8,6 +11,8 @@
   margin: auto;
  }
 }
+
+
 
 .header-content {
   display: flex;
@@ -102,23 +107,14 @@
     
 }
 
-// .status-follow-up{
-//   width: 140px;
-//     height: 30px;
-//     text-align: center;
-//       --p-tag-background: black;
-//         --p-tag-color: #175CD3;
 
-
-// }
 
 .status-follow-up {
   background-color: #FFFAEB ;
   color: #B54708 ;
-
   width: 140px;
   height: 30px;
-
+  font-size: 14px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -127,6 +123,8 @@
 .status-meeting{
    background-color: #F2F4F7 ;
   color: #344054 ;
+    font-size: 14px;
+
     width: 140px;
   height: 30px;
   display: inline-flex;
@@ -139,6 +137,8 @@
   color: #B42318;
    width: 140px;
   height: 30px;
+  font-size: 14px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -147,6 +147,7 @@
 
 .status-Waiting{
 color: #175CD3;
+font-size: 16px;
 background-color: #EFF8FF;
   width: 140px;
   height: 30px;

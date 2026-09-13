@@ -14,6 +14,8 @@ import { Lead } from './lead.model';
 export class LeadDetails {
   @Input() lead!: Lead;
 @Input() showTitle = true;
+  @Input() isSidebar = false;
+
   stars = [1, 2, 3, 4, 5];
   rating = 3;
 

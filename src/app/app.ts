@@ -4,11 +4,12 @@
   import { Lead } from './features/lead/component/lead-details/lead.model';
   import { LeadTableComponent } from "./features/lead/component/lead-table/lead-table.component/lead-table.component";
 import { Leads } from './features/lead/leads';
+import { OwnerPageComponent } from './features/owner-page/owner-page.component';
 // import { Leads } from "./features/lead/leads";
   @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterOutlet, LeadDetails, LeadTableComponent, Leads],
+    imports: [RouterOutlet, LeadDetails, LeadTableComponent, Leads, OwnerPageComponent],
     templateUrl: './app.html',
     styleUrl: './app.scss'
   })
