@@ -16,12 +16,7 @@ export const routes: Routes = [
 },
 
 
-{
-  path: 'lead',
-  loadComponent: () =>
-    import('./features/lead/component/lead-details/lead-details')
-      .then(m => m.LeadDetails)
-},
+
 
 
    
