@@ -182,7 +182,7 @@ columns = [
         },
         date: new Date('2026-08-20'),
         balance: 25000,
-        status: 'Waiting',
+        status: 'FollowUp',
          text: 'he is not interested'
       },
 
@@ -297,7 +297,7 @@ columns = [
 
     switch (status) {
 
-      case 'Waiting':
+      case 'FollowUp':
         return 'status-Waiting';
 
      
@@ -359,9 +359,6 @@ columns = [
 
 showLeadDetails = false;
 
-// openLeadDetails(): void {
-//   this.showLeadDetails = true;
-// }
 
 
 

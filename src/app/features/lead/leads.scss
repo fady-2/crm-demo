@@ -1,61 +1,18 @@
-
-.tnzeem {
+.lead {
   display: flex;
-    margin: 0px 20px 0px 20px;
+  align-items: center;
+  gap: 10px;
 
-  // gap: 100px;
+  margin: 147px 20px 0;
   padding: 10px 0;
+
   background-color: #FFFFFF;
-  margin-top: 147px;
-  // margin-left: 20px;
-  // background-color: #AECF0;
-
-  
-  
 }
 
 
 
-
-
-
-
-
-
-
-
-
-.export{
-  margin-top: 10px;
-}
-
-.search{
-  margin-left: 28px;
-  flex: 6 !important ;
-  // margin-right: -20px;
-
-}
-
-
-app-lead-tabs {
-  flex: 11; 
-  // margin-left: 20px;
-  justify-content: space-around;
-  width: 100%;
-  text-align: center;
- 
- 
-}
-
-.filter{
+.lead-search {
   flex: 1;
+  min-width: 0;
 }
 
-
-
-
-
-// .container {
-//   width: 100%;
-//   display: block;
-// }

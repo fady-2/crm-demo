@@ -3,40 +3,57 @@ section {
   margin-left: 5px;
   color: #344054;
   font-size: 16px;
-
-  
 }
+
+
+
+
 
 .tab-lead {
-  width: 100%;
-  color: #344054;
- 
-  border: 1px solid #D0D5DD;
-  text-align: center;
-  border-radius: 8px;
+  width: max-content;
   height: 50px;
-  display: flex;
-  justify-content: space-between;
-  background-color: white;
 
-}
-
-h6 {
-  margin: 0;
-  padding: 10px;
-  color: #344054;
   display: flex;
   align-items: center;
-  justify-content: space-between; 
-  border-right: 1px solid #D0D5DD; 
+
+  color: #344054;
+  border: 1px solid #D0D5DD;
+  border-radius: 8px;
+  background-color: white;
+}
+
+
+
+
+.tab-lead h6 {
+  flex: 0 0 auto;
+
+  height: 100%;
+  margin: 0;
+  padding: 0 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  white-space: nowrap;
+
+  color: #344054;
+  border-right: 1px solid #D0D5DD;
+}
+
+.tab-menu {
+  width: 50px;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
 }
 
-h6:last-child {
-  border-right: none;
-}
-
-.img-tab{
-  
-  margin: 12px 16px 1px 5px ;
+.tab-menu img {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
