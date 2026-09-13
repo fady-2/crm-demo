@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-// import { FollowUpComponent } from "../../shared-followup/follow-up-component/follow-up-component";
 
 @Component({
   selector: 'app-shared-buttons',
@@ -15,6 +14,8 @@ export class SharedButtons {
 @Input() textColor: string='';
 @Input() borderColor:string='';
 @Input() className:string='';
-
+  @Input() width: string = '38px';
+@Input() borderRadius: string | null = null;  
+@Input() height: string = '40px';
 @Input() followup:string=''
 }
