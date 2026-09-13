@@ -1,0 +1,70 @@
+
+
+
+.owner-header {
+  width: 100%;
+  min-height: 90px;
+  background-color: #F2F4F7 !important;
+s: flex-start;
+
+  position: relative;
+
+  padding: 16px;
+}
+
+
+
+
+.header-icon img {
+     width: 30px;
+     height:30px;
+     background-color: #FFFFFF; 
+     padding: 4px;
+     justify-items: center;
+      border-radius: 10px;
+}
+
+
+.header-content {
+  margin: 20px 10px 0px 0px;
+
+}
+
+.header-content h2 {
+  margin: 0 0 3px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  color: #101828;
+}
+
+.header-content p {
+  margin: 0;
+
+  font-size: 11px;
+
+  color: #475467;
+}
+
+/* Close */
+
+.close-btn {
+  position: absolute;
+
+  right: 16px;
+  top: 14px;
+
+  border: none;
+
+  background: transparent;
+
+  font-size: 25px;
+  font-weight: 600;
+
+  color: #98a2b3;
+
+  cursor: pointer;
+
+}
+

@@ -5,11 +5,13 @@
   import { LeadTableComponent } from "./features/lead/component/lead-table/lead-table.component/lead-table.component";
 import { Leads } from './features/lead/leads';
 import { OwnerPageComponent } from './features/owner-page/owner-page.component';
-// import { Leads } from "./features/lead/leads";
+import { CreateLead } from './features/lead/component/create-lead/create-lead';
+import { CreateLeadCforms } from './features/lead/component/create-lead/components/create-lead-cforms/create-lead-cforms';
+
   @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterOutlet, LeadDetails, LeadTableComponent, Leads, OwnerPageComponent],
+    imports: [RouterOutlet, LeadDetails, LeadTableComponent, Leads, OwnerPageComponent,CreateLeadCforms,CreateLead],
     templateUrl: './app.html',
     styleUrl: './app.scss'
   })
