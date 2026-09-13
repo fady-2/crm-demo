@@ -1,16 +1,24 @@
-<app-header
-  [headerName]="title"
-  [headerDescription]="description"
-  [headerActions]="actions"
-  (actionClicked)="handleActionClicked($event)"
-/>
+<app-header [headerName]="title" [headerDescription]="description">
+  <app-shared-button
+    [buttonText]="'Import Owner'"
+    [buttonClass]="'basic'"
+    [buttonIcon]="'bi bi-cloud-arrow-up'"
+  />
+  <app-shared-button
+    [buttonText]="'Create Owner'"
+    [buttonClass]="'primary'"
+    [buttonIcon]="'bi bi-plus-lg'"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#createOwnerSidebar"
+  />
+</app-header>
 <!-- Filteration Tabs -->
 <div class="d-flex justify-content-between align-items-center p-3 bg-white">
   <app-taps />
   <app-filteration />
 </div>
 <!-- End of Filteration Tabs -->
-<app-shared-table [columns]="columns" [data]="data" (rowSelected)="onRowSelected($event)"/>
+<app-shared-table [columns]="columns" [data]="data" (rowSelected)="onRowSelected($event)" />
 
 <!-- Sidebar for details -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="ownerSidebar">
@@ -19,6 +27,19 @@
   </div>
   <div class="offcanvas-body bg-light">
     <app-owner-details [owner]="selectedOwner" />
+  </div>
+</div>
+<!-- End of It -->
+<!-- Sidebar for create owner -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="createOwnerSidebar">
+  <div class="offcanvas-header bg-light d-flex justify-content-between align-items-center">
+    <app-shared-button
+      [buttonClass]="'basic'"
+      [buttonIcon]="'bi bi-person-add'"/>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body bg-light pt-0">
+    <app-create-owner />
   </div>
 </div>
 <!-- End of It -->

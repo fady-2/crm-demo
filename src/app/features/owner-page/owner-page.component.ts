@@ -7,11 +7,13 @@ import { Owner } from './models/owner.model';
 import { TableColumn } from '../../shared/components/shared-table.component/column.model';
 import { SharedTableComponent } from "../../shared/components/shared-table.component/shared-table.component";
 import { OwnerDetails } from "../owner-details/owner-details";
+import { CreateOwner } from '../create-owner/create-owner';
+import { SharedButtonComponent } from '../../shared/components/shared-button.component/shared-button.component';
 
 @Component({
   selector: 'app-owner-page',
   standalone: true,
-  imports: [HeaderComponent, FilterationComponent, TapsComponent, SharedTableComponent, OwnerDetails],
+  imports: [HeaderComponent, FilterationComponent, TapsComponent, SharedTableComponent, OwnerDetails, CreateOwner, SharedButtonComponent],
   templateUrl: './owner-page.component.html',
   styleUrl: './owner-page.component.scss',
 })
