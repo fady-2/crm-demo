@@ -10,15 +10,15 @@
   <app-filteration />
 </div>
 <!-- End of Filteration Tabs -->
-<app-shared-table [columns]="columns" [data]="data" />
+<app-shared-table [columns]="columns" [data]="data" (rowSelected)="onRowSelected($event)"/>
 
 <!-- Sidebar for details -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="ownerSidebar">
   <div class="offcanvas-header">
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
   </div>
-  <div class="offcanvas-body p-4 bg-light">
-    <app-owner-details [owner]="owner" />
+  <div class="offcanvas-body bg-light">
+    <app-owner-details [owner]="selectedOwner" />
   </div>
 </div>
 <!-- End of It -->

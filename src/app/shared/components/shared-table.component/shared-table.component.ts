@@ -1,4 +1,4 @@
-import { Component, input, TemplateRef } from '@angular/core';
+import { Component, input, output, TemplateRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
@@ -15,6 +15,7 @@ export class SharedTableComponent <T> {
   data = input.required<T[]>();
   loading = input<boolean>(false);
   // actionsTemplate = input<TemplateRef<any>>();
+  rowSelected = output<any>();
 
   imgSrc = "https://ui-avatars.com/api/?name=Moaz+Elramsisy"
 }

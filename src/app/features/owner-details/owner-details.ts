@@ -12,7 +12,7 @@ import { SharedTagComponent } from "../../shared/components/shared-tag.component
 })
 export class OwnerDetails {
   router = inject(Router);
-  owner = input.required<Owner>();
+  owner = input.required<Owner | null>();
 
   actionButtons = [
     { text: 'Add Action', class: 'primary', icon: 'bi bi-plus-lg' },
