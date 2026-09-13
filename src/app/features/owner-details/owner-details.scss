@@ -1,0 +1,70 @@
+.back-btn {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #475467;
+}
+h3 {
+  color: #101828;
+}
+.owner-mob {
+  color: #475467;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+hr {
+  width: 854;
+  height: 1;
+  opacity: 1;
+  color: #eaecf0;
+}
+.info-card {
+  width: 854px;
+  border: 1px solid #eaecf0;
+  border-radius: 12px;
+  gap: 16px;
+  padding: 24px 24px 40px 24px;
+  box-shadow: 0px 1px 2px 0px #1018280f;
+  box-shadow: 0px 1px 3px 0px #1018281a;
+}
+
+.button-container > button:first-child {
+  background-color: #eff8ff;
+  color: #175cd3;
+}
+.tag-btn {
+  padding: 10px 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #667085;
+  text-transform: capitalize;
+  background-color: transparent;
+}
+.tag-btn:active {
+  background-color: #eff8ff;
+  color: #175cd3;
+}
+.field-label {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: #101828;
+}
+.field-value {
+  color: #101828;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+.sales-rep-email {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0%;
+  color: #475467;
+}
