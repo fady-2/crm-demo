@@ -18,7 +18,7 @@
   <app-filteration />
 </div>
 <!-- End of Filteration Tabs -->
-<app-shared-table [columns]="columns" [data]="data" (rowSelected)="onRowSelected($event)" />
+<app-shared-table [columns]="columns" [data]="srv.data()" (rowSelected)="onRowSelected($event)" />
 
 <!-- Sidebar for details -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="ownerSidebar">

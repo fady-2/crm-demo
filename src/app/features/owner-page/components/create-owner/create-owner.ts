@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { SharedButtonComponent } from '../../shared/components/shared-button.component/shared-button.component';
+import { SharedButtonComponent } from '../../../../shared/components/shared-button.component/shared-button.component';
+import { OwnerService } from '../../services/owner-service';
+import { OwnerForm } from '../../models/owner.model';
 @Component({
   selector: 'app-create-owner',
   imports: [ReactiveFormsModule, SharedButtonComponent],
@@ -9,45 +11,47 @@ import { SharedButtonComponent } from '../../shared/components/shared-button.com
 })
 export class CreateOwner {
   private fb = inject(FormBuilder);
+  private srv = inject(OwnerService);
+
   projects = [
     {
-      value: 'project 1',
+      value: 1,
       name: 'Project one',
     },
     {
-      value: 'project 2',
+      value: 2,
       name: 'Project two',
     },
     {
-      value: 'project 3',
+      value: 3,
       name: 'Project three',
     },
   ];
   categories = [
     {
-      value: 'category 1',
+      value: 1,
       name: 'category one',
     },
     {
-      value: 'category 2',
+      value: 2,
       name: 'category two',
     },
     {
-      value: 'category 3',
+      value: 3,
       name: 'category three',
     },
   ];
   propertyTypes = [
     {
-      value: 'property 1',
+      value: 1,
       name: 'property one',
     },
     {
-      value: 'property 2',
+      value: 2,
       name: 'property two',
     },
     {
-      value: 'property 3',
+      value: 3,
       name: 'property three',
     },
   ];
@@ -55,7 +59,7 @@ export class CreateOwner {
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     phone: ['', [Validators.required]],
-    project: [null, [Validators.required]],
+    projectId: [null, [Validators.required]],
     bua: [''],
     phase: [''],
     code: [''],
@@ -65,7 +69,17 @@ export class CreateOwner {
   });
   onSaveOwner() {
     if (this.createOwner.valid) {
-      console.log(this.createOwner.value);
+      console.log('Owner data type:', typeof this.createOwner.value);
+      console.log('Owner data:', this.createOwner.value);
+      this.srv.createOwner(this.createOwner.value).subscribe(
+        (res) => {
+          this.srv.loadOwners();
+          console.log('Owner created successfully:', res);
+        },
+        (err) => {
+          console.error('Error creating owner:', err);
+        }
+      );
       this.createOwner.reset();
     }
   }

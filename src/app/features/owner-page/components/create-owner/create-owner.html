@@ -58,10 +58,10 @@
       <!-- Row three -->
       <div class="col-12">
         <label for="project" class="label">Project</label>
-        <select formControlName="project" class="control" id="project">
+        <select formControlName="projectId" class="control" id="project">
           <option class="opt-text" [ngValue]="null" disabled hidden>Select Project</option>
           @for (p of projects; track p.value) {
-            <option [value]="p.value">{{ p.name }}</option>
+            <option [ngValue]="p.value">{{ p.name }}</option>
           }
         </select>
         @if (createOwner.get('project')?.invalid && createOwner.get('project')?.touched) {
@@ -100,7 +100,7 @@
         <select formControlName="category" class="control" id="category">
           <option class="opt-text" [ngValue]="null" disabled hidden>Select Category</option>
           @for (c of categories; track c.value) {
-            <option [value]="c.value">{{ c.name }}</option>
+            <option [ngValue]="c.value">{{ c.name }}</option>
           }
         </select>
       </div>
@@ -109,7 +109,7 @@
         <select formControlName="propertyType" class="control" id="propertyType">
           <option class="opt-text" [ngValue]="null" disabled hidden>Select Property Type</option>
           @for (t of propertyTypes; track t.value) {
-            <option [value]="t.value">{{ t.name }}</option>
+            <option [ngValue]="t.value">{{ t.name }}</option>
           }
         </select>
       </div>
