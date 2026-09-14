@@ -39,8 +39,24 @@ export class OwnerPageComponent implements OnInit {
     this.srv.loadOwners();
   }
 
-  selectedOwner: OwnerForm | null = null;
+  selectedOwner: any | null = null;
   onRowSelected(owner: OwnerForm) {
     this.selectedOwner = owner;
+  }
+  onDeleteRow(owner: OwnerForm) {
+    this.srv.deleteOwner(owner.id!).subscribe({
+      next: () => {
+        this.srv.loadOwners();
+      },
+      error: (err) => {
+        console.error('Error deleting owner:', err);
+      }
+    });
+  }
+  onEditRow(owner: OwnerForm) {
+    this.selectedOwner = owner;
+  }
+  onClose(){
+    this.selectedOwner = null;
   }
 }

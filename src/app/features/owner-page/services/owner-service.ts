@@ -29,7 +29,7 @@ export class OwnerService {
   createOwner(owner: any) {
     return this.http.post<any>(this.apiUrl, owner);
   }
-  updateOwner(id: number, owner: OwnerForm) {
+  updateOwner(id: number, owner: any) {
     return this.http.put<OwnerForm>(`${this.apiUrl}/${id}`, owner);
   }
   deleteOwner(id: number) {

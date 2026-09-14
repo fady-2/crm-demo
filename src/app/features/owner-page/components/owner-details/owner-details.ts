@@ -1,5 +1,5 @@
 import { Component, inject, input } from '@angular/core';
-import { Owner, OwnerForm } from '../../models/owner.model';
+import { OwnerForm } from '../../models/owner.model';
 import { SharedButtonComponent } from "../../../../shared/components/shared-button.component/shared-button.component";
 import { Router } from '@angular/router';
 import { SharedTagComponent } from "../../../../shared/components/shared-tag.component/shared-tag.component";

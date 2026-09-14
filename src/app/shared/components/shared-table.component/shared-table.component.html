@@ -50,15 +50,27 @@
             }
           }
           <td>
-            <button
-              type="button"
-              class="btn btn-primary m-3 opacity-0"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#ownerSidebar"
-              (click)="rowSelected.emit(rowData)"
-            >
-              Preview
-            </button>
+            <div class="opacity-0">
+              <app-shared-button
+                [buttonText]="'Preview'"
+                [buttonClass]="'btn primary'"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#ownerSidebar"
+                (click)="rowSelected.emit(rowData)"
+              />
+              <app-shared-button
+                [buttonIcon]="'bi bi-trash text-danger'"
+                [buttonClass]="'btn outline'"
+                (click)="deleteRow.emit(rowData)"
+              />
+              <app-shared-button
+                [buttonIcon]="'bi bi-pencil text-warning'"
+                [buttonClass]="'btn outline'"
+                (click)="editRow.emit(rowData)"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#createOwnerSidebar"
+              />
+            </div>
           </td>
         </tr>
       </ng-template>

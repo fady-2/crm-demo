@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject, input } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { SharedButtonComponent } from '../../../../shared/components/shared-button.component/shared-button.component';
 import { OwnerService } from '../../services/owner-service';
@@ -12,6 +12,7 @@ import { OwnerForm } from '../../models/owner.model';
 export class CreateOwner {
   private fb = inject(FormBuilder);
   private srv = inject(OwnerService);
+  ownerData = input<any | null>(null);
 
   projects = [
     {
@@ -58,8 +59,8 @@ export class CreateOwner {
   createOwner = this.fb.group({
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    phone: ['', [Validators.required]],
-    projectId: [null, [Validators.required]],
+    phone: [''],
+    projectId: [null],
     bua: [''],
     phase: [''],
     code: [''],
@@ -67,10 +68,19 @@ export class CreateOwner {
     propertyType: [null],
     notes: [''],
   });
+
+  constructor() {
+    effect(() => {
+      const owner = this.ownerData();
+      if (owner) {
+        this.createOwner.patchValue(owner);
+      } else {
+        this.createOwner.reset();
+      }
+    });
+  }
   onSaveOwner() {
     if (this.createOwner.valid) {
-      console.log('Owner data type:', typeof this.createOwner.value);
-      console.log('Owner data:', this.createOwner.value);
       this.srv.createOwner(this.createOwner.value).subscribe(
         (res) => {
           this.srv.loadOwners();
@@ -81,6 +91,22 @@ export class CreateOwner {
         }
       );
       this.createOwner.reset();
+    }
+  }
+  onUpdate() {
+    if (this.createOwner.valid) {
+      const ownerId = this.ownerData()?.id;
+      if (ownerId) {
+        this.srv.updateOwner(ownerId, this.createOwner.value).subscribe(
+          (res) => {
+            this.srv.loadOwners();
+            console.log('Owner updated successfully:', res);
+          },
+          (err) => {
+            console.error('Error updating owner:', err);
+          }
+        );
+      }
     }
   }
   onCancel() {
