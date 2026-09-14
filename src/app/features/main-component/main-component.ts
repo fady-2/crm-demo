@@ -6,7 +6,7 @@ import { TestButton } from "../test-button/test-button/test-button";
 
 @Component({
   selector: 'app-main-component',
-  imports: [SharedButtons, FollowUpComponent, SharedTableComponent, TestButton],
+  imports: [SharedButtons, FollowUpComponent],
   templateUrl: './main-component.html',
   styleUrl: './main-component.scss',
 })
