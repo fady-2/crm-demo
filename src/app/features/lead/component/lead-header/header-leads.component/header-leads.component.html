@@ -10,11 +10,41 @@
                 <img src="assets/icons/upload.png" alt="">
                 Import Leads
             </button>
-            <button  class="plus"> 
-                
-              <img src="/assets/icons/plus.png" alt="photo" />
+         
+              <button
+  class="plus"
+  type="button"
+  (click)="openCreateLead()">
 
-                 Create Lead</button>
+  <img src="assets/icons/upload.png" alt="">
+  Create Lead
+
+</button>
+
+
+
+@if (isCreateLeadOpen) {
+
+  <div
+    class="sidebar-overlay"
+    (click)="closeCreateLead()">
+  </div>
+
+  <div class="create-lead-sidebar">
+    
+<app-create-lead-header
+      (closed)="closeCreateLead()">
+    </app-create-lead-header>
+
+       <app-create-lead-cforms></app-create-lead-cforms>
+
+
+  </div>
+
+}
+
+
+
 
            </div>
     </div>
