@@ -1,32 +1,31 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ItemService {
+  private http = inject(HttpClient);
   private apiUrl = `${environment.apiUrl}/items`;
 
-  constructor(private http: HttpClient) {}
-
   getAll() {
-    return this.http.get(this.apiUrl);
+    return this.http.get<any[]>(this.apiUrl); // ✅ Array مباشرة
   }
 
-  getOne(id: string) {
-    return this.http.get(`${this.apiUrl}/${id}`);
+  getOne(id: number) {
+    return this.http.get<any>(`${this.apiUrl}/${id}`); // ✅ Object مباشرة
   }
 
   create(data: any) {
-    return this.http.post(this.apiUrl, data);
+    return this.http.post<any>(this.apiUrl, data); // ✅
   }
 
-  update(id: string, data: any) {
-    return this.http.put(`${this.apiUrl}/${id}`, data);
+  update(id: number, data: Partial<any>) {
+    return this.http.put<any>(`${this.apiUrl}/${id}`, data); // ✅
   }
 
-  delete(id: string) {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+  delete(id: number) {
+    return this.http.delete<{ message: string }>(`${this.apiUrl}/${id}`); // ✅
   }
 }

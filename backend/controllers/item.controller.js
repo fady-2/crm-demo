@@ -16,88 +16,65 @@ const writeData = (data) => {
 // GET all
 exports.getAll = (req, res) => {
   const items = readData();
-  res.json({ success: true, data: items });
+  res.json(items); // ✅ بيرجع array مباشرة
 };
 
 // GET one
 exports.getOne = (req, res) => {
   const items = readData();
-  const item = items.find(i => i.id === parseInt(req.params.id));
+  const item = items.find((i) => i.id === parseInt(req.params.id));
 
   if (!item) {
-    return res.status(404).json({ success: false, message: 'Not found' });
+    return res.status(404).json({ message: 'Not found' });
   }
 
-  res.json({ success: true, data: item });
+  res.json(item); // ✅ بيرجع object مباشرة
 };
 
 // POST create
 exports.create = (req, res) => {
   const errors = validateItem(req.body);
   if (errors.length > 0) {
-    return res.status(400).json({ success: false, errors });
+    return res.status(400).json({ errors });
   }
 
   const items = readData();
-
   const newItem = {
-    id: items.length > 0 ? Math.max(...items.map(i => i.id)) + 1 : 1,
-    name: req.body.name,
-    email: req.body.email,
-    phone: req.body.phone,
-    projectId: req.body.projectId,
-    bua: req.body.bua || null,
-    phase: req.body.phase || null,
-    code: req.body.code || null,
-    category: req.body.category || null,
-    propertyType: req.body.propertyType || null,
-    notes: req.body.notes || null,
-    createdAt: new Date().toISOString()
+    id: items.length > 0 ? Math.max(...items.map((i) => i.id)) + 1 : 1,
+    ...req.body,
+    createdAt: new Date().toISOString(),
   };
 
   items.push(newItem);
   writeData(items);
 
-  res.status(201).json({ success: true, data: newItem });
+  res.status(201).json({ message: 'Created successfully!' }); // ✅
 };
 
 // PUT update
 exports.update = (req, res) => {
   const items = readData();
-  const index = items.findIndex(i => i.id === parseInt(req.params.id));
+  const index = items.findIndex((i) => i.id === parseInt(req.params.id));
 
   if (index === -1) {
-    return res.status(404).json({ success: false, message: 'Not found' });
+    return res.status(404).json({ message: 'Not found' });
   }
 
-  items[index] = {
-    ...items[index],
-    name: req.body.name ?? items[index].name,
-    email: req.body.email ?? items[index].email,
-    phone: req.body.phone ?? items[index].phone,
-    projectId: req.body.projectId ?? items[index].projectId,
-    bua: req.body.bua ?? items[index].bua,
-    phase: req.body.phase ?? items[index].phase,
-    code: req.body.code ?? items[index].code,
-    category: req.body.category ?? items[index].category,
-    propertyType: req.body.propertyType ?? items[index].propertyType,
-    notes: req.body.notes ?? items[index].notes,
-    updatedAt: new Date().toISOString()
-  };
-
+  items[index] = { ...items[index], ...req.body };
   writeData(items);
-  res.json({ success: true, data: items[index] });
+
+  res.json(items[index]); // ✅
 };
 
 // DELETE
 exports.remove = (req, res) => {
   const items = readData();
-  const filtered = items.filter(i => i.id !== parseInt(req.params.id));
+  const filtered = items.filter((i) => i.id !== parseInt(req.params.id));
 
   if (filtered.length === items.length) {
-    return res.status(404).json({ success: false, message: 'Not found' });
+    return res.status(404).json({ message: 'Not found' });
   }
 
   writeData(filtered);
-  res.json({ success: true, message: 'Deleted successfully' });
+  res.json({ message: 'Deleted successfully' }); // ✅
 };

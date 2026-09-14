@@ -22,6 +22,10 @@ export class App {
   private dataService = inject(ItemService);
 
   constructor() {
+    this.create()
+  }
+
+  getAll() {
     this.dataService.getAll().subscribe(
       (res: any) => {
         console.log('res', res);
@@ -30,5 +34,30 @@ export class App {
         console.log('err', err);
       },
     );
+  }
+
+  create() {
+    this.dataService
+      .create({
+        name: 'Fady',
+        email: 'fady@gmail.com',
+        phone: '01000000010',
+        projectId: 1,
+        bua: 'a100',
+        phase: 'a10',
+        code: '100',
+        category: 2,
+        propertyType: 2,
+        notes: 'notes',
+      })
+      .subscribe(
+        (res: any) => {
+          console.log('res', res);
+          this.getAll()
+        },
+        (err: any) => {
+          console.log('err', err);
+        },
+      );
   }
 }
