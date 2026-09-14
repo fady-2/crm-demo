@@ -11,6 +11,6 @@ import { HeaderAction } from './header-action.model';
 export class HeaderComponent {
   headerName = input.required<string>();
   headerDescription = input.required<string>();
-  headerActions = input<HeaderAction[]>();
-  actionClicked = output<HeaderAction>();
+  // headerActions = input<HeaderAction[]>();
+  // actionClicked = output<HeaderAction>();
 }
