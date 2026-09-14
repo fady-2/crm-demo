@@ -52,10 +52,10 @@ export class CreateOwner {
     },
   ];
   createOwner = this.fb.group({
-    name: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.email]],
-    phone: ['', [Validators.required]],
-    project: [null, [Validators.required]],
+    name: ['', [Validators]],
+    email: ['', [Validators, Validators.email]],
+    phone: ['', [Validators]],
+    project: [null, [Validators]],
     bua: [''],
     phase: [''],
     code: [''],

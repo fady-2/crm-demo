@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 // PrimeNG
@@ -14,26 +14,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { SliderModule } from 'primeng/slider';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { LeadDetails } from "../../lead-details/lead-details";
-import { Lead as LeadDetailsModel } from "../../lead-details/lead.model";
-
-interface Lead {
-  id: number;
-  LeadName: string;
-  country: {
-    name: string;
-    code: string;
-  };
-  company: string;
-  representative: {
-    name: string;
-    image: string;
-  };
-  balance: number;
-  status: string;
-  // activity: number;
-  text:string;
-  date:Date;
-};
+import {   Lead as LeadDetailsModel } from "../../lead-details/lead.model";
+import { LeadModel } from '../../../../../core/models/lead.model';
+import { LeadService } from '../../../../../core/services/lead.service';
+  
 
 
 @Component({
@@ -54,7 +38,8 @@ interface Lead {
     // DropdownModule,
     SliderModule,
     ProgressBarModule,
-    LeadDetails
+    LeadDetails,
+    
 ],
 
   templateUrl: './lead-table.component.html',
@@ -62,31 +47,28 @@ interface Lead {
 })
 export class LeadTableComponent implements OnInit {
 
-@Input() detailsLead!: LeadDetailsModel;
-  leads: Lead[] = [];
+    private leadService = inject(LeadService);
 
-  selectedLeads: Lead[] = [];
+@Input() detailsLead!: LeadDetailsModel;
+leads: LeadModel[] = [];
+//   selectedLeads: Lead[] = [];
+// selectedLead!: LeadDetailsModel;
+
+selectedLeads: LeadModel[] = [];
+
 selectedLead!: LeadDetailsModel;
 
+@Output() leadSelected = new EventEmitter<LeadModel>();
 
-
-
-
-
-  @Output() leadSelected = new EventEmitter<Lead>();
-
-  selectLead(lead: Lead) {
-    this.leadSelected.emit(lead); // هنا فعليًا بتاخد الـ object وتبعته لبره
+  
+  selectLead(lead: LeadModel) {
+    this.leadSelected.emit(lead);  
   }
 
-
-
-
-
-
-
-
-
+editLead(lead: LeadModel) {
+  this.leadService.requestEditLead(lead);
+}
+ 
 
   representatives: {
     name: string;
@@ -109,51 +91,76 @@ columns = [
     filterType: 'text'
   },
   {
-    field: 'country.name',
+    field: 'phone',
     header: 'Mobile',
     sortable: true,
-    filter: false,
+    filter: true,
     filterType: 'text'
   },
   {
-    field: 'representative.name',
+    field: 'email',
     header: 'Email Address',
     sortable: true,
-    // filter: true,
-    filterType: 'multiSelect'
+    filter: true,
+    filterType: 'text'
   },
   {
-    field: 'date',
+    field: 'projectId',
     header: 'Project',
     sortable: true,
-    // filter: true,
-    filterType: 'date'
-  },
-  {
-    field: 'balance',
-    header: 'Assigned To',
-   
+    filter: true,
     filterType: 'numeric'
   },
   {
-    field: 'status',
-    header: 'Status',
+    field: 'bua',
+    header: 'BUA',
     sortable: true,
-    // filter: true,
-    filterType: 'select'
+    filter: true,
+    filterType: 'text'
   },
   {
-    field: 'text',
-    header: 'Last Comment',
-    
+    field: 'phase',
+    header: 'Phase',
+    sortable: true,
+    filter: true,
+    filterType: 'text'
   },
   {
-    field: 'text',
+    field: 'code',
+    header: 'Code',
+    sortable: true,
+    filter: true,
+    filterType: 'text'
+  },
+  {
+    field: 'category',
+    header: 'Category',
+    sortable: true,
+    filter: true,
+    filterType: 'text'
+  },
+  {
+    field: 'propertyType',
+    header: 'Property Type',
+    sortable: true,
+    filter: true,
+    filterType: 'text'
+  },
+  {
+    field: 'notes',
+    header: 'Notes',
+    sortable: false,
+    filter: true,
+    filterType: 'text'
+  },
+  {
+    field: 'createdAt',
     header: 'Creation Date',
-    
-  },
+    sortable: true,
+    filter: true,
+    filterType: 'date'
+  }
 ];
-
 
 
 
@@ -167,169 +174,48 @@ columns = [
 
   ngOnInit(): void {
 
-    this.leads = [
-      {
-        id: 1,
-        LeadName: 'Ahmed Ali',
-        country: {
-          name: 'Egypt',
-          code: 'eg'
-        },
-        company: 'ABC Company',
-        representative: {
-          name: 'Amy Elsner',
-          image: 'amyelsner.png'
-        },
-        date: new Date('2026-08-20'),
-        balance: 25000,
-        status: 'FollowUp',
-         text: 'he is not interested'
-      },
+      this.loadLeads();
+this.leadService.leadCreated$.subscribe(newLead => {
+    this.leads = [newLead, ...this.leads];  
+  });
 
-      {
-        id: 2,
-        LeadName: 'Mohamed Hassan',
-        country: {
-          name: 'Egypt',
-          code: 'eg'
-        },
-        company: 'XYZ Company',
-        representative: {
-          name: 'Anna Fali',
-          image: 'annafali.png'
-        },
-        date: new Date('2026-08-22'),
-        balance: 12000,
-        status: 'status-follow-up',
-                text: 'he is not interested'
+  this.leadService.leadUpdated$.subscribe(updatedLead => {
+    this.leads = this.leads.map(l =>
+      l.id === updatedLead.id ? updatedLead : l
+    );
+  });
 
-      },
+   }
 
-      {
-        id: 3,
-        LeadName: 'Omar Khaled',
-        country: {
-          name: 'Egypt',
-          code: 'eg'
-        },
-        company: 'Tech Company',
-        representative: {
-          name: 'Asiya Javayant',
-          image: 'asiyajavayant.png'
-        },
-        date: new Date('2026-08-25'),
-        balance: 18000,
-        status: 'canacel',
-         text: 'he is not interested'
 
-      },
+  loadLeads() {
 
-      {
-        id: 4,
-        LeadName: 'John Smith',
-        country: {
-          name: 'USA',
-          code: 'us'
-        },
-        company: 'Global Inc',
-        representative: {
-          name: 'Bernardo Dominic',
-          image: 'bernardodominic.png'
-        },
-        date: new Date('2026-08-28'),
-        balance: 32000,
-        status: 'meeting',
-        text: 'he is not interested'
+  this.loading = true;
 
-      }
-    ];
+  this.leadService.getAll().subscribe({
 
-    this.representatives = [
-      {
-        name: 'Amy Elsner',
-        image: 'amyelsner.png'
-      },
-      {
-        name: 'Anna Fali',
-        image: 'annafali.png'
-      },
-      {
-        name: 'Asiya Javayant',
-        image: 'asiyajavayant.png'
-      },
-      {
-        name: 'Bernardo Dominic',
-        image: 'bernardodominic.png'
-      }
-    ];
+    next: (data) => {
 
-    this.statuses = [
-      {
-        label: 'Follow',
-        value: 'Follow'
-      },
-      {
-        label: 'canceled',
-        value: 'canceled'
-      },
-      {
-        label: 'new',
-        value: 'new'
-      },
-      {
-        label: 'Done',
-        value: 'Done'
-      },
-      {
-        label: 'new',
-        value: 'new'
-      },
-      {
-        label: 'meet',
-        value: 'meet'
-      }
-    ];
+      this.leads = data;
 
-    this.loading = false;
-  }
+      this.loading = false;
 
-  getSeverity(status: string) {
+      console.log('Leads:', this.leads);
+    },
 
-    switch (status) {
+    error: (error) => {
 
-      case 'FollowUp':
-        return 'status-Waiting';
+      console.error('Error loading leads:', error);
 
-     
-      case 'status-follow-up':
-        return 'follow-up';
-
-      case 'Done':
-        return 'status-Done';
-
-      case 'canacel':
-        return 'status-canaceled';
-
-        case 'meeting':
-        return 'status-meeting';
-
-   
-
-      default:
-        return 'status-defualt';
+      this.loading = false;
     }
-  }
+
+  });
+}
+
  
 
-  clear(table: any): void {
-    table.clear();
-
-    this.searchValue = '';
-  }
-
-
-
-
+ 
  getStatusDotClass(status: string): string {
   switch (status) {
     case 'Follow Up':
@@ -356,54 +242,37 @@ columns = [
 }
 
 
-
 showLeadDetails = false;
 
-
-
-
-
-
-
-
-
-
-
-
-openLeadDetails(lead: Lead): void {
+ openLeadDetails(lead: LeadModel): void {
   this.selectedLead = {
-    id: lead.id,
-    name: lead.LeadName,
-    email: 'hos@gmail.com',
-    mobile1: '01007012871',
-    mobiles: ['01007012871'],
+    id: lead.id??0,
+    name: lead.name,
+    email: lead.email,
+    mobile1: lead.phone,
+    mobiles: [lead.phone],
+
     communicateWay: 'Phone',
-    channel: lead.company,
-    status: lead.status,
-    creationDate: lead.date.toLocaleDateString(),
-    lastUpdate: '40 day(s) ago',
-    salesRep: lead.representative.name,
-    salesRepEmail: 'sales@engazcrm.com',
-    avatarUrl: lead.representative.image,
-    projectName: lead.company,
-    fillCount: lead.balance,
-    hugCount: 390,
- projects: [
-  {
-    name: lead.company,
-    channel: lead.company,
-    salesman: lead.representative.name,
-    salesmanAvatar: lead.representative.image,
-    createdBy: 'Admin',
-    createdByAvatar: 'icons/arrow.png',
-    creationDate: lead.date.toLocaleDateString(),
-    status: lead.status
-  }
-]
+    channel: '',
+    status: '',
+
+    creationDate: lead.createdAt ?? '',
+    lastUpdate: '',
+
+    salesRep: '',
+    salesRepEmail: '',
+    avatarUrl: '',
+
+    projectName: String(lead.projectId),
+
+    fillCount: 0,
+    hugCount: 0,
+
+    projects: []
+  };
 }
 
 
-
-}}
+}
 
 

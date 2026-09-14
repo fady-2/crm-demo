@@ -1,5 +1,5 @@
 <form
-  [formGroup]="ownerForm"
+  [formGroup]="leadForm"
   (ngSubmit)="saveOwner()"
   class="owner-form">
 
@@ -64,7 +64,7 @@
 
         <input
           type="text"
-          formControlName="mobile"
+formControlName="phone"
           placeholder="Enter Mobile Number">
 
       </div>
@@ -98,13 +98,15 @@
     <div class="select-wrapper">
 
 <img  src="icons/building.png"/>
-      <select formControlName="project">
+      <select formControlName="projectId">
 
-        <option value="">Select Project</option>
-        <option value="project1">Project 1</option>
-        <option value="project2">Project 2</option>
+  <option [ngValue]="null">Select Project</option>
 
-      </select>
+  <option [ngValue]="1">Project 1</option>
+
+  <option [ngValue]="2">Project 2</option>
+
+</select>
 
     </div>
 
@@ -244,13 +246,13 @@
 
     </button>
 
-    <button
+   
+
+<button
   type="submit"
   class="save-btn"
-  [disabled]="ownerForm.invalid">
-
-  Save Owner
-
+  [disabled]="leadForm.invalid">
+  Save Changes
 </button>
 
   </div>
