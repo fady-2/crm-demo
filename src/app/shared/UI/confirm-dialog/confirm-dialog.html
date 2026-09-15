@@ -1,0 +1,18 @@
+<p-dialog
+  [visible]="visible()"
+  (visibleChange)="visibleChange.emit($event)"
+  [modal]="true"
+  [style]="{ width: '25rem' }"
+  [header]="title()">
+
+  <div class="d-flex align-items-center justify-content-center gap-2">
+    <i class="bi bi-exclamation-triangle"></i>
+    <p class="small text-muted mb-0">{{ message() }}</p>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <button pButton label="Cancel" class="p-button-text p-button-sm" (click)="onCancel()"></button>
+    <button pButton label="Delete" icon="bi bi-trash" class="p-button-danger p-button-sm" (click)="onConfirm()"></button>
+  </ng-template>
+
+</p-dialog>
