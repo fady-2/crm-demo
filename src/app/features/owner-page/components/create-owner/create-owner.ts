@@ -1,17 +1,23 @@
-import { Component, effect, inject, input } from '@angular/core';
+import { Component, effect, inject, input, OnDestroy } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { SharedButtonComponent } from '../../../../shared/components/shared-button.component/shared-button.component';
 import { OwnerService } from '../../services/owner-service';
-import { OwnerForm } from '../../models/owner.model';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-create-owner',
-  imports: [ReactiveFormsModule, SharedButtonComponent],
+  imports: [ReactiveFormsModule, SharedButtonComponent, ToastModule],
   templateUrl: './create-owner.html',
   styleUrl: './create-owner.scss',
+  providers: [MessageService]
 })
-export class CreateOwner {
+export class CreateOwner implements OnDestroy {
   private fb = inject(FormBuilder);
   private srv = inject(OwnerService);
+  private messageService = inject(MessageService);
+  private createSub?: Subscription;
+  private updateSub?: Subscription;
   ownerData = input<any | null>(null);
 
   projects = [
@@ -59,8 +65,8 @@ export class CreateOwner {
   createOwner = this.fb.group({
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    phone: [''],
-    projectId: [null],
+    phone: ['', [Validators.required]],
+    projectId: [null , [Validators.required]],
     bua: [''],
     phase: [''],
     code: [''],
@@ -79,34 +85,44 @@ export class CreateOwner {
       }
     });
   }
+  ngOnDestroy() {
+    this.createSub?.unsubscribe();
+    this.updateSub?.unsubscribe();
+  }
   onSaveOwner() {
     if (this.createOwner.valid) {
-      this.srv.createOwner(this.createOwner.value).subscribe(
+      this.createSub = this.srv.createOwner(this.createOwner.value).subscribe(
         (res) => {
           this.srv.loadOwners();
-          console.log('Owner created successfully:', res);
+          this.messageService.add({ severity: 'success', summary: 'Created successfully', detail: 'Your owner has been created.' });
         },
         (err) => {
           console.error('Error creating owner:', err);
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'An error occurred while creating the owner.' });
         }
       );
       this.createOwner.reset();
+    }else{
+      this.createOwner.markAllAsTouched();
     }
   }
   onUpdate() {
     if (this.createOwner.valid) {
       const ownerId = this.ownerData()?.id;
       if (ownerId) {
-        this.srv.updateOwner(ownerId, this.createOwner.value).subscribe(
+        this.updateSub = this.srv.updateOwner(ownerId, this.createOwner.value).subscribe(
           (res) => {
             this.srv.loadOwners();
-            console.log('Owner updated successfully:', res);
+            this.messageService.add({ severity: 'success', summary: 'Updated successfully', detail: 'Your owner has been updated.' });
           },
           (err) => {
             console.error('Error updating owner:', err);
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'An error occurred while updating the owner.' });
           }
         );
       }
+    }else{
+      this.createOwner.markAllAsTouched();
     }
   }
   onCancel() {

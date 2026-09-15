@@ -20,7 +20,7 @@
         }
       </div>
       <div class="col-md-6">
-        <label for="email" class="label">Email Address</label>
+        <label for="email" class="label">Email Address<span class="error">*</span></label>
         <div class="input-with-icon">
           <input
             type="text"
@@ -38,7 +38,7 @@
       <!-- End of Row one -->
       <!-- Row two -->
       <div class="col-md-6">
-        <label for="phone" class="label">Mobile</label>
+        <label for="phone" class="label">Mobile<span class="error">*</span></label>
         <input
           type="text"
           class="control"
@@ -46,6 +46,9 @@
           formControlName="phone"
           placeholder="What is your Phone?"
         />
+        @if (createOwner.get('phone')?.invalid && createOwner.get('phone')?.touched) {
+          <span class="error">Phone is required*</span>
+        }
       </div>
       <div class="col-md-6 position-relative">
         <!-- <app-shared-button [buttonText]="'Add Phone'" [buttonClass]="'secondary outline'" /> -->
@@ -54,13 +57,16 @@
       <!-- End of Row two -->
       <!-- Row three -->
       <div class="col-12">
-        <label for="project" class="label">Project</label>
+        <label for="project" class="label">Project<span class="error">*</span></label>
         <select formControlName="projectId" class="control" id="project">
           <option class="opt-text" [ngValue]="null" disabled hidden>Select Project</option>
           @for (p of projects; track p.value) {
             <option [ngValue]="p.value">{{ p.name }}</option>
           }
         </select>
+        @if (createOwner.get('projectId')?.invalid && createOwner.get('projectId')?.touched) {
+          <span class="error">Project is required*</span>
+        }
       </div>
       <!-- End of Row three -->
       <hr />
@@ -139,3 +145,4 @@
     <!-- <button type="submit" class="save-btn">Save Owner</button> -->
   </div>
 </form>
+<p-toast/>
