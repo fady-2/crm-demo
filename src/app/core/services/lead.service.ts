@@ -24,22 +24,27 @@ export class LeadService {
   constructor(private http: HttpClient) {}
 
   getAll() {
-    return this.http.get<LeadModel[]>('http://localhost:3000/api');
+  return this.http.get<LeadModel[]>(
+    'http://localhost:3000/api/items');
   }
 
   create(lead: Partial<LeadModel>) {
-    return this.http.post<LeadModel>('http://localhost:3000/api', lead)
-    .pipe(
-      tap(newLead => this.leadCreatedSource.next(newLead))
-    );
-  }
+  return this.http.post<LeadModel>(
+    'http://localhost:3000/api/items',
+    lead
+  ).pipe(
+    tap(newLead => this.leadCreatedSource.next(newLead))
+  );
+}
 
   update(id: number, lead: Partial<LeadModel>) {
-    return this.http.put<LeadModel>(`http://localhost:3000/api/${id}`, lead)
-    .pipe(
-      tap(updatedLead => this.leadUpdatedSource.next(updatedLead)) //سيرشت عنها  فهمت اانها مش بيتبعت حاجه بعدها بسس هسال م فادي
-    );
-  }
+  return this.http.put<LeadModel>(
+    `http://localhost:3000/api/items/${id}`,
+    lead
+  ).pipe(
+    tap(updatedLead => this.leadUpdatedSource.next(updatedLead))
+  );
+}
 
   addLocalLead(lead: LeadModel) {
     this.leadCreatedSource.next(lead);
@@ -53,4 +58,15 @@ export class LeadService {
   requestEditLead(lead: LeadModel) {
     this.editLeadSource.next(lead);
   }
+
+
+  
+
+  deleteLead(id: number) {
+  return this.http.delete(
+    `http://localhost:3000/api/items/${id}`
+  );
+}
+
+
 }

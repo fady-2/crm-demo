@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { LeadService } from '../../../../../../core/services/lead.service';
 import { LeadModel } from '../../../../../../core/models/lead.model';
-
 @Component({
   selector: 'app-create-lead-cforms',
   imports: [ReactiveFormsModule],
@@ -74,7 +73,8 @@ export class CreateLeadCforms implements OnChanges {
           this.close();
         }
       });
-    } else {
+    }
+     else {
        this.leadService.create(formValue).subscribe({
         next: (response) => {
           this.leadForm.reset();

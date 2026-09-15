@@ -166,6 +166,7 @@ columns = [
 
 
 
+
   loading = true;
 
   activityValues: number[] = [0, 100];
@@ -271,6 +272,36 @@ showLeadDetails = false;
     projects: []
   };
 }
+
+
+
+
+// deleted(id:number){
+// this.leadService.deleteLead(id).subscribe(()=>{
+//   this.leads=this.leads.filter( lead=>lead.id !==id)
+// });
+// }
+ 
+
+deleted(id: number) {
+  this.leadService.deleteLead(id).subscribe({
+    next: () => {
+      this.leads = this.leads.filter(lead => lead.id !== id);
+    },
+    error: (error) => {
+      console.error('Error deleting (backend not reachable):', error);
+      this.leads = this.leads.filter(lead => lead.id !== id);
+    }
+  });
+}
+
+
+
+
+
+
+
+
 
 
 }
