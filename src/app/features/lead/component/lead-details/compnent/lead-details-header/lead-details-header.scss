@@ -1,0 +1,227 @@
+  
+.lead-header {
+  background-color: #f2f4f7;
+  border-bottom: 1px solid #e5e8ef;
+}
+
+ 
+.back-leads {
+  border: 0;
+  padding: 20px 24px 0;
+
+  background: transparent;
+  color: #64748b;
+
+  cursor: pointer;
+
+  margin-bottom: 16px;
+}
+
+ 
+.header-top {
+  padding: 5px;
+
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  min-height: 125px;
+}
+
+.header-left {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+ 
+.lead-header-img {
+  margin-left: 10px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 48px;
+}
+
+.lead-title {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 22px;
+  font-weight: 700;
+}
+
+ 
+.contact-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  color: #64748b;
+
+  img {
+    cursor: pointer;
+  }
+}
+
+ 
+.project-select {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  height: 40px;
+
+  border-radius: 18px;
+
+  background: #e9edf4;
+}
+
+ 
+.rating-row {
+  display: flex;
+
+  gap: 2px;
+}
+
+.star {
+  color: #d5dbe5;
+
+  font-size: 20px;
+}
+
+.star.filled {
+  color: #ffc400;
+}
+
+ 
+.full-view-btn {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  width: fit-content;
+
+  margin-top: 6px;
+
+  padding: 7px 12px;
+
+  border: 1px solid #d9dee8;
+
+  border-radius: 7px;
+
+  background: #fff;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  &:hover {
+    background: #f9fafb;
+  }
+}
+
+  
+.header-actions {
+  display: flex;
+
+  flex-direction: row;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: -15px;
+
+  flex-wrap: nowrap;
+}
+
+app-shared-buttons {
+  padding-top: 15px;
+
+  border-color: transparent !important;
+
+  margin: auto;
+}
+
+ 
+.tabs-row {
+  display: flex;
+
+  justify-content: space-around;
+
+  background-color: #fff;
+
+  border-top: 1px solid #eaecf0;
+}
+
+.tab-arrow {
+  border: none;
+
+  background: transparent;
+
+  color: #667085;
+
+  padding: 14px 12px;
+
+  cursor: pointer;
+}
+
+.tab {
+  position: relative;
+
+  border: none;
+
+  background: transparent;
+
+  padding: 14px 16px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #667085;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  &.active {
+    border-radius: 6px 6px 0 0;
+
+    background: #e8f0ff;
+
+    color: #4267c8;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+
+      bottom: -1px;
+
+      height: 2px;
+    }
+  }
+}
+
+.header-divider{
+    width: 150%;
+}
+ 

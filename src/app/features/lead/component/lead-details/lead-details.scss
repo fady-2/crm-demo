@@ -8,7 +8,7 @@ background-color: #F2F4F7;
   display: flex;
   flex-direction: column;
   gap: 16px;
- width: 95%;
+ width: 55%;
   margin: 0 auto;
 }
 
@@ -109,13 +109,10 @@ background-color: #F2F4F7;
 
 
 
-.header-actions {
+ .header-actions {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  text-align: center;
   gap: 8px;
-  margin-top: -15px;
   flex-wrap: nowrap;
 }
 .icon-btn {
@@ -137,8 +134,7 @@ background-color: #F2F4F7;
   background-color: #FFFFFF;
   // gap: 4px;
   border-top: 1px solid #EAECF0;
-  overflow-x: auto;
-}
+ }
 
 .tab-arrow {
   border: none;
@@ -188,9 +184,10 @@ background-color: #F2F4F7;
   font-size: 15px;
   font-weight: 700;
   border: 0px solid #F2F4F7;
-margin-left: -10px;
+margin-left: -2px;
       background-color: #F2F4F7;
 
+   
 
 }
 
@@ -370,54 +367,12 @@ display: grid;
   color: #64748b;
   cursor: pointer;
   margin-bottom: 16px;
-}
 
-.header-top {
-    // padding: 8px 4px 0;
-
-    padding: 5px;
-  display: flex;
-  align-items: flex-start;
-  gap: 24px;
-  min-height: 125px;
-}
-
-.header-left {
-  flex: 1;
-}
-
-.lead-title {
-  margin: 0 0 8px;
-  color: #172033;
-  font-size: 22px;
-}
-
-.contact-row {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  color: #64748b;
-}
-
-
-.project-select {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  // gap: 8px;
-  // padding: 0px 3px;
-  height: 40px;
-  border-radius: 18px;
-  background: #e9edf4;
+ 
   
 }
 
-
-// .chevron {
-//   font-size: 20px;
-//   line-height: 1;
-// }
-
+ 
 .star {
   color: #d5dbe5;
   font-size: 20px;
@@ -447,19 +402,7 @@ display: grid;
 
 
 
-.tabs-row {
-  display: flex;
-  gap: 22px;
-  margin-top: 18px;
-}
-
-.tab,
-.tab-arrow {
-  padding: 10px 14px;
-  border: 0;
-  background: transparent;
-  color: #64748b;
-}
+ 
 
 .tab.active {
   border-radius: 6px 6px 0 0;
@@ -515,9 +458,12 @@ display: grid;
 }
 
 app-shared-buttons{
-  text-align: center;
-  align-items: center;
-  padding: 7px;
+  // text-align: center;
+  // align-items: center;
+  // padding: 7px;
+  padding-top: 15px;
+  // pas
+  border-color: transparent !important;
   margin: auto;
   // margin: 5px;
 }

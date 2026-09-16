@@ -167,7 +167,7 @@ columns = [
 
 
 
-  loading = true;
+  loading = false;
 
   activityValues: number[] = [0, 100];
 

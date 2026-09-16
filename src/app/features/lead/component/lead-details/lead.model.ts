@@ -12,8 +12,7 @@ export interface Project {
 
 export interface Lead {
   name: string;
-    id: number;
-
+   id: number;
   email: string;
   mobile1: string;
   mobiles: string[];
