@@ -12,6 +12,12 @@ import { OwnerService } from './services/owner-service';
 import { ConfirmDialog } from '../../shared/UI/confirm-dialog/confirm-dialog';
 import { Subscription } from 'rxjs';
 
+
+export interface StateOption {
+  label: string;
+  value: string;
+}
+
 @Component({
   selector: 'app-owner-page',
   standalone: true,
@@ -40,6 +46,21 @@ export class OwnerPageComponent implements OnInit, OnDestroy {
     { key: 'propertyType', label: 'Property Type' },
   ]
   //##################################################
+  options: StateOption[] = [
+    { label: 'All Owners', value: 'all' },
+    { label: 'Ferch', value: 'ferch' },
+    { label: 'Deal', value: 'deal' },
+    { label: 'Sale', value: 'sale' },
+    { label: 'Rent', value: 'rent' },
+    { label: 'Trash', value: 'trash' },
+    {label : ":" , value : "others" }
+  ];
+  selectedOption = signal('all');
+  onValueChanged() {
+    console.log(this.selectedOption());
+  }
+  //##################################################
+  //##################################################
 
   ngOnInit() {
     this.srv.loadOwners();
@@ -50,6 +71,9 @@ export class OwnerPageComponent implements OnInit, OnDestroy {
   selectedOwner: any | null = null;
   onRowSelected(owner: OwnerForm) {
     this.selectedOwner = owner;
+  }
+  onCreateOwner() {
+    this.selectedOwner = null;
   }
   onDeleteRow(owner: OwnerForm) {
     this.ownerToDelete = owner;

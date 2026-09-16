@@ -7,4 +7,11 @@ select.form-select{
     .p-inputtext{
         border-radius: 0 8px 8px 0 ;
     }
+    .p-inputicon{
+        position: absolute ;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-25%);
+        background-color: rgba(0, 162, 255 , .3) !important;
+    }
 }

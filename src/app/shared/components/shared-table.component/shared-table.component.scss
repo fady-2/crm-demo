@@ -1,3 +1,6 @@
+:host ::ng-deep .p-datatable-tbody > tr:nth-child(odd) {
+  background-color: #f5f5f5;
+}
 tbody, td, tfoot, th, thead, tr{
   text-align: center;
 }

@@ -3,7 +3,6 @@
   [buttonText]="'back to Owners'"
   [buttonClass]="'neutral outline'"
   [buttonIcon]="'bi bi-arrow-left'"
-  (click)="navigateToOwners()"
 />
 
 <div class="d-flex align-items-center justify-content-between">
@@ -220,5 +219,5 @@
   <app-shared-button [buttonClass]="'neutral outline'" [buttonIcon]="'bi bi-chevron-up'" />
 </div>
 <div class="info-card bg-white">
-  <p>This is the owner information card.</p>
+  <p>This is the owner information card and {{ owner()?.notes }}.</p>
 </div>

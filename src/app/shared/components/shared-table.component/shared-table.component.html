@@ -17,37 +17,17 @@
       <ng-template #header let-columns>
         <tr>
           @for (col of columns; track col.key) {
-            <th class="small text-uppercase text-secondary bg-light table-header-tracking">
+            <th class="small text-uppercase text-secondary bg-light-subtle table-header-tracking">
               {{ col.label }}
             </th>
           }
-          <th class="small text-uppercase text-secondary bg-light table-header-tracking"></th>
+          <th class="small text-uppercase text-secondary bg-light-subtle table-header-tracking"></th>
         </tr>
       </ng-template>
       <ng-template #body let-rowData let-columns="columns">
         <tr class="text-center">
           @for (col of columns; track col.key) {
-            @if (
-              col.key === 'probertyType' ||
-              col.key === 'project' ||
-              col.key === 'stage' ||
-              col.key === 'currentActoin'
-            ) {
-              <td>
-                <span class="badge bg-light text-dark rounded-pill border px-2 py-1 fw-normal">{{
-                  rowData[col.key]
-                }}</span>
-              </td>
-            } @else if (col.key === 'assigendTo') {
-              <td>
-                <div class="d-flex align-items-center gap-2">
-                  <img [src]="imgSrc" class="rounded-circle" width="30" height="30" alt="avatar" />
-                  <span class="small fw-semibold">{{ rowData[col.key] }}</span>
-                </div>
-              </td>
-            } @else {
-              <td>{{ rowData[col.key] }}</td>
-            }
+            <td>{{ rowData[col.key] }}</td>
           }
           <td>
             <div class="opacity-0">

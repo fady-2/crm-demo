@@ -1,11 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SelectButtonModule } from 'primeng/selectbutton';
-
-export interface StateOption {
-  label: string;
-  value: string;
-}
+import { StateOption } from '../../../features/owner-page/owner-page.component';
 
 @Component({
   selector: 'app-taps',
@@ -14,17 +10,6 @@ export interface StateOption {
   styleUrl: './taps.component.scss',
 })
 export class TapsComponent {
-  options = [
-    { label: 'All Owners', value: 'all' },
-    { label: 'Ferch', value: 'ferch' },
-    { label: 'Deal', value: 'deal' },
-    { label: 'Sale', value: 'sale' },
-    { label: 'Rent', value: 'rent' },
-    { label: 'Trash', value: 'trash' },
-    {label : ":" , value : "others" }
-  ];
-  selectedOption = signal('all');
-  valueChanged() {
-    console.log(this.selectedOption());
-  }
+  options = input.required<StateOption[]>();
+  valueChanged = output<any>()
 }

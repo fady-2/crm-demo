@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { InputIconModule } from 'primeng/inputicon';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputTextModule } from 'primeng/inputtext';
@@ -20,9 +20,6 @@ export class SharedSearchComponent {
     { label: 'All', value: 'all' },
     { label: 'Ferch', value: 'ferch' },
     { label: 'Deal', value: 'deal' },
-    { label: 'Sale', value: 'sale' },
-    { label: 'Rent', value: 'rent' },
-    { label: 'Trash', value: 'trash' },
   ]
-  selectedOption = signal('all');
+
 }

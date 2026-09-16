@@ -10,21 +10,27 @@
     [buttonIcon]="'bi bi-plus-lg'"
     data-bs-toggle="offcanvas"
     data-bs-target="#createOwnerSidebar"
+    (click)="onCreateOwner()"
   />
 </app-header>
 <!-- Filteration Tabs -->
-<div class="d-flex justify-content-between align-items-center p-3 bg-white">
-  <app-taps />
-  <app-filteration />
+<div class="card shadow-lg border-1 rounded-3 overflow-auto">
+  <div class="d-flex justify-content-between align-items-center p-3 bg-white">
+    <app-taps 
+      [options]="options"
+      (valueChanged)="onValueChanged()"
+    />
+    <app-filteration />
+  </div>
+  <!-- End of Filteration Tabs -->
+  <app-shared-table
+    [columns]="columns"
+    [data]="srv.data()"
+    (rowSelected)="onRowSelected($event)"
+    (deleteRow)="onDeleteRow($event)"
+    (editRow)="onEditRow($event)"
+  />
 </div>
-<!-- End of Filteration Tabs -->
-<app-shared-table
-  [columns]="columns"
-  [data]="srv.data()"
-  (rowSelected)="onRowSelected($event)"
-  (deleteRow)="onDeleteRow($event)"
-  (editRow)="onEditRow($event)"
-/>
 <app-confirm-dialog
   [visible]="showConfirmDialog()"
   [title]="'Confirm Deleting'"
@@ -35,14 +41,6 @@
 />
 <!-- Sidebar for details -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="ownerSidebar">
-  <div class="offcanvas-header">
-    <button
-      (click)="onClose()"
-      type="button"
-      class="btn-close"
-      data-bs-dismiss="offcanvas"
-    ></button>
-  </div>
   <div class="offcanvas-body bg-light">
     <app-owner-details [owner]="selectedOwner" />
   </div>

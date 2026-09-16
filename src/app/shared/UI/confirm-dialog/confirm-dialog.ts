@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
   standalone: true,
   imports: [DialogModule, ButtonModule],
   templateUrl: './confirm-dialog.html',
+  styleUrl: './confirm-dialog.scss',
 })
 export class ConfirmDialog {
   visible = input.required<boolean>();
