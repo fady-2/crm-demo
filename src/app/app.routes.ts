@@ -25,4 +25,9 @@ export const routes: Routes = [
     path: 'main',
     loadComponent: () => import('./features/main/main').then((m) => m.Main),
   },
+  {
+    path: 'metaLog',
+    loadComponent: () =>
+      import('./features/meta-conversions-log/meta-conversions-log').then((m) => m.MetaConversionsLog),
+  }
 ];
