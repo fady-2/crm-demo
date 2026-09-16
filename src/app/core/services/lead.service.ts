@@ -54,8 +54,7 @@ export class LeadService {
     this.leadUpdatedSource.next(lead);
   }
 
-  // جديد
-  requestEditLead(lead: LeadModel) {
+   requestEditLead(lead: LeadModel) {
     this.editLeadSource.next(lead);
   }
 

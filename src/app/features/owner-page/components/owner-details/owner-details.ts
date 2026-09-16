@@ -1,8 +1,8 @@
 import { Component, inject, input } from '@angular/core';
-import { Owner } from '../owner-page/models/owner.model';
-import { SharedButtonComponent } from "../../shared/components/shared-button.component/shared-button.component";
+import { OwnerForm } from '../../models/owner.model';
+import { SharedButtonComponent } from "../../../../shared/components/shared-button.component/shared-button.component";
 import { Router } from '@angular/router';
-import { SharedTagComponent } from "../../shared/components/shared-tag.component/shared-tag.component";
+import { SharedTagComponent } from "../../../../shared/components/shared-tag.component/shared-tag.component";
 
 @Component({
   selector: 'app-owner-details',
@@ -12,7 +12,7 @@ import { SharedTagComponent } from "../../shared/components/shared-tag.component
 })
 export class OwnerDetails {
   router = inject(Router);
-  owner = input.required<Owner | null>();
+  owner = input.required<OwnerForm | null>();
 
   actionButtons = [
     { text: 'Add Action', class: 'primary', icon: 'bi bi-plus-lg' },

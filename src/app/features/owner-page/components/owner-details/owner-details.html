@@ -11,7 +11,7 @@
   <div class="info-text d-flex align-items-center justify-content-center gap-2">
     <div>
       <h3 class="mb-0">{{ owner()?.name }}</h3>
-      <p class="owner-mob mt-0">{{ owner()?.mobile }}</p>
+      <p class="owner-mob mt-0">{{ owner()?.phone }}</p>
     </div>
     <app-shared-button [buttonIcon]="'bi bi-share'" [buttonClass]="'basic p-1'" />
   </div>
@@ -68,12 +68,12 @@
     <!-- ########################################-->
     <div class="col d-flex align-items-center justify-content-between border-end">
       <span class="field-label">Mobile</span>
-      @if (owner()?.mobile) {
+      @if (owner()?.phone) {
         <div class="d-flex align-items-center gap-2 field-value">
           <i class="bi bi-telephone-fill text-secondary"></i>
           <i class="bi bi-whatsapp text-success"></i>
           <i class="bi bi-telegram text-info"></i>
-          <span>{{ owner()?.mobile }}</span>
+          <span>{{ owner()?.phone }}</span>
         </div>
       } @else {
         <span class="field-value">No Data</span>
@@ -84,8 +84,8 @@
     <div class="col d-flex align-items-center justify-content-between">
       <span class="field-label">Project</span>
       <span class="field-value">
-        @if (owner()?.project) {
-          {{ owner()?.project }}
+        @if (owner()?.projectId) {
+          {{ owner()?.projectId }}
         } @else {
           No Data
         }
@@ -95,8 +95,8 @@
     <div class="col d-flex align-items-center justify-content-between border-end">
       <span class="field-label">Seller Request</span>
       <span class="field-value">
-        @if (owner()?.sellerRequest) {
-          {{ owner()?.sellerRequest }}
+        @if (owner()?.phase) {
+          {{ owner()?.phase }}
         } @else {
           No Data
         }
@@ -115,8 +115,8 @@
     <div class="col d-flex align-items-center justify-content-between border-end">
       <span class="field-label">Creation Date</span>
       <span class="field-value">
-        @if (owner()?.creationDate) {
-          {{ owner()?.creationDate }}
+        @if (owner()?.category) {
+          {{ owner()?.category }}
         } @else {
           No Data
         }
@@ -127,8 +127,8 @@
     <div class="col d-flex align-items-center justify-content-between">
       <span class="field-label">Last Update</span>
       <span class="field-value">
-        @if (owner()?.lastUpdate) {
-          {{ owner()?.lastUpdate }}
+        @if (owner()?.category) {
+          {{ owner()?.category }}
         } @else {
           No Data
         }
@@ -137,10 +137,10 @@
     <!-- ########################################-->
     <div class="col d-flex align-items-center justify-content-between">
       <span class="field-label">Sales Rep</span>
-      @if (owner()?.salesRep) {
+      @if (owner()?.name && owner()?.email) {
         <div class="d-flex flex-column justify-content-center align-items-center">
-          <span class="field-value mb-0">{{ owner()?.salesRep?.name }}</span>
-          <span class="sales-rep-email mt-0">{{ owner()?.salesRep?.email }}</span>
+          <span class="field-value mb-0">{{ owner()?.name && owner()?.email? owner()?.name : 'No Data' }}</span>
+          <span class="sales-rep-email mt-0">{{ owner()?.name && owner()?.email? owner()?.email : 'No Data' }}</span>
         </div>
       } @else {
         <span class="field-value mb-0">No Data</span>
@@ -204,8 +204,8 @@
     <div class="col d-flex align-items-center justify-content-between">
       <span class="field-label">Property Type</span>
       <span class="field-value">
-        @if (owner()?.property) {
-          {{ owner()?.property }}
+        @if (owner()?.propertyType) {
+          {{ owner()?.propertyType }}
         } @else {
           No Data
         }

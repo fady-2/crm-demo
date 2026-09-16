@@ -1,0 +1,141 @@
+<div class="mb-5">
+  <h3 class="header-name mb-0">Create Owner</h3>
+  <p class="header-info mt-0">You can import up 1000 records in one time</p>
+</div>
+<form [formGroup]="createOwner" (ngSubmit)="onSaveOwner()">
+  <div class="form-card bg-white">
+    <div class="row g-3">
+      <!-- Row one -->
+      <div class="col-md-6">
+        <label for="name" class="label">Name<span class="error">*</span></label>
+        <input
+          type="text"
+          class="control"
+          id="name"
+          formControlName="name"
+          placeholder="What is your title?"
+        />
+        @if (createOwner.get('name')?.invalid && createOwner.get('name')?.touched) {
+          <span class="error">Name is required*</span>
+        }
+      </div>
+      <div class="col-md-6">
+        <label for="email" class="label">Email Address</label>
+        <div class="input-with-icon">
+          <input
+            type="text"
+            class="control"
+            id="email"
+            formControlName="email"
+            placeholder="What is your Email?"
+          />
+          <i class="bi bi-envelope input-icon"></i>
+        </div>
+        @if (createOwner.get('email')?.invalid && createOwner.get('email')?.touched) {
+          <span class="error">Email is required*</span>
+        }
+      </div>
+      <!-- End of Row one -->
+      <!-- Row two -->
+      <div class="col-md-6">
+        <label for="phone" class="label">Mobile</label>
+        <input
+          type="text"
+          class="control"
+          id="phone"
+          formControlName="phone"
+          placeholder="What is your Phone?"
+        />
+      </div>
+      <div class="col-md-6 position-relative">
+        <!-- <app-shared-button [buttonText]="'Add Phone'" [buttonClass]="'secondary outline'" /> -->
+        <button type="button" class="add-phone-btn"><i class="bi bi-plus-lg"></i> Add Phone</button>
+      </div>
+      <!-- End of Row two -->
+      <!-- Row three -->
+      <div class="col-12">
+        <label for="project" class="label">Project</label>
+        <select formControlName="projectId" class="control" id="project">
+          <option class="opt-text" [ngValue]="null" disabled hidden>Select Project</option>
+          @for (p of projects; track p.value) {
+            <option [ngValue]="p.value">{{ p.name }}</option>
+          }
+        </select>
+      </div>
+      <!-- End of Row three -->
+      <hr />
+      <!-- Row four -->
+      <div class="col-md-6">
+        <label for="bua" class="label">BUA</label>
+        <input type="text" class="control" id="bua" formControlName="bua" placeholder="Enter BUA" />
+      </div>
+      <div class="col-md-6">
+        <label for="phase" class="label">Phase</label>
+        <input type="text" class="control" id="phase" formControlName="phase" placeholder="Phase" />
+      </div>
+      <!-- End of Row four -->
+      <!-- Row five -->
+      <div class="col-md-6">
+        <label for="code" class="label">Code</label>
+        <input
+          type="text"
+          class="control"
+          id="code"
+          formControlName="code"
+          placeholder="Enter Code"
+        />
+      </div>
+      <div class="col-md-6"></div>
+      <!-- End of Row five -->
+      <hr />
+      <!-- Row six -->
+      <div class="col-md-6">
+        <label for="category" class="label">Category</label>
+        <select formControlName="category" class="control" id="category">
+          <option class="opt-text" [ngValue]="null" disabled hidden>Select Category</option>
+          @for (c of categories; track c.value) {
+            <option [ngValue]="c.value">{{ c.name }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="propertyType" class="label">Property type</label>
+        <select formControlName="propertyType" class="control" id="propertyType">
+          <option class="opt-text" [ngValue]="null" disabled hidden>Select Property Type</option>
+          @for (t of propertyTypes; track t.value) {
+            <option [ngValue]="t.value">{{ t.name }}</option>
+          }
+        </select>
+      </div>
+      <!-- End of Row six -->
+      <!-- Row seven -->
+      <div class="col-12">
+        <label for="notes" class="label">Notes</label>
+        <textarea
+          class="notes-control"
+          id="notes"
+          formControlName="notes"
+          placeholder="Enter your comment here..."
+        ></textarea>
+        <!-- End of Row seven -->
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-end mt-4 gap-2">
+    <app-shared-button [buttonText]="'Cancel'" [buttonClass]="'basic'" (click)="onCancel()" />
+    @if (!ownerData()) {
+      <app-shared-button
+        [buttonText]="'Save Owner'"
+        [buttonClass]="'primary'"
+        (click)="onSaveOwner()"
+      />
+    } @else {
+      <app-shared-button
+        [buttonText]="'Update Owner'"
+        [buttonClass]="'secondary'"
+        (click)="onUpdate()"
+      />
+    }
+    <!-- <button type="submit" class="save-btn">Save Owner</button> -->
+  </div>
+</form>
