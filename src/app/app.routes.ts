@@ -1,6 +1,12 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
+
+    {
+    path: 'lead-details',
+    loadComponent: () =>
+      import('./features/lead/component/lead-details/lead-details').then((m) => m.LeadDetails),
+  },
   {
     path: '',
     redirectTo: 'leads',
@@ -12,6 +18,16 @@ export const routes: Routes = [
     loadComponent: () => import('./features/lead/leads').then((m) => m.Leads),
   },
 
+  //   {
+  //   path: 'lead-details',
+  //   loadComponent: () => import('./features/lead/lead-details').then((m) => m.Leads),
+  // },
+
+  //   {
+  //   path: 'lead-details',
+  //   loadComponent: () =>
+  //     import('./features/lead/component/lead-details/lead-details').then((m) => m.LeadDetails),
+  // },
   {
     path: 'owner',
     loadComponent: () =>

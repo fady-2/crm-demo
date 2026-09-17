@@ -1,95 +1,27 @@
 
 
 <div class="lead-page"
-  [class.sidebar-mode]="isSidebar"
-
->
-
- <div class="lead-header">
-
-  <button class="back-leads" type="button">
-    ← <span>Back to leads</span>
-  </button>
-
-  <div class="header-top">
-
-    <div class="header-left">
-      <div class="lead-header-img">
-    <!-- <h1 class="lead-title">  {{ lead.name }}</h1> -->
-
-  @if (showTitle) {
-  <h1 class="lead-title">{{ lead.name }}</h1>
-}
-
-  <img src="icons/phone.png" alt="arrow" />
-</div>
-      <div class="contact-row">
-        <span class="phone">{{ lead.mobile1 }}</span>
-
-        <img src="icons/call.png"  width="25" height="25"  alt="call">
-        <img src="icons/whatsapp.png"  width="26" height="26" alt="whatsapp">
-        <img src="icons/truecaller.png"  width="26" height="26" alt="call">
-
-        <div class="project-select">
-          <span>{{ lead.projectName }}  </span>
-          <!-- <span class="chevron">⌄</span> -->
-           <img src="icons/arrowdown.png" alt="">
-        </div>
-      </div>
-
-      <div class="rating-row">
-        <span
-          *ngFor="let s of stars"
-          class="star"
-          [class.filled]="s <= rating">
-          ★
-        </span>
-      </div>
-
-      <button class="full-view-btn" type="button">
-         <img src="icons/arrow-sm.png"/>
-                  <span>Full View</span>
-
-      </button>
-    </div>
-
- 
-    <div class="header-actions">
-      <app-shared-buttons
-        *ngFor="let button of actionButtons"
-        [text]="button.text"
-        [icon]="button.icon"
-        [width]="button.width"
-        [height]="button.height"
-        [className]="button.className"
-        [backgroundColor]="button.backgroundColor"
-        [textColor]="button.textColor"
-        [borderColor]="button.borderColor"
-          [borderRadius]="button.borderRadius">
-
-      </app-shared-buttons>
-    </div>
-  </div>
-
-
-  <div class="tabs-row">
-    <button class="tab-arrow" type="button">→</button>
-
-    <button
-      *ngFor="let tab of tabs"
-      class="tab"
-      [class.active]="tab === activeTab"
-      (click)="setActiveTab(tab)">
-      {{ tab }}
-    </button>
-  </div>
-</div>
-
+  [class.sidebar-mode]="isSidebar">
+   
+   <app-lead-header
+  [lead]="lead"
+  [showTitle]="showTitle">
+</app-lead-header>
+  
  <div class="card-header">
-      <span>Lead</span>
-      <!-- <span class="chevron">⌃</span> -->
-       <img src="icons/uparrow.png" alt="">
-    </div>
+        <span >Projects</span>
+
+      <img src="icons/uparrow.png" />
+     </div>
+
+
+
+
+
+
+
+
+
 
   <div class="card lead-card">
    
@@ -161,9 +93,10 @@
 
   <div class="card projects-card">
     <div class="card-header">
-      <span>Projects</span>
-      <span class="chevron">⌃</span>
-    </div>
+             <span  >Projects</span>
+
+      <img src="icons/uparrow.png" />
+     </div>
 
     <table class="projects-table">
       <thead class="head-table">
@@ -178,7 +111,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let project of lead.projects; let i = index">
+        <tr *ngFor="let project of  Project; let i = index">
           <td>{{ i + 1 }}</td>
           <td>{{ project.name }}</td>
           <td>{{ project.channel }}</td>

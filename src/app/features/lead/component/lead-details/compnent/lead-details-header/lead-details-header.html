@@ -1,0 +1,154 @@
+ <div class="lead-header">
+
+  <button
+    class="back-leads"
+    type="button"
+  >
+    <img
+      src="icons/sidearrow.png"
+      width="13"
+      height="13"
+      class="side-arrow"
+      alt=""
+    />
+  </button>
+
+  <span>Back to leads</span>
+
+  <div class="header-top">
+
+    <div class="header-left">
+
+      <div class="lead-header-img">
+
+        @if (showTitle) {
+          <h1 class="lead-title">
+            {{ lead.name }}
+          </h1>
+        }
+
+        <img
+          src="icons/phone.png"
+          alt="phone"
+          width="35"
+          height="35"
+        />
+
+      </div>
+
+      <div class="contact-row">
+
+        <span class="phone">
+          {{ lead.mobile1 }}
+        </span>
+
+        <img
+          src="icons/call.png"
+          width="25"
+          height="25"
+          alt="call"
+        />
+
+        <img
+          src="icons/whatsapp.png"
+          width="26"
+          height="26"
+          alt="whatsapp"
+        />
+
+        <img
+          src="icons/truecaller.png"
+          width="26"
+          height="26"
+          alt="truecaller"
+        />
+
+        <div class="project-select">
+
+          <span>
+            {{ lead.projectName }}
+          </span>
+
+          <img
+            src="icons/arrowdown.png"
+            alt=""
+          />
+
+        </div>
+
+      </div>
+
+      <div class="rating-row">
+
+        <span
+           *ngFor="let s of stars"
+          class="star"
+          [class.filled]="s <= rating"
+        >
+          ★
+        </span>
+
+      </div>
+
+      <button
+        class="full-view-btn"
+        type="button"
+      >
+        <img
+          src="icons/arrow-sm.png"
+          alt=""
+        />
+
+        <span>Full View</span>
+      </button>
+
+      <hr class="header-divider" />
+
+    </div>
+ 
+<div class="header-actions">
+
+  <app-shared-buttons
+    *ngFor="let button of actionButtons"
+    [text]="button.text"
+    [icon]="button.icon"
+    [width]="button.width"
+    [height]="button.height"
+    [borderColor]="button.borderColor"
+    [className]="button.className"
+    [backgroundColor]="button.backgroundColor"
+    [textColor]="button.textColor"
+    [borderColor]="button.borderColor"
+    [borderRadius]="button.borderRadius"
+  />
+
+</div> 
+
+  </div>
+
+  <div class="tabs-row">
+
+    <button
+      class="tab-arrow"
+      type="button"
+    >
+      <img
+        src="icons/sidearrow.png"
+        alt=""
+      />
+    </button>
+
+    <button
+    
+      *ngFor="let tab of tabs"
+      class="tab"
+      [class.active]="tab === activeTab"
+      (click)="setActiveTab(tab)"
+    >
+      {{ tab }}
+    </button>
+
+  </div>
+
+</div>
+ 

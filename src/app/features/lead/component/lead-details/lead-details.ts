@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { SharedButtons } from '../../../../shared/components/shared-button/shared-buttons/shared-buttons';
 import { Lead } from './lead.model';
+import { CreateLeadHeader } from '../create-lead/components/create-lead-header/create-lead-header';
+import { LeadHeader } from './compnent/lead-details-header/lead-details-header';
 
 @Component({
   selector: 'app-lead-details',
   standalone: true,
-  imports: [CommonModule, SharedButtons],
+  imports: [CommonModule, SharedButtons, CreateLeadHeader,LeadHeader],
   templateUrl: './lead-details.html',
   styleUrl: './lead-details.scss',
 })
@@ -85,4 +87,19 @@ export class LeadDetails {
   setActiveTab(tab: string): void {
     this.activeTab = tab;
   }
+
+
+
+  Project=[
+    { name: 'HR',
+    channel: 'Sahary',
+    salesman: 'Kemo',
+    createdBy: 'Hos',
+    creationDate: '16/9/2026',
+    status: ' Emprt'}
+  ]
+
+
+
+
 }

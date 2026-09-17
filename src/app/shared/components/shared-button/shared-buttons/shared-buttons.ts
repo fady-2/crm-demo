@@ -12,7 +12,7 @@ export class SharedButtons {
 @Input() icon:string='';
 @Input() backgroundColor :string='';
 @Input() textColor: string='';
-@Input() borderColor:string='';
+@Input() borderColor:string='transparent';
 @Input() className:string='';
   @Input() width: string = '38px';
 @Input() borderRadius: string | null = null;  

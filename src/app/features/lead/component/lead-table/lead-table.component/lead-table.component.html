@@ -233,243 +233,136 @@
 
 
     <!-- Body -->
-    <ng-template
-      pTemplate="body"
-      let-lead
-    >
-
-      <tr class="p-selectable-row"
-      
-        (click)="selectLead(lead)"
-
-      >
-
-        <!-- Checkbox -->
-        <td>
-
-          <p-tableCheckbox [value]="lead" />
-
-        </td>
-
-
-        <!-- Name -->
-        <td>
-
-          <div class="img-text">
-
-            <span>
-              {{ lead.LeadName }}
-            </span>
-
-            <button>
-
-              <img
-                src="assets/icons/copy.png"
-                alt="dsds"
-              >
-
-            </button>
-
-          </div>
-
-        </td>
-
-
-        <!-- Country -->
-        <td>
-
-          01007012871
-
-        </td>
-
-
-        <!-- Email -->
-        <td>
-
-          <span class="p-column-title">
-            hos@gmail.com
-          </span>
-
-        </td>
-
-
-        <!-- Date -->
-        <td>
-
-          Aljoman
-
-        </td>
-
-
-        <!-- Balance -->
-        <td>
-
-          <div class="img-table">
-
-            <img
-              [alt]="lead.representative.name"
-              src="https://primefaces.org/cdn/primeng/images/demo/avatar/{{ lead.representative.image }}"
-              width="32"
-              height="32"
-              style="vertical-align: middle"
-            />
-
-            <span class="p-column-title">
-              Balance
-            </span>
-
-          </div>
-
-        </td>
-
-
-        <!-- Status -->
-        <td>
-
-          <div class="status-div">
-
-          <p-tag
-            [value]="lead.status"
-            [ngClass]="getSeverity(lead.status)"
-
-            />
-
-            <span class="span-status">
-
-              {{ lead.date | date:'dd/MM/yyyy hh:mm a' }}
-
-            </span>
-
-          </div>
-
-        </td>
-
-
-        <!-- Activity -->
-        <td>
-
-          <span class="p-column-title">
-
-            {{ lead.text }}
-
-          </span>
-
-        </td>
-
-
-        <td>
-
-          <span class="p-column-title">
-
-            {{ lead.date | date:'dd MMMM yyyy' }}
-
-          </span>
-
-        </td>
-
-
-        <td>
- 
-
-<button
-  class="btn-compare"
-  type="button"
-  data-bs-toggle="offcanvas"
-  data-bs-target="#leadDetailsSidebar"
-  aria-controls="leadDetailsSidebar"
-  (click)="openLeadDetails(lead); $event.stopPropagation()"
+     <ng-template
+  pTemplate="body"
+  let-lead
 >
-  Compare
-</button>
 
-<div
-  class="offcanvas offcanvas-end lead-details-sidebar"
-  tabindex="-1"
-  id="leadDetailsSidebar"
-  aria-labelledby="leadDetailsLabel"
->
-  <div class="offcanvas-header">
-    <h5  class="lead-title" id="leadDetailsLabel"></h5>
-
-    <button
-      type="button"
-      class="btn-close"
-      data-bs-dismiss="offcanvas"
-      aria-label="Close"
-    ></button>
-  </div>
- 
-  <div class="offcanvas-body">
-         @if (selectedLead) {
-       <app-lead-details
-  [lead]="selectedLead"
-   [showTitle]="false"
-    [isSidebar]="true"
+  <tr
+    class="p-selectable-row"
+    (click)="selectLead(lead)"
   >
-</app-lead-details>
-    }
-  </div>
-</div>
+
+    <!-- Checkbox -->
+    <td>
+      <p-tableCheckbox [value]="lead" />
+    </td>
 
 
+    <!-- Name -->
+    <td>
+
+      <div class="img-text">
+
+        <span>
+          {{ lead.name }}
+        </span>
+
+        <button
+          type="button"
+          (click)="$event.stopPropagation()"
+        >
+
+          <img
+            src="assets/icons/copy.png"
+            alt="Copy"
+          >
+
+        </button>
+
+      </div>
+
+    </td>
 
 
-<div
-  class="offcanvas offcanvas-end"
-  tabindex="-1"
-  id="offcanvasRight"
-  aria-labelledby="offcanvasRightLabel"
->
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasRightLabel">
-      Compare Leads
-    </h5>
-
-    <button
-      type="button"
-      class="btn-close"
-      data-bs-dismiss="offcanvas"
-      aria-label="Close"
-    ></button>
-  </div>
-
-  <div class="offcanvas-body">
-    <!-- محتوى المقارنة هنا -->
-  </div>
-</div>
+     <td>
+      {{ lead.phone }}
+    </td>
 
 
+     <td>
+      {{ lead.email }}
+    </td>
 
 
+     <td>
+      {{ lead.projectId }}
+    </td>
 
 
+     <td>
+      {{ lead.bua }}
+    </td>
 
 
+     <td>
+      {{ lead.phase }}
+    </td>
 
 
+     <td>
+      {{ lead.code }}
+    </td>
 
 
+     <td>
+      {{ lead.category }}
+    </td>
 
 
+     <td>
+      {{ lead.propertyType }}
+    </td>
 
 
-        </td>
+     <td>
+      {{ lead.notes }}
+    </td>
 
 
-        <!-- Action -->
-        <td style="text-align: center">
+     <td>
+      {{ lead.createdAt | date:'dd/MM/yyyy' }}
+    </td>
 
-          <p-button
-            icon="pi pi-ellipsis-v"
-            [text]="true"
-            severity="secondary"
-          />
 
-        </td>
+     <td>
 
-      </tr>
+      <button
+        class="btn-compare"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#leadDetailsSidebar"
+        aria-controls="leadDetailsSidebar"
+        (click)="openLeadDetails(lead); $event.stopPropagation()"
+      >
+        Compare
+      </button>
 
-    </ng-template>
+    </td>
+
+
+    <!-- Action -->
+    <td style="text-align: center">
+
+     
+
+ <p-button
+         class="btn-compare"
+
+    type="button"
+     (click)="editLead(lead); $event.stopPropagation()">
+    Edit
+  </p-button>
+
+  <p-button
+  (click)="deleted(lead.id!)"
+  >Delete</p-button>
+
+    </td>
+
+  </tr>
+
+</ng-template>
 
 
     <!-- Empty -->
