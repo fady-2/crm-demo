@@ -2,14 +2,13 @@ import { Component, signal } from '@angular/core';
 import { DatePipe, NgClass } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { MetaConversionLog } from './models/meta-log.model';
-import { TableColumn } from '../../shared/components/shared-table.component/column.model';
 import { MetaLogDetails } from './components/meta-log-details/meta-log-details';
 import { MetaLogFilter } from './components/meta-log-filter/meta-log-filter';
 
 @Component({
   selector: 'app-meta-conversions-log',
   standalone: true,
-  imports: [TableModule, MetaLogDetails , MetaLogFilter, NgClass , DatePipe],
+  imports: [TableModule, MetaLogDetails, MetaLogFilter, NgClass, DatePipe],
   templateUrl: './meta-conversions-log.html',
   styleUrl: './meta-conversions-log.scss',
 })
@@ -21,7 +20,7 @@ export class MetaConversionsLog {
     this.rowSelected.set(rowData);
   }
 
-  getStatusClass(status: MetaConversionLog['status']): string {
+  getStatusClass(status: MetaConversionLog['lead']['status']): string {
     switch (status) {
       case 'Sent':
         return 'status-sent';
@@ -31,44 +30,43 @@ export class MetaConversionsLog {
         return 'status-failed';
     }
   }
-
-  columns: TableColumn<MetaConversionLog>[] = [
-    { key: 'lead', label: 'Lead' },
-    { key: 'journeyStage', label: 'Engaz Journey Stage' },
-    { key: 'metaEvent', label: 'Meta Event' },
-    { key: 'eventDate', label: 'Event Date' },
-    { key: 'status', label: 'Status' },
-    { key: 'failureReason', label: 'Failure Reason' },
-  ];
   // data: MetaConversionLog[] = []
   data: MetaConversionLog[] = [
     {
-      leadId: 'LD-8188',
-      lead: 'Ahmed',
       journeyStage: 'Follow Up',
       metaEvent: 'Follow Up',
       eventDate: new Date(2025, 8, 12, 2, 20),
-      status: 'Sent',
       failureReason: null,
       eventRef: 'EVT-102035',
+      lead: {
+        leadId: 'LD-8188',
+        leadName: 'Ahmed',
+        status: 'Pending',
+      }
     },
     {
-      leadId: 'LD-8188',
-      lead: 'Ahmed',
+      lead: {
+        leadId: 'LD-8189',
+        leadName: 'Ahmed',
+        status: 'Sent',
+
+      },
       journeyStage: 'Meeting Action',
       metaEvent: 'Meeting Scheduled',
       eventDate: new Date(2025, 8, 12, 2, 20),
-      status: 'Pending',
       failureReason: null,
       eventRef: 'EVT-102036',
     },
     {
-      leadId: 'LD-9012',
-      lead: 'Sara',
+      lead: {
+        leadId: 'LD-8180',
+        leadName: 'Sara',
+        status: 'Failed',
+
+      },
       journeyStage: 'Done Deal',
       metaEvent: 'Deal Won',
       eventDate: new Date(2025, 8, 12, 2, 20),
-      status: 'Failed',
       failureReason: 'Integration disconnected before delivery.',
       eventRef: 'EVT-102037',
     },

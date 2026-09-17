@@ -1,8 +1,8 @@
 <div>
   <div class="d-flex align-items-center justify-content-between">
     <div>
-      <h5 class="offcanvas-title">Event Sync Details <span class="ms-2 status-badge" [ngClass]="statusClass()">{{row()?.status}}</span></h5>
-      <p class="offcanvas-subtitle">Qualified Lead for {{ row()?.leadId }}</p>
+      <h5 class="offcanvas-title">Event Sync Details <span class="ms-2 status-badge" [ngClass]="statusClass()">{{row()?.lead?.status}}</span></h5>
+      <p class="offcanvas-subtitle">Qualified Lead for {{ row()?.lead?.leadId }}</p>
     </div>
     <button type="button" data-bs-dismiss="offcanvas" class="close-btn d-flex align-items-center justify-content-center">
       <i class="bi bi-box-arrow-in-right fs-4"></i>
@@ -12,7 +12,7 @@
     <div class="card-body">
       <div class="row">
         <p class="col-md-4">Lead</p>
-        <h5 class="col-md-8">{{ row()?.lead }} / {{ row()?.leadId }}</h5>
+        <h5 class="col-md-8">{{ row()?.lead?.leadName }} / {{ row()?.lead?.leadId }}</h5>
         <p class="col-md-4">Engaz Journey Stage</p>
         <h5 class="col-md-8">{{ row()?.journeyStage }}</h5>
         <p class="col-md-4">Meta Event</p>
@@ -21,7 +21,7 @@
         <h5 class="col-md-8">{{ row()?.eventDate | date:'MMM d, y — h:mm a' }}</h5>
         <p class="col-md-4">Status</p>
         <h5 class="col-md-8">
-          <span class="status-badge" [ngClass]="statusClass()">{{ row()?.status }}</span>
+          <span class="status-badge" [ngClass]="statusClass()">{{ row()?.lead?.status }}</span>
         </h5>
         <p class="col-md-4">Event Reference</p>
         <h5 class="col-md-8">{{ row()?.eventRef}}</h5>

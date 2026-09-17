@@ -31,40 +31,31 @@
     [paginator]="true"
     [rows]="10"
     [rowsPerPageOptions]="[5, 10, 20]"
-    [columns]="columns"
   >
     <ng-template #header let-columns>
       <tr class="table-header">
-        @for (col of columns; track col.key) {
-          @if (col.key === 'journeyStage') {
-            <th>
-              {{ col.label }}
-            </th>
-          } @else {
-            <th [pSortableColumn]="col.key">{{ col.label }} <p-sortIcon [field]="col.key" /></th>
-          }
-        }
+        <th pSortableColumn="lead.leadName">Lead <p-sortIcon field="lead.leadName"/></th>
+        <th pSortableColumn="journeyStage">Engaz Journey Stage <p-sortIcon field="journeyStage"/></th>
+        <th pSortableColumn="metaEvent">Meta Event <p-sortIcon field="metaEvent"/></th>
+        <th pSortableColumn="eventDate">Event Date <p-sortIcon field="eventDate"/></th>
+        <th pSortableColumn="lead.status">Status <p-sortIcon field="lead.status"/></th>
+        <th pSortableColumn="failureReason">Failure Reason <p-sortIcon field="failureReason"/></th>
         <th></th>
       </tr>
     </ng-template>
     <ng-template #body let-rowData let-columns="columns">
       <tr>
-        @for (col of columns; track col.key) {
-          @if (col.key === 'status') {
-            <td>
-              <span class="status-badge" [ngClass]="getStatusClass(rowData.status)">{{
-                rowData[col.key]
-              }}</span>
-            </td>
-          } @else if (col.key === 'eventDate') {
-            <td>
-              <div class="event-time">{{ rowData.eventDate | date: 'HH:mm' }}</div>
-              <div class="event-date">{{ rowData.eventDate | date: 'd/M' }}</div>
-            </td>
-          } @else {
-            <td>{{ rowData[col.key] }}</td>
-          }
-        }
+        <td>{{ rowData?.lead?.leadName }}</td>
+        <td>{{ rowData?.journeyStage }}</td>
+        <td>{{ rowData?.metaEvent }}</td>
+        <td>
+          <div class="event-time">{{ rowData?.eventDate | date: 'HH:mm' }}</div>
+          <div class="event-date">{{ rowData?.eventDate | date: 'd/M' }}</div>
+        </td>
+        <td>
+          <span class="status-badge" [ngClass]="getStatusClass(rowData.lead?.status)">{{ rowData.lead?.status }}</span>
+        </td>
+        <td>{{ rowData?.failureReason }}</td>
         <td>
           <button
             class="btn btn-primary opacity-0"

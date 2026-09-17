@@ -13,7 +13,7 @@ export class MetaLogDetails {
   row = input.required<MetaConversionLog | null>();
 
   statusClass = computed(() => {
-    switch (this.row()?.status) {
+    switch (this.row()?.lead.status) {
       case 'Sent':
         return 'status-sent';
       case 'Pending':
