@@ -27,7 +27,4 @@ export class OwnerDetails {
     'Time Line Log',
     'Owner Seller Request',
   ]
-  navigateToOwners() {
-    this.router.navigate(['/owners']);
-  }
 }

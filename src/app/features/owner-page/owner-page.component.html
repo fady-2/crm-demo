@@ -10,27 +10,37 @@
     [buttonIcon]="'bi bi-plus-lg'"
     data-bs-toggle="offcanvas"
     data-bs-target="#createOwnerSidebar"
+    (click)="onCreateOwner()"
   />
 </app-header>
 <!-- Filteration Tabs -->
-<div class="d-flex justify-content-between align-items-center p-3 bg-white">
-  <app-taps />
-  <app-filteration />
+<div class="card shadow-lg border-1 rounded-3 overflow-auto">
+  <div class="d-flex justify-content-between align-items-center p-3 bg-white">
+    <app-taps 
+      [options]="options"
+      (valueChanged)="onValueChanged()"
+    />
+    <app-filteration />
+  </div>
+  <!-- End of Filteration Tabs -->
+  <app-shared-table
+    [columns]="columns"
+    [data]="srv.data()"
+    (rowSelected)="onRowSelected($event)"
+    (deleteRow)="onDeleteRow($event)"
+    (editRow)="onEditRow($event)"
+  />
 </div>
-<!-- End of Filteration Tabs -->
-<app-shared-table
-  [columns]="columns"
-  [data]="srv.data()"
-  (rowSelected)="onRowSelected($event)"
-  (deleteRow)="onDeleteRow($event)"
-  (editRow)="onEditRow($event)"
+<app-confirm-dialog
+  [visible]="showConfirmDialog()"
+  [title]="'Confirm Deleting'"
+  [message]="'Are you sure you want to delete this owner?'"
+  (confirmed)="onConfirmDelete()"
+  (canceled)="onCancelDelete()"
+  (visibleChange)="showConfirmDialog.set($event)"
 />
-
 <!-- Sidebar for details -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="ownerSidebar">
-  <div class="offcanvas-header">
-    <button (click)="onClose()" type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-  </div>
   <div class="offcanvas-body bg-light">
     <app-owner-details [owner]="selectedOwner" />
   </div>
@@ -40,7 +50,12 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="createOwnerSidebar">
   <div class="offcanvas-header bg-light d-flex justify-content-between align-items-center">
     <app-shared-button [buttonClass]="'basic'" [buttonIcon]="'bi bi-person-add'" />
-    <button (click)="onClose()" type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    <button
+      (click)="onClose()"
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+    ></button>
   </div>
   <div class="offcanvas-body bg-light pt-0">
     <app-create-owner [ownerData]="selectedOwner" />

@@ -9,14 +9,17 @@ import { OwnerForm } from '../models/owner.model';
 export class OwnerService {
   private http = inject(HttpClient);
   private apiUrl = `${environment.apiUrl}/items`;
+  // loading = signal(true); search how to make it work
   data = signal<OwnerForm[]>([]);
   loadOwners() {
     this.http.get<OwnerForm[]>(this.apiUrl).subscribe(
       (res: OwnerForm[]) => {
         this.data.set(res);
+        // this.loading.set(false);
       },
       (err: any) => {
         console.log('err', err);
+        // this.loading.set(false);
       },
     );
   }

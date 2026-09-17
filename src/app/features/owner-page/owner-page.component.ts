@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { HeaderComponent } from '../../shared/components/shared-header.component/header.component';
 import { FilterationComponent } from "./components/filteration.component/filteration.component";
 import { TapsComponent } from "../../shared/UI/taps.component/taps.component";
@@ -9,18 +9,30 @@ import { OwnerDetails } from "./components/owner-details/owner-details";
 import { CreateOwner } from './components/create-owner/create-owner';
 import { SharedButtonComponent } from '../../shared/components/shared-button.component/shared-button.component';
 import { OwnerService } from './services/owner-service';
+import { ConfirmDialog } from '../../shared/UI/confirm-dialog/confirm-dialog';
+import { Subscription } from 'rxjs';
+
+
+export interface StateOption {
+  label: string;
+  value: string;
+}
 
 @Component({
   selector: 'app-owner-page',
   standalone: true,
-  imports: [HeaderComponent, FilterationComponent, TapsComponent, SharedTableComponent, OwnerDetails, CreateOwner, SharedButtonComponent],
+  imports: [HeaderComponent, FilterationComponent, TapsComponent, SharedTableComponent, OwnerDetails, CreateOwner, SharedButtonComponent, ConfirmDialog],
   templateUrl: './owner-page.component.html',
   styleUrl: './owner-page.component.scss',
 })
-export class OwnerPageComponent implements OnInit {
+export class OwnerPageComponent implements OnInit, OnDestroy {
   title = 'Owners';
   description = 'Manage your owners and their information';
   srv = inject(OwnerService);
+  private deleteSub?: Subscription;
+  // private destroyRef = inject(DestroyRef);
+  showConfirmDialog = signal(false);
+  ownerToDelete: OwnerForm | null = null;
   //##################################################
   columns: TableColumn<OwnerForm>[] = [
     { key: 'name', label: 'Name' },
@@ -34,29 +46,63 @@ export class OwnerPageComponent implements OnInit {
     { key: 'propertyType', label: 'Property Type' },
   ]
   //##################################################
+  options: StateOption[] = [
+    { label: 'All Owners', value: 'all' },
+    { label: 'Ferch', value: 'ferch' },
+    { label: 'Deal', value: 'deal' },
+    { label: 'Sale', value: 'sale' },
+    { label: 'Rent', value: 'rent' },
+    { label: 'Trash', value: 'trash' },
+    {label : ":" , value : "others" }
+  ];
+  selectedOption = signal('all');
+  onValueChanged() {
+    console.log(this.selectedOption());
+  }
+  //##################################################
+  //##################################################
 
   ngOnInit() {
     this.srv.loadOwners();
   }
-
+  ngOnDestroy() {
+    this.deleteSub?.unsubscribe();
+  }
   selectedOwner: any | null = null;
   onRowSelected(owner: OwnerForm) {
     this.selectedOwner = owner;
   }
+  onCreateOwner() {
+    this.selectedOwner = null;
+  }
   onDeleteRow(owner: OwnerForm) {
-    this.srv.deleteOwner(owner.id!).subscribe({
-      next: () => {
-        this.srv.loadOwners();
-      },
-      error: (err) => {
-        console.error('Error deleting owner:', err);
-      }
-    });
+    this.ownerToDelete = owner;
+    this.showConfirmDialog.set(true);
+  }
+  onConfirmDelete() {
+    if (this.ownerToDelete) {
+      this.deleteSub = this.srv.deleteOwner(this.ownerToDelete.id!).subscribe({
+        next: () => {
+          this.srv.loadOwners();
+          this.ownerToDelete = null;
+          this.showConfirmDialog.set(false);
+        },
+        error: (err) => {
+          this.ownerToDelete = null;
+          this.showConfirmDialog.set(false);
+          console.error('Error deleting owner:', err);
+        }
+      });
+    }
+  }
+  onCancelDelete() {
+    this.ownerToDelete = null;
+    this.showConfirmDialog.set(false);
   }
   onEditRow(owner: OwnerForm) {
     this.selectedOwner = owner;
   }
-  onClose(){
+  onClose() {
     this.selectedOwner = null;
   }
 }

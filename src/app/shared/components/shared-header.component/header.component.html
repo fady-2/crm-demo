@@ -6,11 +6,4 @@
     <div class="header-buttons d-flex align-items-center gap-2">
       <ng-content></ng-content>
     </div>
-    <!-- @if (headerActions()) {
-      <div class="header-buttons d-flex align-items-center gap-2">
-        @for (action of headerActions(); track action) {
-          <p-button [label]="action.label" [icon]="action.icon" [severity]="action.severity" (onClick)="actionClicked.emit(action)"></p-button>
-        }
-      </div>
-    } -->
   </header>

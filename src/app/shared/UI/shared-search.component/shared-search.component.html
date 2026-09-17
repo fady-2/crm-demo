@@ -2,10 +2,12 @@
     <select
       class="form-select border-0 shadow-none border-end rounded-0 bg-transparent fw-medium text-dark pe-4"
     >
-      <option value="all" selected>All</option>
+      @for (opt of options; track opt.value) {
+        <option [value]="opt.value">{{ opt.label }}</option>
+      }
     </select>
-    <p-iconField iconPosition="right">
+    <p-iconField iconPosition="right" styleClass="border-0 shadow-none bg-transparent position-relative">
       <input type="text" pInputText placeholder="Search" />
-      <p-inputIcon styleClass="pi pi-search" />
+      <p-inputIcon styleClass="bi bi-search p-2 text-primary border-1 rounded-2" />
     </p-iconField>
   </div>
