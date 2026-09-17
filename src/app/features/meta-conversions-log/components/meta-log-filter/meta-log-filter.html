@@ -1,0 +1,39 @@
+<div class="log-filter my-3">
+  <h5 class="log-filter-header">Search Filters</h5>
+  <form [formGroup]="filterLog" (ngSubmit)="onSubmit()">
+    <div class="d-flex align-items-center gap-2">
+      <div class="form-group flex-grow-1">
+        <label for="status" class="label">Status</label>
+        <select formControlName="status" class="form-select" id="status">
+          <option class="opt-text" [ngValue]="null" disabled hidden>Select Status</option>
+          @for (s of status; track s.value) {
+            <option [ngValue]="s.value">{{ s.name }}</option>
+          }
+        </select>
+      </div>
+      <div class="form-group flex-grow-1">
+        <label for="action" class="label">CRM Action</label>
+        <select formControlName="action" class="form-select" id="action">
+          <option class="opt-text" [ngValue]="null" disabled hidden>Select CRM Action</option>
+          @for (a of action; track a.value) {
+            <option [ngValue]="a.value">{{ a.name }}</option>
+          }
+        </select>
+      </div>
+      <div class="form-group flex-grow-1">
+        <label for="name" class="label">Name</label>
+        <select formControlName="name" class="form-select" id="name">
+          <option class="opt-text" [ngValue]="null" disabled hidden>Select Name</option>
+          @for (n of name; track n.value) {
+            <option [ngValue]="n.value">{{ n.name }}</option>
+          }
+        </select>
+      </div>
+    </div>
+  </form>
+    <div class="d-flex justify-content-end mt-4 gap-2">
+        <button class="log-btn apply-btn" (click)="onReset()">Apply Filters</button>
+        <button class="log-btn reset-btn" (click)="onSubmit()">Reset Filters</button>
+        <button class="close-btn d-flex align-items-center justify-content-center" (click)="onClose()">x</button>
+    </div>
+</div>

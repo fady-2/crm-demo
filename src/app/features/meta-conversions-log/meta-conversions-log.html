@@ -1,30 +1,79 @@
 <div class="header-text d-flex align-items-center justify-content-between">
   <h3 class="header-title">Meta Conversions Log</h3>
-  <button class="d-flex align-items-center gap-2">
-    <i class="bi bi-funnel fw-bold"></i>Filter<i class="bi bi-chevron-down fw-bold"></i>
+  <button class="d-flex align-items-center gap-2" [ngClass]="isVisibleFilterLog()? 'filter-active':''" (click)="toggleFilterLogVisability()">
+    <i class="bi bi-funnel fw-bold"></i>Filter @if (isVisibleFilterLog()) {
+      <i class="bi bi-chevron-up fw-bold"></i>
+    }@else {
+      <i class="bi bi-chevron-down fw-bold"></i>
+    }
   </button>
 </div>
-<p-table
-  [value]="data"
-  [paginator]="true"
-  [rows]="10"
-  [rowsPerPageOptions]="[5, 10, 20]"
-  [columns]="columns"
->
-  <ng-template #header let-columns>
-    <tr>
-      @for (col of columns; track col.key) {
-        <th>
-          {{ col.label }}
-        </th>
-      }
-    </tr>
-  </ng-template>
-  <ng-template #body let-rowData let-columns="columns">
-    <tr class="text-center">
-      @for (col of columns; track col.key) {
-        <td>{{ rowData[col.key] }}</td>
-      }
-    </tr>
-  </ng-template>
-</p-table>
+
+<!-- ########### Filter Component ########### -->
+@if (isVisibleFilterLog()) {
+  <app-meta-log-filter/>
+}
+
+<!-- ########### Table ########### -->
+ <!-- Empty State -->
+@if (data.length === 0) {
+  <div
+    class="bg-white d-flex flex-column justify-content-center align-items-center vh-100 w-75 mx-auto"
+  >
+    <i class="bi bi-inbox fs-1 text-muted"></i>
+    <p class="text-muted small mt-2">No Data Founded</p>
+  </div>
+  <!-- Readable Table -->
+} @else {
+  <p-table
+    sortMode="multiple"
+    [value]="data"
+    [paginator]="true"
+    [rows]="10"
+    [rowsPerPageOptions]="[5, 10, 20]"
+  >
+    <ng-template #header let-columns>
+      <tr class="table-header">
+        <th pSortableColumn="lead.leadName">Lead <p-sortIcon field="lead.leadName"/></th>
+        <th pSortableColumn="journeyStage">Engaz Journey Stage <p-sortIcon field="journeyStage"/></th>
+        <th pSortableColumn="metaEvent">Meta Event <p-sortIcon field="metaEvent"/></th>
+        <th pSortableColumn="eventDate">Event Date <p-sortIcon field="eventDate"/></th>
+        <th pSortableColumn="lead.status">Status <p-sortIcon field="lead.status"/></th>
+        <th pSortableColumn="failureReason">Failure Reason <p-sortIcon field="failureReason"/></th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-rowData let-columns="columns">
+      <tr>
+        <td>{{ rowData?.lead?.leadName }}</td>
+        <td>{{ rowData?.journeyStage }}</td>
+        <td>{{ rowData?.metaEvent }}</td>
+        <td>
+          <div class="event-time">{{ rowData?.eventDate | date: 'HH:mm' }}</div>
+          <div class="event-date">{{ rowData?.eventDate | date: 'd/M' }}</div>
+        </td>
+        <td>
+          <span class="status-badge" [ngClass]="getStatusClass(rowData.lead?.status)">{{ rowData.lead?.status }}</span>
+        </td>
+        <td>{{ rowData?.failureReason }}</td>
+        <td>
+          <button
+            class="btn btn-primary opacity-0"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#metaLogSidebar"
+            (click)="changeRowSelected(rowData)"
+          >
+            Preview
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+}
+
+<!-- ########### Preview Component Sidebar ########### -->
+<div class="offcanvas offcanvas-end bg-light" tabindex="-1" id="metaLogSidebar">
+  <div class="offcanvas-body">
+    <app-meta-log-details [row]="rowSelected()" />
+  </div>
+</div>

@@ -1,8 +1,12 @@
 export interface MetaConversionLog {
-  lead: string;
+  lead :{
+    leadId:string;
+    leadName:string;
+    status: 'Sent' | 'Pending' | 'Failed';
+  }
   journeyStage: string;
   metaEvent: string;
   eventDate: Date;
-  status: 'Sent' | 'Pending' | 'Failed';
   failureReason: string | null;
+  eventRef: string;
 }
